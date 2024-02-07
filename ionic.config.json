@@ -1,0 +1,7 @@
+{
+  "name": "edt4rt",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
