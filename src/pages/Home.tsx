@@ -8,8 +8,8 @@ import {
 import React, { useState, useEffect } from "react";
 import "./Home.css";
 import FullCalendar from "@fullcalendar/react";
-import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
 import timeGridPlugin from '@fullcalendar/timegrid'
+
 
 function convertirFormatDate(dateString: string) {
   const dateTimeParts = dateString.split(" ");
