@@ -1,0 +1,1487 @@
+[
+    {
+        "summary": "R213 Cours Mathématiques des systèmes numériques",
+        "description": "RT1 S2 Cours",
+        "prof": "METATIDJ Sophie",
+        "start": "2024-02-05 08:00:00+01:00",
+        "end": "2024-02-05 09:30:00+01:00",
+        "location": "Amphi WISSLE",
+        "uid": "ADE6050726f6a657432335f32342d32303830322d332d30"
+    },
+    {
+        "summary": "Saé TP G3",
+        "description": "RT1 S2 TP G3",
+        "prof": "NA",
+        "start": "2024-02-05 09:30:00+01:00",
+        "end": "2024-02-05 11:00:00+01:00",
+        "location": "TP Station 1",
+        "uid": "ADE6050726f6a657432335f32342d32303939382d32322d30"
+    },
+    {
+        "summary": "Saé TP G3",
+        "description": "RT1 S2 TP G3",
+        "prof": "NA",
+        "start": "2024-02-05 11:00:00+01:00",
+        "end": "2024-02-05 12:30:00+01:00",
+        "location": "Réseaux optiques Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d32303939382d32312d30"
+    },
+    {
+        "summary": "R205 TDB Signaux et systèmes pour les transmissions",
+        "description": "RT1 S2 TDB",
+        "prof": "ABENIA Angel",
+        "start": "2024-02-05 13:30:00+01:00",
+        "end": "2024-02-05 15:00:00+01:00",
+        "location": "Salle de Cours",
+        "uid": "ADE6050726f6a657432335f32342d31393839382d302d32"
+    },
+    {
+        "summary": "R213 TDB Mathématiques des systèmes numériques",
+        "description": "RT1 S2 TDB",
+        "prof": "METATIDJ Sophie",
+        "start": "2024-02-05 15:00:00+01:00",
+        "end": "2024-02-05 16:30:00+01:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d32303834302d332d30"
+    },
+    {
+        "summary": "R201 TDB Technologie de l'Internet",
+        "description": "RT1 S2 TDB",
+        "prof": "BASCOU Jean-Jacques",
+        "start": "2024-02-05 16:30:00+01:00",
+        "end": "2024-02-05 18:00:00+01:00",
+        "location": "Salle de Cours",
+        "uid": "ADE6050726f6a657432335f32342d31383432392d302d3133"
+    },
+    {
+        "summary": "R205 Cours Signaux et systèmes pour les transmissions",
+        "description": "RT1 S2 Cours",
+        "prof": "ABENIA Angel",
+        "start": "2024-02-06 08:00:00+01:00",
+        "end": "2024-02-06 09:30:00+01:00",
+        "location": "Amphi WISSLE",
+        "uid": "ADE6050726f6a657432335f32342d31393830312d302d34"
+    },
+    {
+        "summary": "Saé TP G3",
+        "description": "RT1 S2 TP G3",
+        "prof": "NA",
+        "start": "2024-02-06 09:30:00+01:00",
+        "end": "2024-02-06 11:00:00+01:00",
+        "location": "LAB_ Data Center Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d32303939382d32342d30"
+    },
+    {
+        "summary": "R201 TP G3 Technologie de l'Internet",
+        "description": "RT1 S2 TP G3",
+        "prof": "MASCARON Stéphane",
+        "start": "2024-02-06 15:00:00+01:00",
+        "end": "2024-02-06 18:00:00+01:00",
+        "location": "Salle de Projets",
+        "uid": "ADE6050726f6a657432335f32342d32393631322d302d31"
+    },
+    {
+        "summary": "R207 TDB Sources de données",
+        "description": "RT1 S2 TDB",
+        "prof": "MUNIER Manuel",
+        "start": "2024-02-07 08:00:00+01:00",
+        "end": "2024-02-07 09:30:00+01:00",
+        "location": "Téléformation Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d32303030302d302d31"
+    },
+    {
+        "summary": "R213 TDB Mathématiques des systèmes numériques",
+        "description": "RT1 S2 TDB",
+        "prof": "METATIDJ Sophie",
+        "start": "2024-02-07 09:30:00+01:00",
+        "end": "2024-02-07 11:00:00+01:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d32303834302d302d30"
+    },
+    {
+        "summary": "R201 Cours Technologie de l'Internet",
+        "description": "RT1 S2 Cours",
+        "prof": "BASCOU Jean-Jacques",
+        "start": "2024-02-07 11:00:00+01:00",
+        "end": "2024-02-07 12:30:00+01:00",
+        "location": "Salle de Cours",
+        "uid": "ADE6050726f6a657432335f32342d31383433302d332d30"
+    },
+    {
+        "summary": "R207 TP G3 Sources de données",
+        "description": "RT1 S2 TP G3",
+        "prof": "MASCARON Stéphane",
+        "start": "2024-02-07 13:30:00+01:00",
+        "end": "2024-02-07 16:30:00+01:00",
+        "location": "LAB_ Data Center Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d33333137322d302d30"
+    },
+    {
+        "summary": "R212 TDB PPP Formalisation du projet",
+        "description": "RT1 S2 TDB",
+        "prof": "CARRETIER Marilyne",
+        "start": "2024-02-07 16:30:00+01:00",
+        "end": "2024-02-07 18:00:00+01:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d32303736382d312d30"
+    },
+    {
+        "summary": "R202 Cours Admin. sys. et virt.",
+        "description": "RT1 S2 Cours",
+        "prof": "ARNOULD Philippe",
+        "start": "2024-02-08 08:00:00+01:00",
+        "end": "2024-02-08 09:30:00+01:00",
+        "location": "Salle de Cours",
+        "uid": "ADE6050726f6a657432335f32342d31303438362d312d30"
+    },
+    {
+        "summary": "R205 TDB Signaux et systèmes pour les transmissions",
+        "description": "RT1 S2 TDB",
+        "prof": "ABENIA Angel",
+        "start": "2024-02-08 09:30:00+01:00",
+        "end": "2024-02-08 11:00:00+01:00",
+        "location": "Salle de Cours",
+        "uid": "ADE6050726f6a657432335f32342d31393839382d302d33"
+    },
+    {
+        "summary": "R202 TDB Admin. sys. et virt.",
+        "description": "RT1 S2 TDB",
+        "prof": "ARNOULD Philippe",
+        "start": "2024-02-08 11:00:00+01:00",
+        "end": "2024-02-08 12:30:00+01:00",
+        "location": "Téléformation Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d31353639392d352d30"
+    },
+    {
+        "summary": "Saé201 TDB",
+        "description": "RT1 S2 TDB",
+        "prof": "ARNOULD Philippe",
+        "start": "2024-02-09 08:00:00+01:00",
+        "end": "2024-02-09 09:30:00+01:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d32303838302d302d30"
+    },
+    {
+        "summary": "R205 TP G3 Signaux et systèmes pour les transmissions",
+        "description": "RT1 S2 TP G3",
+        "prof": "ABENIA Angel",
+        "start": "2024-02-09 09:30:00+01:00",
+        "end": "2024-02-09 12:30:00+01:00",
+        "location": "TP Télécoms",
+        "uid": "ADE6050726f6a657432335f32342d33333137302d302d34"
+    },
+    {
+        "summary": "R201 TDB Technologie de l'Internet",
+        "description": "RT1 S2 TDB",
+        "prof": "BASCOU Jean-Jacques",
+        "start": "2024-02-09 13:30:00+01:00",
+        "end": "2024-02-09 15:00:00+01:00",
+        "location": "TD6 Salle TD6",
+        "uid": "ADE6050726f6a657432335f32342d31383432392d302d3132"
+    },
+    {
+        "summary": "Saé201 TDB",
+        "description": "RT1 S2 TDB",
+        "prof": "ARNOULD Philippe",
+        "start": "2024-02-09 15:00:00+01:00",
+        "end": "2024-02-09 16:30:00+01:00",
+        "location": "Téléformation Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d32303838302d312d30"
+    },
+    {
+        "summary": "Journée Portes Ouvertes 2",
+        "description": "RT2 S4 Cours TC",
+        "prof": "NA",
+        "start": "2024-02-10 09:00:00+01:00",
+        "end": "2024-02-10 16:00:00+01:00",
+        "location": "",
+        "uid": "ADE6050726f6a657432335f32342d33343234392d302d30"
+    },
+    {
+        "summary": "R202 TDB Admin. sys. et virt.",
+        "description": "RT1 S2 TDB",
+        "prof": "ARNOULD Philippe",
+        "start": "2024-02-12 08:00:00+01:00",
+        "end": "2024-02-12 09:30:00+01:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d31353639392d322d30"
+    },
+    {
+        "summary": "R202 TDB Admin. sys. et virt.",
+        "description": "RT1 S2 TDB",
+        "prof": "ARNOULD Philippe",
+        "start": "2024-02-12 09:30:00+01:00",
+        "end": "2024-02-12 11:00:00+01:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d31353639392d312d30"
+    },
+    {
+        "summary": "R201 TDB Technologie de l'Internet",
+        "description": "RT1 S2 TDB",
+        "prof": "BASCOU Jean-Jacques",
+        "start": "2024-02-12 11:00:00+01:00",
+        "end": "2024-02-12 12:30:00+01:00",
+        "location": "TD4 Salle TD4",
+        "uid": "ADE6050726f6a657432335f32342d31383432392d302d35"
+    },
+    {
+        "summary": "R202 TDB Admin. sys. et virt.",
+        "description": "RT1 S2 TDB",
+        "prof": "ARNOULD Philippe",
+        "start": "2024-02-12 13:30:00+01:00",
+        "end": "2024-02-12 15:00:00+01:00",
+        "location": "Téléformation Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d31353639392d342d30"
+    },
+    {
+        "summary": "Saé TP G3",
+        "description": "RT1 S2 TP G3",
+        "prof": "NA",
+        "start": "2024-02-12 15:00:00+01:00",
+        "end": "2024-02-12 16:30:00+01:00",
+        "location": "LAB_ Data Center Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d32303939382d32352d30"
+    },
+    {
+        "summary": "R205 TDB Signaux et systèmes pour les transmissions",
+        "description": "RT1 S2 TDB",
+        "prof": "ABENIA Angel",
+        "start": "2024-02-13 08:00:00+01:00",
+        "end": "2024-02-13 09:30:00+01:00",
+        "location": "TD6 Salle TD6",
+        "uid": "ADE6050726f6a657432335f32342d31393839382d302d34"
+    },
+    {
+        "summary": "Saé201 TDB",
+        "description": "RT1 S2 TDB",
+        "prof": "ARNOULD Philippe",
+        "start": "2024-02-13 09:30:00+01:00",
+        "end": "2024-02-13 11:00:00+01:00",
+        "location": "Téléformation Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d32303838302d332d30"
+    },
+    {
+        "summary": "R201 TDB Technologie de l'Internet",
+        "description": "RT1 S2 TDB",
+        "prof": "BASCOU Jean-Jacques",
+        "start": "2024-02-13 11:00:00+01:00",
+        "end": "2024-02-13 12:30:00+01:00",
+        "location": "TD5 Salle TD5",
+        "uid": "ADE6050726f6a657432335f32342d31383432392d302d33"
+    },
+    {
+        "summary": "R201 TP G3 Technologie de l'Internet",
+        "description": "RT1 S2 TP G3",
+        "prof": "MASCARON Stéphane",
+        "start": "2024-02-13 13:30:00+01:00",
+        "end": "2024-02-13 16:30:00+01:00",
+        "location": "TP Réseaux",
+        "uid": "ADE6050726f6a657432335f32342d32393631322d302d32"
+    },
+    {
+        "summary": "R201 Cours Technologie de l'Internet",
+        "description": "RT1 S2 Cours",
+        "prof": "BASCOU Jean-Jacques",
+        "start": "2024-02-14 08:00:00+01:00",
+        "end": "2024-02-14 09:30:00+01:00",
+        "location": "Salle de Cours",
+        "uid": "ADE6050726f6a657432335f32342d31383433302d342d30"
+    },
+    {
+        "summary": "Saé TP G3",
+        "description": "RT1 S2 TP G3",
+        "prof": "NA",
+        "start": "2024-02-14 09:30:00+01:00",
+        "end": "2024-02-14 11:00:00+01:00",
+        "location": "Salle TP PC (micro-informatique)",
+        "uid": "ADE6050726f6a657432335f32342d32303939382d31392d30"
+    },
+    {
+        "summary": "R205 TDB Signaux et systèmes pour les transmissions",
+        "description": "RT1 S2 TDB",
+        "prof": "ABENIA Angel",
+        "start": "2024-02-14 11:00:00+01:00",
+        "end": "2024-02-14 12:30:00+01:00",
+        "location": "TD4 Salle TD4",
+        "uid": "ADE6050726f6a657432335f32342d31393839382d302d36"
+    },
+    {
+        "summary": "R207 TP G3 Sources de données",
+        "description": "RT1 S2 TP G3",
+        "prof": "MASCARON Stéphane",
+        "start": "2024-02-14 13:30:00+01:00",
+        "end": "2024-02-14 16:30:00+01:00",
+        "location": "Salle TP PC (micro-informatique)",
+        "uid": "ADE6050726f6a657432335f32342d33333137322d302d32"
+    },
+    {
+        "summary": "R212 TDB PPP Formalisation du projet",
+        "description": "RT1 S2 TDB",
+        "prof": "CARRETIER Marilyne",
+        "start": "2024-02-14 16:30:00+01:00",
+        "end": "2024-02-14 18:00:00+01:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d32303736382d322d30"
+    },
+    {
+        "summary": "R213 Cours Mathématiques des systèmes numériques",
+        "description": "RT1 S2 Cours",
+        "prof": "METATIDJ Sophie",
+        "start": "2024-02-15 08:00:00+01:00",
+        "end": "2024-02-15 09:30:00+01:00",
+        "location": "Amphi WISSLE",
+        "uid": "ADE6050726f6a657432335f32342d32303830322d312d30"
+    },
+    {
+        "summary": "R213 TDB Mathématiques des systèmes numériques",
+        "description": "RT1 S2 TDB",
+        "prof": "METATIDJ Sophie",
+        "start": "2024-02-15 09:30:00+01:00",
+        "end": "2024-02-15 11:00:00+01:00",
+        "location": "Téléformation Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d32303834302d322d30"
+    },
+    {
+        "summary": "Saé TP G3",
+        "description": "RT1 S2 TP G3",
+        "prof": "NA",
+        "start": "2024-02-15 11:00:00+01:00",
+        "end": "2024-02-15 12:30:00+01:00",
+        "location": "Salle de Projets",
+        "uid": "ADE6050726f6a657432335f32342d32303939382d32332d30"
+    },
+    {
+        "summary": "R205 TP G3 Signaux et systèmes pour les transmissions",
+        "description": "RT1 S2 TP G3",
+        "prof": "ABENIA Angel",
+        "start": "2024-02-16 08:00:00+01:00",
+        "end": "2024-02-16 11:00:00+01:00",
+        "location": "TP Télécoms",
+        "uid": "ADE6050726f6a657432335f32342d33333137302d302d31"
+    },
+    {
+        "summary": "R208 Cours Analyse et traitement de données structurées",
+        "description": "RT1 S2 Cours",
+        "prof": "MUNIER Manuel",
+        "start": "2024-02-16 11:00:00+01:00",
+        "end": "2024-02-16 12:30:00+01:00",
+        "location": "Salle de Cours",
+        "uid": "ADE6050726f6a657432335f32342d32303032382d302d30"
+    },
+    {
+        "summary": "R202 Cours Admin. sys. et virt.",
+        "description": "RT1 S2 Cours",
+        "prof": "ARNOULD Philippe",
+        "start": "2024-02-19 08:00:00+01:00",
+        "end": "2024-02-19 09:30:00+01:00",
+        "location": "Salle de Cours",
+        "uid": "ADE6050726f6a657432335f32342d31303438362d322d30"
+    },
+    {
+        "summary": "R202 TDB Admin. sys. et virt.",
+        "description": "RT1 S2 TDB",
+        "prof": "ARNOULD Philippe",
+        "start": "2024-02-19 09:30:00+01:00",
+        "end": "2024-02-19 11:00:00+01:00",
+        "location": "Téléformation Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d31353639392d332d30"
+    },
+    {
+        "summary": "R201 TDB Technologie de l'Internet",
+        "description": "RT1 S2 TDB",
+        "prof": "BASCOU Jean-Jacques",
+        "start": "2024-02-19 11:00:00+01:00",
+        "end": "2024-02-19 12:30:00+01:00",
+        "location": "Amphi WISSLE",
+        "uid": "ADE6050726f6a657432335f32342d31383432392d302d34"
+    },
+    {
+        "summary": "Saé201 TDB",
+        "description": "RT1 S2 TDB",
+        "prof": "ARNOULD Philippe",
+        "start": "2024-02-19 13:30:00+01:00",
+        "end": "2024-02-19 15:00:00+01:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d32303838302d342d30"
+    },
+    {
+        "summary": "R201 TDB Technologie de l'Internet",
+        "description": "RT1 S2 TDB",
+        "prof": "BASCOU Jean-Jacques",
+        "start": "2024-02-19 15:00:00+01:00",
+        "end": "2024-02-19 16:30:00+01:00",
+        "location": "TD4 Salle TD4",
+        "uid": "ADE6050726f6a657432335f32342d31383432392d302d37"
+    },
+    {
+        "summary": "Saé TP G3",
+        "description": "RT1 S2 TP G3",
+        "prof": "NA",
+        "start": "2024-02-19 16:30:00+01:00",
+        "end": "2024-02-19 18:00:00+01:00",
+        "location": "TP Station 1",
+        "uid": "ADE6050726f6a657432335f32342d32303939382d322d30"
+    },
+    {
+        "summary": "R201 Cours Technologie de l'Internet",
+        "description": "RT1 S2 Cours",
+        "prof": "BASCOU Jean-Jacques",
+        "start": "2024-02-20 08:00:00+01:00",
+        "end": "2024-02-20 09:30:00+01:00",
+        "location": "Amphi WISSLE",
+        "uid": "ADE6050726f6a657432335f32342d31383433302d352d30"
+    },
+    {
+        "summary": "R213 Cours Mathématiques des systèmes numériques",
+        "description": "RT1 S2 Cours",
+        "prof": "METATIDJ Sophie",
+        "start": "2024-02-20 09:30:00+01:00",
+        "end": "2024-02-20 11:00:00+01:00",
+        "location": "Amphi WISSLE",
+        "uid": "ADE6050726f6a657432335f32342d32303830322d352d30"
+    },
+    {
+        "summary": "R207 TDB Sources de données",
+        "description": "RT1 S2 TDB",
+        "prof": "MUNIER Manuel",
+        "start": "2024-02-20 11:00:00+01:00",
+        "end": "2024-02-20 12:30:00+01:00",
+        "location": "Téléformation Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d32303030302d302d32"
+    },
+    {
+        "summary": "R213 TDB Mathématiques des systèmes numériques",
+        "description": "RT1 S2 TDB",
+        "prof": "METATIDJ Sophie",
+        "start": "2024-02-20 13:30:00+01:00",
+        "end": "2024-02-20 15:00:00+01:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d32303834302d362d30"
+    },
+    {
+        "summary": "R207 TP G3 Sources de données",
+        "description": "RT1 S2 TP G3",
+        "prof": "MASCARON Stéphane",
+        "start": "2024-02-20 15:00:00+01:00",
+        "end": "2024-02-20 18:00:00+01:00",
+        "location": "Salle TP PC (micro-informatique)",
+        "uid": "ADE6050726f6a657432335f32342d33333137322d302d33"
+    },
+    {
+        "summary": "R201 TP G3 Technologie de l'Internet",
+        "description": "RT1 S2 TP G3",
+        "prof": "MASCARON Stéphane",
+        "start": "2024-02-21 08:00:00+01:00",
+        "end": "2024-02-21 11:00:00+01:00",
+        "location": "TP Réseaux",
+        "uid": "ADE6050726f6a657432335f32342d32393631322d302d33"
+    },
+    {
+        "summary": "R205 Cours Signaux et systèmes pour les transmissions",
+        "description": "RT1 S2 Cours",
+        "prof": "ABENIA Angel",
+        "start": "2024-02-21 11:00:00+01:00",
+        "end": "2024-02-21 12:30:00+01:00",
+        "location": "Salle de Cours",
+        "uid": "ADE6050726f6a657432335f32342d31393830312d302d31"
+    },
+    {
+        "summary": "R205 TP G3 Signaux et systèmes pour les transmissions",
+        "description": "RT1 S2 TP G3",
+        "prof": "ABENIA Angel",
+        "start": "2024-02-21 13:30:00+01:00",
+        "end": "2024-02-21 16:30:00+01:00",
+        "location": "TP Télécoms",
+        "uid": "ADE6050726f6a657432335f32342d33333137302d302d32"
+    },
+    {
+        "summary": "R212 TDB PPP Formalisation du projet",
+        "description": "RT1 S2 TDB",
+        "prof": "CARRETIER Marilyne",
+        "start": "2024-02-21 16:30:00+01:00",
+        "end": "2024-02-21 18:00:00+01:00",
+        "location": "Téléformation Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d32303736382d332d30"
+    },
+    {
+        "summary": "R205 TDB Signaux et systèmes pour les transmissions",
+        "description": "RT1 S2 TDB",
+        "prof": "ABENIA Angel",
+        "start": "2024-02-22 09:30:00+01:00",
+        "end": "2024-02-22 11:00:00+01:00",
+        "location": "TD4 Salle TD4",
+        "uid": "ADE6050726f6a657432335f32342d31393839382d302d37"
+    },
+    {
+        "summary": "R205 TDB Signaux et systèmes pour les transmissions",
+        "description": "RT1 S2 TDB",
+        "prof": "ABENIA Angel",
+        "start": "2024-02-22 11:00:00+01:00",
+        "end": "2024-02-22 12:30:00+01:00",
+        "location": "TD4 Salle TD4",
+        "uid": "ADE6050726f6a657432335f32342d31393839382d302d35"
+    },
+    {
+        "summary": "Saé TP G3",
+        "description": "RT1 S2 TP G3",
+        "prof": "NA",
+        "start": "2024-02-23 09:30:00+01:00",
+        "end": "2024-02-23 11:00:00+01:00",
+        "location": "Réseaux optiques Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d32303939382d332d30"
+    },
+    {
+        "summary": "Saé TP G3",
+        "description": "RT1 S2 TP G3",
+        "prof": "NA",
+        "start": "2024-02-23 11:00:00+01:00",
+        "end": "2024-02-23 12:30:00+01:00",
+        "location": "THD TP Très Haut Débit",
+        "uid": "ADE6050726f6a657432335f32342d32303939382d362d30"
+    },
+    {
+        "summary": "R207 TP G3 Sources de données",
+        "description": "RT1 S2 TP G3",
+        "prof": "MASCARON Stéphane",
+        "start": "2024-03-04 08:00:00+01:00",
+        "end": "2024-03-04 11:00:00+01:00",
+        "location": "Salle TP PC (micro-informatique)",
+        "uid": "ADE6050726f6a657432335f32342d33333137322d302d31"
+    },
+    {
+        "summary": "Saé201 TDB",
+        "description": "RT1 S2 TDB",
+        "prof": "ARNOULD Philippe",
+        "start": "2024-03-04 11:00:00+01:00",
+        "end": "2024-03-04 12:30:00+01:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d32303838302d352d30"
+    },
+    {
+        "summary": "R213 TDB Mathématiques des systèmes numériques",
+        "description": "RT1 S2 TDB",
+        "prof": "METATIDJ Sophie",
+        "start": "2024-03-04 13:30:00+01:00",
+        "end": "2024-03-04 15:00:00+01:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d32303834302d372d30"
+    },
+    {
+        "summary": "R202 TDB Admin. sys. et virt.",
+        "description": "RT1 S2 TDB",
+        "prof": "ARNOULD Philippe",
+        "start": "2024-03-04 15:00:00+01:00",
+        "end": "2024-03-04 16:30:00+01:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d31353639392d362d30"
+    },
+    {
+        "summary": "R201 TDB Technologie de l'Internet",
+        "description": "RT1 S2 TDB",
+        "prof": "BASCOU Jean-Jacques",
+        "start": "2024-03-04 16:30:00+01:00",
+        "end": "2024-03-04 18:00:00+01:00",
+        "location": "TD4 Salle TD4",
+        "uid": "ADE6050726f6a657432335f32342d31383432392d302d32"
+    },
+    {
+        "summary": "Réunion Info Alternance",
+        "description": "RT1 S1 Cours",
+        "prof": "BAILLOT Christophe",
+        "start": "2024-03-05 08:30:00+01:00",
+        "end": "2024-03-05 09:30:00+01:00",
+        "location": "Salle de Cours",
+        "uid": "ADE6050726f6a657432335f32342d363035322d302d30"
+    },
+    {
+        "summary": "R208 TDB Analyse et traitement de données structurées",
+        "description": "RT1 S2 TDB",
+        "prof": "MUNIER Manuel",
+        "start": "2024-03-05 09:30:00+01:00",
+        "end": "2024-03-05 11:00:00+01:00",
+        "location": "Téléformation Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d32303032302d302d30"
+    },
+    {
+        "summary": "R213 TDB Mathématiques des systèmes numériques",
+        "description": "RT1 S2 TDB",
+        "prof": "METATIDJ Sophie",
+        "start": "2024-03-05 11:00:00+01:00",
+        "end": "2024-03-05 12:30:00+01:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d32303834302d382d30"
+    },
+    {
+        "summary": "R205 Cours Signaux et systèmes pour les transmissions",
+        "description": "RT1 S2 Cours",
+        "prof": "ABENIA Angel",
+        "start": "2024-03-05 13:30:00+01:00",
+        "end": "2024-03-05 15:00:00+01:00",
+        "location": "Amphi BIO",
+        "uid": "ADE6050726f6a657432335f32342d31393830312d302d30"
+    },
+    {
+        "summary": "Saé TP G3",
+        "description": "RT1 S2 TP G3",
+        "prof": "NA",
+        "start": "2024-03-05 15:00:00+01:00",
+        "end": "2024-03-05 16:30:00+01:00",
+        "location": "Salle TP PC (micro-informatique)",
+        "uid": "ADE6050726f6a657432335f32342d32303939382d33312d30"
+    },
+    {
+        "summary": "R201 TP G3 Technologie de l'Internet",
+        "description": "RT1 S2 TP G3",
+        "prof": "MASCARON Stéphane",
+        "start": "2024-03-06 09:30:00+01:00",
+        "end": "2024-03-06 12:30:00+01:00",
+        "location": "TP Réseaux",
+        "uid": "ADE6050726f6a657432335f32342d32393631322d302d34"
+    },
+    {
+        "summary": "Saé TP G3",
+        "description": "RT1 S2 TP G3",
+        "prof": "NA",
+        "start": "2024-03-06 13:30:00+01:00",
+        "end": "2024-03-06 15:00:00+01:00",
+        "location": "Salle TP PC (micro-informatique)",
+        "uid": "ADE6050726f6a657432335f32342d32303939382d32382d30"
+    },
+    {
+        "summary": "Saé TP G3",
+        "description": "RT1 S2 TP G3",
+        "prof": "NA",
+        "start": "2024-03-06 15:00:00+01:00",
+        "end": "2024-03-06 16:30:00+01:00",
+        "location": "Salle TP PC (micro-informatique)",
+        "uid": "ADE6050726f6a657432335f32342d32303939382d32392d30"
+    },
+    {
+        "summary": "R212 TDB PPP Formalisation du projet",
+        "description": "RT1 S2 TDB",
+        "prof": "CARRETIER Marilyne",
+        "start": "2024-03-06 16:30:00+01:00",
+        "end": "2024-03-06 18:00:00+01:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d32303736382d342d30"
+    },
+    {
+        "summary": "R206 Cours Numérisation de l'information",
+        "description": "RT1 S2 Cours",
+        "prof": "ABENIA Angel",
+        "start": "2024-03-07 08:00:00+01:00",
+        "end": "2024-03-07 09:30:00+01:00",
+        "location": "Salle de Cours",
+        "uid": "ADE6050726f6a657432335f32342d31393933352d302d30"
+    },
+    {
+        "summary": "R205 TP G3 Signaux et systèmes pour les transmissions",
+        "description": "RT1 S2 TP G3",
+        "prof": "ABENIA Angel",
+        "start": "2024-03-07 09:30:00+01:00",
+        "end": "2024-03-07 12:30:00+01:00",
+        "location": "TP Télécoms",
+        "uid": "ADE6050726f6a657432335f32342d33333137302d302d33"
+    },
+    {
+        "summary": "R206 Cours Numérisation de l'information",
+        "description": "RT1 S2 Cours",
+        "prof": "ABENIA Angel",
+        "start": "2024-03-08 08:00:00+01:00",
+        "end": "2024-03-08 09:30:00+01:00",
+        "location": "Salle de Cours",
+        "uid": "ADE6050726f6a657432335f32342d31393933352d312d30"
+    },
+    {
+        "summary": "R202 TDB Admin. sys. et virt.",
+        "description": "RT1 S2 TDB",
+        "prof": "ARNOULD Philippe",
+        "start": "2024-03-08 09:30:00+01:00",
+        "end": "2024-03-08 11:00:00+01:00",
+        "location": "Téléformation Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d31353639392d382d30"
+    },
+    {
+        "summary": "R202 TDB Admin. sys. et virt.",
+        "description": "RT1 S2 TDB",
+        "prof": "ARNOULD Philippe",
+        "start": "2024-03-08 11:00:00+01:00",
+        "end": "2024-03-08 12:30:00+01:00",
+        "location": "Téléformation Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d31353639392d31312d30"
+    },
+    {
+        "summary": "R201 TDB Technologie de l'Internet",
+        "description": "RT1 S2 TDB",
+        "prof": "BASCOU Jean-Jacques",
+        "start": "2024-03-08 13:30:00+01:00",
+        "end": "2024-03-08 15:00:00+01:00",
+        "location": "Salle de Cours",
+        "uid": "ADE6050726f6a657432335f32342d31383432392d302d36"
+    },
+    {
+        "summary": "R202 TDB Admin. sys. et virt.",
+        "description": "RT1 S2 TDB",
+        "prof": "ARNOULD Philippe",
+        "start": "2024-03-08 15:00:00+01:00",
+        "end": "2024-03-08 16:30:00+01:00",
+        "location": "Téléformation Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d31353639392d31302d30"
+    },
+    {
+        "summary": "R202 TDB Admin. sys. et virt.",
+        "description": "RT1 S2 TDB",
+        "prof": "ARNOULD Philippe",
+        "start": "2024-03-11 09:30:00+01:00",
+        "end": "2024-03-11 11:00:00+01:00",
+        "location": "Téléformation Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d31353639392d372d30"
+    },
+    {
+        "summary": "R201 TDB Technologie de l'Internet",
+        "description": "RT1 S2 TDB",
+        "prof": "BASCOU Jean-Jacques",
+        "start": "2024-03-11 11:00:00+01:00",
+        "end": "2024-03-11 12:30:00+01:00",
+        "location": "Amphi WISSLE",
+        "uid": "ADE6050726f6a657432335f32342d31383432392d302d38"
+    },
+    {
+        "summary": "R206 Cours Numérisation de l'information",
+        "description": "RT1 S2 Cours",
+        "prof": "ABENIA Angel",
+        "start": "2024-03-11 13:30:00+01:00",
+        "end": "2024-03-11 15:00:00+01:00",
+        "location": "Salle de Cours",
+        "uid": "ADE6050726f6a657432335f32342d31393933352d332d30"
+    },
+    {
+        "summary": "Saé TP G3",
+        "description": "RT1 S2 TP G3",
+        "prof": "NA",
+        "start": "2024-03-11 15:00:00+01:00",
+        "end": "2024-03-11 16:30:00+01:00",
+        "location": "LAB_ Data Center Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d32303939382d352d30"
+    },
+    {
+        "summary": "R206 TDB Numérisation de l'information",
+        "description": "RT1 S2 TDB",
+        "prof": "ABENIA Angel",
+        "start": "2024-03-11 16:30:00+01:00",
+        "end": "2024-03-11 18:00:00+01:00",
+        "location": "TD4 Salle TD4",
+        "uid": "ADE6050726f6a657432335f32342d31393934312d302d30"
+    },
+    {
+        "summary": "Saé TP G3",
+        "description": "RT1 S2 TP G3",
+        "prof": "NA",
+        "start": "2024-03-12 09:30:00+01:00",
+        "end": "2024-03-12 11:00:00+01:00",
+        "location": "TP Station 1",
+        "uid": "ADE6050726f6a657432335f32342d32303939382d342d30"
+    },
+    {
+        "summary": "R208 TDB Analyse et traitement de données structurées",
+        "description": "RT1 S2 TDB",
+        "prof": "MUNIER Manuel",
+        "start": "2024-03-12 11:00:00+01:00",
+        "end": "2024-03-12 12:30:00+01:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d32303032302d302d32"
+    },
+    {
+        "summary": "R201 TDB Technologie de l'Internet",
+        "description": "RT1 S2 TDB",
+        "prof": "BASCOU Jean-Jacques",
+        "start": "2024-03-12 13:30:00+01:00",
+        "end": "2024-03-12 15:00:00+01:00",
+        "location": "TD5 Salle TD5",
+        "uid": "ADE6050726f6a657432335f32342d31383432392d302d3130"
+    },
+    {
+        "summary": "R208 TP G3 Analyse et traitement de données structurées",
+        "description": "RT1 S2 TP G3",
+        "prof": "MASCARON Stéphane",
+        "start": "2024-03-12 15:00:00+01:00",
+        "end": "2024-03-12 18:00:00+01:00",
+        "location": "LAB_ Data Center Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d33333138312d302d30"
+    },
+    {
+        "summary": "R206 TP G3 Numérisation de l'information",
+        "description": "RT1 S2 TP G3",
+        "prof": "LESPINE Yannick",
+        "start": "2024-03-13 13:30:00+01:00",
+        "end": "2024-03-13 16:30:00+01:00",
+        "location": "TP Télécoms",
+        "uid": "ADE6050726f6a657432335f32342d31393931322d302d32"
+    },
+    {
+        "summary": "R212 TDB PPP Formalisation du projet",
+        "description": "RT1 S2 TDB",
+        "prof": "CARRETIER Marilyne",
+        "start": "2024-03-13 16:30:00+01:00",
+        "end": "2024-03-13 18:00:00+01:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d32303736382d362d30"
+    },
+    {
+        "summary": "Saé TP G3",
+        "description": "RT1 S2 TP G3",
+        "prof": "NA",
+        "start": "2024-03-14 08:00:00+01:00",
+        "end": "2024-03-14 09:30:00+01:00",
+        "location": "THD TP Très Haut Débit",
+        "uid": "ADE6050726f6a657432335f32342d32303939382d372d30"
+    },
+    {
+        "summary": "R213 TDB Mathématiques des systèmes numériques",
+        "description": "RT1 S2 TDB",
+        "prof": "METATIDJ Sophie",
+        "start": "2024-03-14 09:30:00+01:00",
+        "end": "2024-03-14 11:00:00+01:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d32303834302d31312d30"
+    },
+    {
+        "summary": "R202 TDB Admin. sys. et virt.",
+        "description": "RT1 S2 TDB",
+        "prof": "ARNOULD Philippe",
+        "start": "2024-03-14 11:00:00+01:00",
+        "end": "2024-03-14 12:30:00+01:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d31353639392d392d30"
+    },
+    {
+        "summary": "Forum Entreprises PM",
+        "description": "RT1 S2 Cours",
+        "prof": "NA",
+        "start": "2024-03-14 14:00:00+01:00",
+        "end": "2024-03-14 18:00:00+01:00",
+        "location": "Amphi BIO",
+        "uid": "ADE6050726f6a657432335f32342d33373936372d302d30"
+    },
+    {
+        "summary": "R213 TDB Mathématiques des systèmes numériques",
+        "description": "RT1 S2 TDB",
+        "prof": "METATIDJ Sophie",
+        "start": "2024-03-15 09:30:00+01:00",
+        "end": "2024-03-15 11:00:00+01:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d32303834302d31332d30"
+    },
+    {
+        "summary": "R206 TDB Numérisation de l'information",
+        "description": "RT1 S2 TDB",
+        "prof": "ABENIA Angel",
+        "start": "2024-03-15 11:00:00+01:00",
+        "end": "2024-03-15 12:30:00+01:00",
+        "location": "TD6 Salle TD6",
+        "uid": "ADE6050726f6a657432335f32342d31393934312d302d31"
+    },
+    {
+        "summary": "R201 TP G3 Technologie de l'Internet",
+        "description": "RT1 S2 TP G3",
+        "prof": "MASCARON Stéphane",
+        "start": "2024-03-15 13:30:00+01:00",
+        "end": "2024-03-15 16:30:00+01:00",
+        "location": "TP Réseaux",
+        "uid": "ADE6050726f6a657432335f32342d32393631322d302d35"
+    },
+    {
+        "summary": "R202 TDB Admin. sys. et virt.",
+        "description": "RT1 S2 TDB",
+        "prof": "ARNOULD Philippe",
+        "start": "2024-03-18 09:30:00+01:00",
+        "end": "2024-03-18 11:00:00+01:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d31353639392d31322d30"
+    },
+    {
+        "summary": "R202 TDB Admin. sys. et virt.",
+        "description": "RT1 S2 TDB",
+        "prof": "ARNOULD Philippe",
+        "start": "2024-03-18 11:00:00+01:00",
+        "end": "2024-03-18 12:30:00+01:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d31353639392d31332d30"
+    },
+    {
+        "summary": "R201 TDB Technologie de l'Internet",
+        "description": "RT1 S2 TDB",
+        "prof": "BASCOU Jean-Jacques",
+        "start": "2024-03-18 13:30:00+01:00",
+        "end": "2024-03-18 15:00:00+01:00",
+        "location": "TD6 Salle TD6",
+        "uid": "ADE6050726f6a657432335f32342d31383432392d302d3131"
+    },
+    {
+        "summary": "R201 TDB Technologie de l'Internet",
+        "description": "RT1 S2 TDB",
+        "prof": "BASCOU Jean-Jacques",
+        "start": "2024-03-18 15:00:00+01:00",
+        "end": "2024-03-18 16:30:00+01:00",
+        "location": "Amphi WISSLE",
+        "uid": "ADE6050726f6a657432335f32342d31383432392d302d39"
+    },
+    {
+        "summary": "R213 TDB Mathématiques des systèmes numériques",
+        "description": "RT1 S2 TDB",
+        "prof": "METATIDJ Sophie",
+        "start": "2024-03-19 08:00:00+01:00",
+        "end": "2024-03-19 09:30:00+01:00",
+        "location": "Téléformation Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d32303834302d31322d30"
+    },
+    {
+        "summary": "R213 TDB Mathématiques des systèmes numériques",
+        "description": "RT1 S2 TDB",
+        "prof": "METATIDJ Sophie",
+        "start": "2024-03-19 09:30:00+01:00",
+        "end": "2024-03-19 11:00:00+01:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d32303834302d392d30"
+    },
+    {
+        "summary": "R206 TDB Numérisation de l'information",
+        "description": "RT1 S2 TDB",
+        "prof": "ABENIA Angel",
+        "start": "2024-03-19 11:00:00+01:00",
+        "end": "2024-03-19 12:30:00+01:00",
+        "location": "TD4 Salle TD4",
+        "uid": "ADE6050726f6a657432335f32342d31393934312d302d32"
+    },
+    {
+        "summary": "Saé TP G3",
+        "description": "RT1 S2 TP G3",
+        "prof": "NA",
+        "start": "2024-03-19 13:30:00+01:00",
+        "end": "2024-03-19 15:00:00+01:00",
+        "location": "THD TP Très Haut Débit",
+        "uid": "ADE6050726f6a657432335f32342d32303939382d32302d30"
+    },
+    {
+        "summary": "Saé TP G3",
+        "description": "RT1 S2 TP G3",
+        "prof": "NA",
+        "start": "2024-03-19 15:00:00+01:00",
+        "end": "2024-03-19 16:30:00+01:00",
+        "location": "TP Réseaux",
+        "uid": "ADE6050726f6a657432335f32342d32303939382d32372d30"
+    },
+    {
+        "summary": "Saé TP G3",
+        "description": "RT1 S2 TP G3",
+        "prof": "NA",
+        "start": "2024-03-20 08:00:00+01:00",
+        "end": "2024-03-20 09:30:00+01:00",
+        "location": "TP Station 1",
+        "uid": "ADE6050726f6a657432335f32342d32303939382d32362d30"
+    },
+    {
+        "summary": "R208 TP G3 Analyse et traitement de données structurées",
+        "description": "RT1 S2 TP G3",
+        "prof": "MASCARON Stéphane",
+        "start": "2024-03-20 09:30:00+01:00",
+        "end": "2024-03-20 12:30:00+01:00",
+        "location": "TP Station 1",
+        "uid": "ADE6050726f6a657432335f32342d33333138312d302d31"
+    },
+    {
+        "summary": "R201 TP G3 Technologie de l'Internet",
+        "description": "RT1 S2 TP G3",
+        "prof": "MASCARON Stéphane",
+        "start": "2024-03-20 13:30:00+01:00",
+        "end": "2024-03-20 16:30:00+01:00",
+        "location": "TP Réseaux",
+        "uid": "ADE6050726f6a657432335f32342d32393631322d302d36"
+    },
+    {
+        "summary": "R212 TDB PPP Formalisation du projet",
+        "description": "RT1 S2 TDB",
+        "prof": "CARRETIER Marilyne",
+        "start": "2024-03-20 16:30:00+01:00",
+        "end": "2024-03-20 18:00:00+01:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d32303736382d372d30"
+    },
+    {
+        "summary": "R208 TDB Analyse et traitement de données structurées",
+        "description": "RT1 S2 TDB",
+        "prof": "MUNIER Manuel",
+        "start": "2024-03-21 09:30:00+01:00",
+        "end": "2024-03-21 11:00:00+01:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d32303032302d302d31"
+    },
+    {
+        "summary": "R206 TDB Numérisation de l'information",
+        "description": "RT1 S2 TDB",
+        "prof": "ABENIA Angel",
+        "start": "2024-03-21 11:00:00+01:00",
+        "end": "2024-03-21 12:30:00+01:00",
+        "location": "Salle de Cours",
+        "uid": "ADE6050726f6a657432335f32342d31393934312d302d33"
+    },
+    {
+        "summary": "R206 TP G3 Numérisation de l'information",
+        "description": "RT1 S2 TP G3",
+        "prof": "LESPINE Yannick",
+        "start": "2024-03-22 13:30:00+01:00",
+        "end": "2024-03-22 16:30:00+01:00",
+        "location": "TP Télécoms",
+        "uid": "ADE6050726f6a657432335f32342d31393931322d302d33"
+    },
+    {
+        "summary": "R214 Cours Analyse mathématique des signaux",
+        "description": "RT1 S2 Cours",
+        "prof": "METATIDJ Sophie",
+        "start": "2024-03-25 08:00:00+01:00",
+        "end": "2024-03-25 09:30:00+01:00",
+        "location": "Amphi WISSLE",
+        "uid": "ADE6050726f6a657432335f32342d32303835392d302d30"
+    },
+    {
+        "summary": "R201 TP G3 Technologie de l'Internet",
+        "description": "RT1 S2 TP G3",
+        "prof": "MASCARON Stéphane",
+        "start": "2024-03-25 09:30:00+01:00",
+        "end": "2024-03-25 12:30:00+01:00",
+        "location": "TP Réseaux",
+        "uid": "ADE6050726f6a657432335f32342d32393631322d302d39"
+    },
+    {
+        "summary": "Saé TP G3",
+        "description": "RT1 S2 TP G3",
+        "prof": "NA",
+        "start": "2024-03-25 13:30:00+01:00",
+        "end": "2024-03-25 15:00:00+01:00",
+        "location": "TP Station 1",
+        "uid": "ADE6050726f6a657432335f32342d32303939382d31372d30"
+    },
+    {
+        "summary": "R202 TDB Admin. sys. et virt.",
+        "description": "RT1 S2 TDB",
+        "prof": "ARNOULD Philippe",
+        "start": "2024-03-25 15:00:00+01:00",
+        "end": "2024-03-25 16:30:00+01:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d31353639392d31352d30"
+    },
+    {
+        "summary": "R202 TDB Admin. sys. et virt.",
+        "description": "RT1 S2 TDB",
+        "prof": "ARNOULD Philippe",
+        "start": "2024-03-25 16:30:00+01:00",
+        "end": "2024-03-25 18:00:00+01:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d31353639392d31342d30"
+    },
+    {
+        "summary": "R214 TDB Analyse mathématique des signaux",
+        "description": "RT1 S2 TDB",
+        "prof": "METATIDJ Sophie",
+        "start": "2024-03-26 09:30:00+01:00",
+        "end": "2024-03-26 11:00:00+01:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d32303836312d322d30"
+    },
+    {
+        "summary": "Saé TP G3",
+        "description": "RT1 S2 TP G3",
+        "prof": "NA",
+        "start": "2024-03-26 11:00:00+01:00",
+        "end": "2024-03-26 12:30:00+01:00",
+        "location": "TP Station 1",
+        "uid": "ADE6050726f6a657432335f32342d32303939382d31362d30"
+    },
+    {
+        "summary": "Saé204 TDB",
+        "description": "RT1 S2 TDB",
+        "prof": "BASCOU Jean-Jacques",
+        "start": "2024-03-26 13:30:00+01:00",
+        "end": "2024-03-26 15:00:00+01:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d32303938392d302d30"
+    },
+    {
+        "summary": "R206 TP G3 Numérisation de l'information",
+        "description": "RT1 S2 TP G3",
+        "prof": "LESPINE Yannick",
+        "start": "2024-03-26 15:00:00+01:00",
+        "end": "2024-03-26 18:00:00+01:00",
+        "location": "TP Télécoms",
+        "uid": "ADE6050726f6a657432335f32342d31393931322d302d30"
+    },
+    {
+        "summary": "R209 Cours Initiation au développement Web",
+        "description": "RT1 S2 Cours",
+        "prof": "MUNIER Manuel",
+        "start": "2024-03-27 09:30:00+01:00",
+        "end": "2024-03-27 11:00:00+01:00",
+        "location": "Amphi BIO",
+        "uid": "ADE6050726f6a657432335f32342d32303036302d302d31"
+    },
+    {
+        "summary": "R206 Cours Numérisation de l'information",
+        "description": "RT1 S2 Cours",
+        "prof": "ABENIA Angel",
+        "start": "2024-03-27 11:00:00+01:00",
+        "end": "2024-03-27 12:30:00+01:00",
+        "location": "Salle de Cours",
+        "uid": "ADE6050726f6a657432335f32342d31393933352d322d30"
+    },
+    {
+        "summary": "R211 Cours Expression-Culture-Comm.",
+        "description": "RT1 S2 Cours",
+        "prof": "KUENTZLER Frédérique",
+        "start": "2024-03-27 13:30:00+01:00",
+        "end": "2024-03-27 15:00:00+01:00",
+        "location": "Salle de Cours",
+        "uid": "ADE6050726f6a657432335f32342d32303734382d302d31"
+    },
+    {
+        "summary": "R211 Cours Expression-Culture-Comm.",
+        "description": "RT1 S2 Cours",
+        "prof": "KUENTZLER Frédérique",
+        "start": "2024-03-27 15:00:00+01:00",
+        "end": "2024-03-27 16:30:00+01:00",
+        "location": "Salle de Cours",
+        "uid": "ADE6050726f6a657432335f32342d32303734382d302d30"
+    },
+    {
+        "summary": "R212 TDB PPP Formalisation du projet",
+        "description": "RT1 S2 TDB",
+        "prof": "CARRETIER Marilyne",
+        "start": "2024-03-27 16:30:00+01:00",
+        "end": "2024-03-27 18:00:00+01:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d32303736382d392d30"
+    },
+    {
+        "summary": "R208 TP G3 Analyse et traitement de données structurées",
+        "description": "RT1 S2 TP G3",
+        "prof": "MASCARON Stéphane",
+        "start": "2024-03-28 08:00:00+01:00",
+        "end": "2024-03-28 11:00:00+01:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d33333138312d302d32"
+    },
+    {
+        "summary": "Saé201 TP G3",
+        "description": "RT1 S2 TP G3",
+        "prof": "ARNOULD Philippe",
+        "start": "2024-03-29 09:30:00+01:00",
+        "end": "2024-03-29 11:00:00+01:00",
+        "location": "Réseaux optiques Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d33333536312d302d30"
+    },
+    {
+        "summary": "Saé TP G3",
+        "description": "RT1 S2 TP G3",
+        "prof": "NA",
+        "start": "2024-03-29 11:00:00+01:00",
+        "end": "2024-03-29 12:30:00+01:00",
+        "location": "Salle de Projets",
+        "uid": "ADE6050726f6a657432335f32342d32303939382d31302d30"
+    },
+    {
+        "summary": "R201 TP G3 Technologie de l'Internet",
+        "description": "RT1 S2 TP G3",
+        "prof": "MASCARON Stéphane",
+        "start": "2024-04-02 08:00:00+02:00",
+        "end": "2024-04-02 11:00:00+02:00",
+        "location": "Salle de Projets",
+        "uid": "ADE6050726f6a657432335f32342d32393631322d302d37"
+    },
+    {
+        "summary": "Saé TP G3",
+        "description": "RT1 S2 TP G3",
+        "prof": "NA",
+        "start": "2024-04-02 11:00:00+02:00",
+        "end": "2024-04-02 12:30:00+02:00",
+        "location": "Réseaux optiques Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d32303939382d33372d30"
+    },
+    {
+        "summary": "R214 TDB Analyse mathématique des signaux",
+        "description": "RT1 S2 TDB",
+        "prof": "METATIDJ Sophie",
+        "start": "2024-04-02 13:30:00+02:00",
+        "end": "2024-04-02 15:00:00+02:00",
+        "location": "Téléformation Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d32303836312d302d30"
+    },
+    {
+        "summary": "R210 TP G3 Anglais de communication",
+        "description": "RT1 S2 TP G3",
+        "prof": "TILLS Andrea",
+        "start": "2024-04-02 15:00:00+02:00",
+        "end": "2024-04-02 18:00:00+02:00",
+        "location": "Salle TP PC (micro-informatique)",
+        "uid": "ADE6050726f6a657432335f32342d33333531322d352d30"
+    },
+    {
+        "summary": "R204 Cours Initiation à la téléphonie d'entreprise",
+        "description": "RT1 S2 Cours",
+        "prof": "ABENIA Angel",
+        "start": "2024-04-03 08:00:00+02:00",
+        "end": "2024-04-03 09:30:00+02:00",
+        "location": "Salle de Cours",
+        "uid": "ADE6050726f6a657432335f32342d31393034352d302d30"
+    },
+    {
+        "summary": "R206 TP G3 Numérisation de l'information",
+        "description": "RT1 S2 TP G3",
+        "prof": "LESPINE Yannick",
+        "start": "2024-04-03 09:30:00+02:00",
+        "end": "2024-04-03 12:30:00+02:00",
+        "location": "TP Télécoms",
+        "uid": "ADE6050726f6a657432335f32342d31393931322d302d31"
+    },
+    {
+        "summary": "R211 TDB Expression-Culture-Comm.",
+        "description": "RT1 S2 TDB",
+        "prof": "KUENTZLER Frédérique",
+        "start": "2024-04-03 13:30:00+02:00",
+        "end": "2024-04-03 15:00:00+02:00",
+        "location": "Téléformation Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d32303735382d302d30"
+    },
+    {
+        "summary": "R211 TDB Expression-Culture-Comm.",
+        "description": "RT1 S2 TDB",
+        "prof": "KUENTZLER Frédérique",
+        "start": "2024-04-03 15:00:00+02:00",
+        "end": "2024-04-03 16:30:00+02:00",
+        "location": "Téléformation Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d32303735382d312d30"
+    },
+    {
+        "summary": "R212 TDB PPP Formalisation du projet",
+        "description": "RT1 S2 TDB",
+        "prof": "CARRETIER Marilyne",
+        "start": "2024-04-03 16:30:00+02:00",
+        "end": "2024-04-03 18:00:00+02:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d32303736382d382d30"
+    },
+    {
+        "summary": "R214 Cours Analyse mathématique des signaux",
+        "description": "RT1 S2 Cours",
+        "prof": "METATIDJ Sophie",
+        "start": "2024-04-04 08:00:00+02:00",
+        "end": "2024-04-04 09:30:00+02:00",
+        "location": "Amphi WISSLE",
+        "uid": "ADE6050726f6a657432335f32342d32303835392d352d30"
+    },
+    {
+        "summary": "Saé TP G3",
+        "description": "RT1 S2 TP G3",
+        "prof": "NA",
+        "start": "2024-04-04 09:30:00+02:00",
+        "end": "2024-04-04 11:00:00+02:00",
+        "location": "LAB_ Data Center Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d32303939382d33382d30"
+    },
+    {
+        "summary": "Saé TP G3",
+        "description": "RT1 S2 TP G3",
+        "prof": "NA",
+        "start": "2024-04-04 11:00:00+02:00",
+        "end": "2024-04-04 12:30:00+02:00",
+        "location": "LAB_ Data Center Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d32303939382d33362d30"
+    },
+    {
+        "summary": "R201 Cours Technologie de l'Internet",
+        "description": "RT1 S2 Cours",
+        "prof": "BASCOU Jean-Jacques",
+        "start": "2024-04-05 08:00:00+02:00",
+        "end": "2024-04-05 09:30:00+02:00",
+        "location": "Amphi BIO",
+        "uid": "ADE6050726f6a657432335f32342d31383433302d362d30"
+    },
+    {
+        "summary": "R209 TDB Initiation au développement Web",
+        "description": "RT1 S2 TDB",
+        "prof": "MUNIER Manuel",
+        "start": "2024-04-05 09:30:00+02:00",
+        "end": "2024-04-05 11:00:00+02:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d32303035382d302d30"
+    },
+    {
+        "summary": "R204 Cours Initiation à la téléphonie d'entreprise",
+        "description": "RT1 S2 Cours",
+        "prof": "ABENIA Angel",
+        "start": "2024-04-05 13:30:00+02:00",
+        "end": "2024-04-05 15:00:00+02:00",
+        "location": "Salle de Cours",
+        "uid": "ADE6050726f6a657432335f32342d31393034352d302d32"
+    },
+    {
+        "summary": "R209 Cours Initiation au développement Web",
+        "description": "RT1 S2 Cours",
+        "prof": "MUNIER Manuel",
+        "start": "2024-04-05 15:00:00+02:00",
+        "end": "2024-04-05 16:30:00+02:00",
+        "location": "Salle de Cours",
+        "uid": "ADE6050726f6a657432335f32342d32303036302d302d30"
+    },
+    {
+        "summary": "R214 Cours Analyse mathématique des signaux",
+        "description": "RT1 S2 Cours",
+        "prof": "METATIDJ Sophie",
+        "start": "2024-04-08 08:00:00+02:00",
+        "end": "2024-04-08 09:30:00+02:00",
+        "location": "Amphi BIO",
+        "uid": "ADE6050726f6a657432335f32342d32303835392d342d30"
+    },
+    {
+        "summary": "R204 TDB Initiation à la téléphonie d'entreprise",
+        "description": "RT1 S2 TDB",
+        "prof": "ABENIA Angel",
+        "start": "2024-04-08 09:30:00+02:00",
+        "end": "2024-04-08 11:00:00+02:00",
+        "location": "TD6 Salle TD6",
+        "uid": "ADE6050726f6a657432335f32342d31393836362d302d30"
+    },
+    {
+        "summary": "R214 TDB Analyse mathématique des signaux",
+        "description": "RT1 S2 TDB",
+        "prof": "METATIDJ Sophie",
+        "start": "2024-04-08 11:00:00+02:00",
+        "end": "2024-04-08 12:30:00+02:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d32303836312d312d30"
+    },
+    {
+        "summary": "R204 Cours Initiation à la téléphonie d'entreprise",
+        "description": "RT1 S2 Cours",
+        "prof": "ABENIA Angel",
+        "start": "2024-04-08 13:30:00+02:00",
+        "end": "2024-04-08 15:00:00+02:00",
+        "location": "Amphi BIO",
+        "uid": "ADE6050726f6a657432335f32342d31393034352d302d31"
+    },
+    {
+        "summary": "Saé TP G3",
+        "description": "RT1 S2 TP G3",
+        "prof": "NA",
+        "start": "2024-04-08 15:00:00+02:00",
+        "end": "2024-04-08 16:30:00+02:00",
+        "location": "Réseaux optiques Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d32303939382d392d30"
+    },
+    {
+        "summary": "Saé TP G3",
+        "description": "RT1 S2 TP G3",
+        "prof": "NA",
+        "start": "2024-04-08 16:30:00+02:00",
+        "end": "2024-04-08 18:00:00+02:00",
+        "location": "Réseaux optiques Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d32303939382d33302d30"
+    },
+    {
+        "summary": "R204 TP G3 Initiation à la téléphonie d'entreprise",
+        "description": "RT1 S2 TP G3",
+        "prof": "LESPINE Yannick",
+        "start": "2024-04-09 08:00:00+02:00",
+        "end": "2024-04-09 11:00:00+02:00",
+        "location": "TP Téléphonie",
+        "uid": "ADE6050726f6a657432335f32342d33323735392d342d30"
+    },
+    {
+        "summary": "R210 TP G3 Anglais de communication",
+        "description": "RT1 S2 TP G3",
+        "prof": "TILLS Andrea",
+        "start": "2024-04-09 11:00:00+02:00",
+        "end": "2024-04-09 12:30:00+02:00",
+        "location": "Salle TP PC (micro-informatique)",
+        "uid": "ADE6050726f6a657432335f32342d33333531322d302d30"
+    },
+    {
+        "summary": "R210 TP G3 Anglais de communication",
+        "description": "RT1 S2 TP G3",
+        "prof": "TILLS Andrea",
+        "start": "2024-04-09 13:30:00+02:00",
+        "end": "2024-04-09 15:00:00+02:00",
+        "location": "Salle TP PC (micro-informatique)",
+        "uid": "ADE6050726f6a657432335f32342d33333531322d312d30"
+    },
+    {
+        "summary": "R201 TP G3 Technologie de l'Internet",
+        "description": "RT1 S2 TP G3",
+        "prof": "MASCARON Stéphane",
+        "start": "2024-04-09 15:00:00+02:00",
+        "end": "2024-04-09 18:00:00+02:00",
+        "location": "TP Réseaux",
+        "uid": "ADE6050726f6a657432335f32342d32393631322d302d38"
+    },
+    {
+        "summary": "R211 TDB Expression-Culture-Comm.",
+        "description": "RT1 S2 TDB",
+        "prof": "KUENTZLER Frédérique",
+        "start": "2024-04-10 09:30:00+02:00",
+        "end": "2024-04-10 11:00:00+02:00",
+        "location": "Téléformation Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d32303735382d332d30"
+    },
+    {
+        "summary": "R211 TDB Expression-Culture-Comm.",
+        "description": "RT1 S2 TDB",
+        "prof": "KUENTZLER Frédérique",
+        "start": "2024-04-10 11:00:00+02:00",
+        "end": "2024-04-10 12:30:00+02:00",
+        "location": "Téléformation Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d32303735382d362d30"
+    },
+    {
+        "summary": "R209 TP G3 Initiation au développement Web",
+        "description": "RT1 S2 TP G3",
+        "prof": "MASCARON Stéphane",
+        "start": "2024-04-10 13:30:00+02:00",
+        "end": "2024-04-10 16:30:00+02:00",
+        "location": "Salle TP PC (micro-informatique)",
+        "uid": "ADE6050726f6a657432335f32342d33333531312d302d30"
+    },
+    {
+        "summary": "Saé TP G3",
+        "description": "RT1 S2 TP G3",
+        "prof": "NA",
+        "start": "2024-04-10 16:30:00+02:00",
+        "end": "2024-04-10 18:00:00+02:00",
+        "location": "TP Station 1",
+        "uid": "ADE6050726f6a657432335f32342d32303939382d33342d30"
+    },
+    {
+        "summary": "R204 TDB Initiation à la téléphonie d'entreprise",
+        "description": "RT1 S2 TDB",
+        "prof": "ABENIA Angel",
+        "start": "2024-04-11 08:00:00+02:00",
+        "end": "2024-04-11 09:30:00+02:00",
+        "location": "TD4 Salle TD4",
+        "uid": "ADE6050726f6a657432335f32342d31393836362d302d31"
+    },
+    {
+        "summary": "R211 TDB Expression-Culture-Comm.",
+        "description": "RT1 S2 TDB",
+        "prof": "KUENTZLER Frédérique",
+        "start": "2024-04-11 09:30:00+02:00",
+        "end": "2024-04-11 11:00:00+02:00",
+        "location": "Téléformation Halle THD",
+        "uid": "ADE6050726f6a657432335f32342d32303735382d342d30"
+    },
+    {
+        "summary": "R209 TDB Initiation au développement Web",
+        "description": "RT1 S2 TDB",
+        "prof": "MUNIER Manuel",
+        "start": "2024-04-11 11:00:00+02:00",
+        "end": "2024-04-11 12:30:00+02:00",
+        "location": "Salle TD Info",
+        "uid": "ADE6050726f6a657432335f32342d32303035382d302d33"
+    }
+]
