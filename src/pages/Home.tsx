@@ -22,6 +22,8 @@ interface Event {
   start: string;
   end: string;
   id: string;
+  description: string;
+  extendedProps:any;
 }
 
 interface EventData {
@@ -30,29 +32,40 @@ interface EventData {
   end: string;
   description?: string;
   prof?: string;
-  location?: string;
+  location: string;
   uid?: string;
 }
 
 const Home: React.FC = () => {
   const [events, setEvents] = useState<Event[]>([]);
 
+
+  const eventRender = (event:Event) => {
+    const location = event.extendedProps.location;
+  }
+  
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch("http://5.39.83.64:9999/api/planning/getPlanningPerName/but1_g3", {
+        const response = await fetch("https://api.romain-pinsolle.fr/api/planning/getPlanningPerName/but1_g3", {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
           },
         });
-
+        
         const json = await response.json();
+        console.log(json)
         const formattedEvents: Event[] = json.map((eventData: EventData) => ({
           title: eventData.summary,
           start: convertirFormatDate(eventData.start),
           end: convertirFormatDate(eventData.end),
+          description: eventData.location,
           id: eventData.uid,
+          extendedProps:{
+            location:eventData.location,
+          }
+
         }));
 
         setEvents(formattedEvents);
@@ -86,6 +99,7 @@ const Home: React.FC = () => {
               height="auto"
               slotMinTime="08:00"
               slotMaxTime="19:00"
+              eventContent={eventRender}
             />
           </div>
         </IonContent></>
