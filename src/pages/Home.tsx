@@ -57,11 +57,12 @@ const Home: React.FC = () => {
         const json = await response.json();
         console.log(json)
         const formattedEvents: Event[] = json.map((eventData: EventData) => ({
-          title: eventData.summary,
+          title: eventData.summary + " - " + eventData.location + ((eventData.prof !== "NA" && " - " +eventData.prof) || ""),
           start: convertirFormatDate(eventData.start),
           end: convertirFormatDate(eventData.end),
           description: eventData.location,
           id: eventData.uid,
+          color : ((eventData.prof !== "NA" && "default") || "#005049"),
           extendedProps:{
             location:eventData.location,
           }
@@ -99,7 +100,6 @@ const Home: React.FC = () => {
               height="auto"
               slotMinTime="08:00"
               slotMaxTime="19:00"
-              eventContent={eventRender}
             />
           </div>
         </IonContent></>
