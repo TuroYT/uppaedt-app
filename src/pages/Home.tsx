@@ -10,7 +10,7 @@ const Home = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch("https://api.romain-pinsolle.fr/api/planning/getPlanningPerName/but1_g3", {
+        const response = await fetch("https://edt4rt-api.romain-pinsolle.fr/api/planning/getPlanningPerName/but1_g3", {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
