@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import FullCalendar from "@fullcalendar/react";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import "./Home.css";
+import { CapacitorHttp } from '@capacitor/core';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from "@ionic/react";
 
 const Home = () => {
@@ -10,14 +11,9 @@ const Home = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch("https://edt4rt-api.romain-pinsolle.fr/api/planning/getPlanningPerName/but1_g3", {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-        });
-
-        const json = await response.json();
+        const response = await CapacitorHttp.get({url : "https://cors-anywhere.herokuapp.com/https://edt4rt-api.romain-pinsolle.fr/api/planning/getPlanningPerName/but1_g3", headers:{'Access-Control-Allow-Origin':'*', "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.5359.95 Safari/537.36"}});
+        console.log(response.data)
+        const json = await response.data;
         const formattedEvents = json.map((eventData: any) => ({
           title: `${eventData.summary} - ${eventData.location}${eventData.prof !== "NA" ? ` - ${eventData.prof}` : ""}`,
           start: eventData.start.split(" ")[0] + "T" + eventData.start.split(" ")[1].split("+")[0], // Simplified date conversion

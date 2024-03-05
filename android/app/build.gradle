@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     namespace "ionic.edt4rt"
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    compileSdk rootProject.ext.compileSdkVersion
     defaultConfig {
         applicationId "ionic.edt4rt"
         minSdkVersion rootProject.ext.minSdkVersion
