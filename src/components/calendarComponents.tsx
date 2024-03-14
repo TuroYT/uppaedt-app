@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import FullCalendar from "@fullcalendar/react";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import { CapacitorHttp } from "@capacitor/core";
@@ -13,6 +13,9 @@ const CalendarComponents: React.FC<Props> = (props) => {
   const [events, setEvents] = useState([]);
   const [presentAlert] = useIonAlert();
 
+
+
+  
   useEffect(() => {
     const fetchEvents = async () => {
       try {
@@ -38,6 +41,14 @@ const CalendarComponents: React.FC<Props> = (props) => {
           description: eventData.location,
           id: eventData.uid,
           color: eventData.prof !== "NA" ? "default" : "#005049",
+
+          extendedProps : {
+            prof : eventData.prof,
+            cours : eventData.summary,
+            location : eventData.location
+
+          }
+
         }));
 
         setEvents(formattedEvents);
@@ -54,16 +65,26 @@ const CalendarComponents: React.FC<Props> = (props) => {
     fetchEvents();
   }, [props.name]);
 
+
+  const calendarRef = useRef(null)
+  // https://fullcalendar.io/docs/react
   return (
     <>
       {events.length ? (
         <>
         <div id="main">
         <FullCalendar
+            ref={calendarRef}
             plugins={[timeGridPlugin]}
             initialView="timeGridDay"
             locale="fr"
+            headerToolbar={{
+              start: '', // will normally be on the left. if RTL, will be on the right
+              center: '',
+              end: 'today prev,next' // will normally be on the right. if RTL, will be on the left
+            }}
             titleFormat={{ month: "long", day: "numeric" }}
+            buttonText={{'today': "Aujourd'hui"}}
             hiddenDays={[6, 0]}
             events={events}
             allDaySlot={false}
@@ -71,6 +92,7 @@ const CalendarComponents: React.FC<Props> = (props) => {
             height="auto"
             slotMinTime="08:00"
             slotMaxTime="19:00"
+            eventContent={renderEventContent}
           />
         </div>
           
@@ -85,5 +107,19 @@ const CalendarComponents: React.FC<Props> = (props) => {
     </>
   );
 };
+
+function renderEventContent(eventInfo: { timeText: any; event: { extendedProps: { cours: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined; location: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined; prof: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined; }; }; }) {
+  return (
+    <>
+      <>{eventInfo.timeText}</><br></br>
+      <b>{eventInfo.event.extendedProps.cours}</b><br></br>
+      <i>{eventInfo.event.extendedProps.location}</i><br></br>
+      
+      {eventInfo.event.extendedProps.prof != 'NA' ? (<i>{eventInfo.event.extendedProps.prof}</i>):('')}
+      
+    </>
+  )
+}
+
 
 export default CalendarComponents;
