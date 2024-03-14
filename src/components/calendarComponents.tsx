@@ -4,7 +4,6 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import { CapacitorHttp } from "@capacitor/core";
 import "./calendarComponant.css";
 import { useIonAlert } from '@ionic/react';
-import { er } from "@fullcalendar/core/internal-common";
 
 interface Props {
   name?: string;
