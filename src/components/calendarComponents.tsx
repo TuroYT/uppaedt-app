@@ -3,7 +3,7 @@ import FullCalendar from "@fullcalendar/react";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import { CapacitorHttp } from "@capacitor/core";
 import "./calendarComponant.css";
-import { useIonAlert } from '@ionic/react';
+import { useIonAlert, IonProgressBar } from "@ionic/react";
 
 interface Props {
   name?: string;
@@ -41,24 +41,25 @@ const CalendarComponents: React.FC<Props> = (props) => {
         }));
 
         setEvents(formattedEvents);
-      } catch (error : any) {
+      } catch (error: any) {
         console.error("Error fetching events:", error);
         presentAlert({
-            header: 'Erreur !',
-            message: error.toString(), 
-            buttons: ['Ok'],
-          })
-      } 
+          header: "Erreur !",
+          message: error.toString(),
+          buttons: ["Ok"],
+        });
+      }
     };
 
     fetchEvents();
-  }, []);
+  }, [props.name]);
 
   return (
     <>
       {events.length ? (
         <>
-          <FullCalendar
+        <div id="main">
+        <FullCalendar
             plugins={[timeGridPlugin]}
             initialView="timeGridDay"
             locale="fr"
@@ -71,21 +72,14 @@ const CalendarComponents: React.FC<Props> = (props) => {
             slotMinTime="08:00"
             slotMaxTime="19:00"
           />
+        </div>
+          
         </>
       ) : (
         // Loading indicator
         <>
-          <div className="lds-roller">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-          <h1>Chargement</h1>
+        <IonProgressBar type="indeterminate"></IonProgressBar>
+        <h1 className="center">Chargement</h1>
         </>
       )}
     </>
