@@ -4,15 +4,20 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import { CapacitorHttp } from "@capacitor/core";
 import { caretBackOutline, caretForwardOutline, star } from "ionicons/icons";
 import "./calendarComponant.css";
+
+
+
+import { useSwipeable } from "react-swipeable";
+
 import {
   useIonAlert,
   IonProgressBar,
   IonButton,
   IonDatetime,
-  IonDatetimeButton,
   IonModal,
   IonIcon,
 } from "@ionic/react";
+
 
 interface Props {
   name?: string;
@@ -124,11 +129,18 @@ const CalendarComponents: React.FC<Props> = (props) => {
     return utcDay !== 0 && utcDay !== 6;
   };
 
+  
+  const handlers = useSwipeable({
+    onSwipedLeft: () => goNext(),
+    onSwipedRight: () => goBack(),
+    // Vous pouvez également définir des gestionnaires pour onSwipedUp et onSwipedDown si nécessaire
+  });
+  
   return (
     <>
       {events.length ? (
         <>
-          <div id="main">
+          <div id="main" {...handlers}>
             <div className="center">
               <IonButton
                 id="datetime-picker"
@@ -163,15 +175,17 @@ const CalendarComponents: React.FC<Props> = (props) => {
               ></IonDatetime>
             </IonModal>
 
+
+
             <FullCalendar
               ref={calendarRef}
               plugins={[timeGridPlugin]}
               initialView="timeGridDay"
               locale="fr"
               headerToolbar={{
-                start: "", // will normally be on the left. if RTL, will be on the right
+                start: "", 
                 center: "",
-                end: "", // will normally be on the right. if RTL, will be on the left
+                end: "", 
               }}
               titleFormat={{ month: "long", day: "numeric" }}
               buttonText={{ today: "Aujourd'hui" }}
@@ -183,6 +197,7 @@ const CalendarComponents: React.FC<Props> = (props) => {
               slotMinTime="08:00"
               slotMaxTime="19:00"
             />
+
           </div>
         </>
       ) : (

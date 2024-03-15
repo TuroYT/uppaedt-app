@@ -13,6 +13,7 @@ import CalendarComponents from "../components/calendarComponents";
 import { useState, useCallback } from "react";
 import { Storage } from "@ionic/storage";
 
+
 const store = new Storage();
 
 
@@ -45,6 +46,8 @@ const Home = () => {
                 <IonSelectOption value="but1_g2">BUT1 Groupe 2</IonSelectOption>
                 <IonSelectOption value="but1_g3">BUT1 Groupe 3</IonSelectOption>
                 <IonSelectOption value="but1_g4">BUT1 Groupe 4</IonSelectOption>
+
+
               </IonSelect>
             </IonItem>
           </IonList>
