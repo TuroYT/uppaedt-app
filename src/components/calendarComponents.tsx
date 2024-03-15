@@ -5,8 +5,6 @@ import { CapacitorHttp } from "@capacitor/core";
 import { caretBackOutline, caretForwardOutline, star } from "ionicons/icons";
 import "./calendarComponant.css";
 
-
-
 import { useSwipeable } from "react-swipeable";
 
 import {
@@ -17,7 +15,6 @@ import {
   IonModal,
   IonIcon,
 } from "@ionic/react";
-
 
 interface Props {
   name?: string;
@@ -73,6 +70,12 @@ const CalendarComponents: React.FC<Props> = (props) => {
           description: eventData.location,
           id: eventData.uid,
           color: eventData.prof !== "NA" ? "default" : "#005049",
+
+          extendedProps: {
+            prof: eventData.prof,
+            cours: eventData.summary,
+            location: eventData.location,
+          },
         }));
 
         setEvents(formattedEvents);
@@ -129,13 +132,43 @@ const CalendarComponents: React.FC<Props> = (props) => {
     return utcDay !== 0 && utcDay !== 6;
   };
 
-  
   const handlers = useSwipeable({
     onSwipedLeft: () => goNext(),
     onSwipedRight: () => goBack(),
     // Vous pouvez également définir des gestionnaires pour onSwipedUp et onSwipedDown si nécessaire
   });
-  
+
+  function renderEventContent(eventInfo: {
+    timeText: any;
+    event: {
+      extendedProps: {
+        cours:
+          | string
+        location:
+          | string
+        prof:
+          | string
+      };
+    };
+  }) {
+    return (
+      <>
+        <>{eventInfo.timeText}</>
+        <br></br>
+        <b>{eventInfo.event.extendedProps.cours}</b>
+        <br></br>
+        <i>{eventInfo.event.extendedProps.location}</i>
+        <br></br>
+
+        {eventInfo.event.extendedProps.prof != "NA" ? (
+          <i>{eventInfo.event.extendedProps.prof}</i>
+        ) : (
+          ""
+        )}
+      </>
+    );
+  }
+
   return (
     <>
       {events.length ? (
@@ -175,17 +208,15 @@ const CalendarComponents: React.FC<Props> = (props) => {
               ></IonDatetime>
             </IonModal>
 
-
-
             <FullCalendar
               ref={calendarRef}
               plugins={[timeGridPlugin]}
               initialView="timeGridDay"
               locale="fr"
               headerToolbar={{
-                start: "", 
+                start: "",
                 center: "",
-                end: "", 
+                end: "",
               }}
               titleFormat={{ month: "long", day: "numeric" }}
               buttonText={{ today: "Aujourd'hui" }}
@@ -196,8 +227,8 @@ const CalendarComponents: React.FC<Props> = (props) => {
               height="auto"
               slotMinTime="08:00"
               slotMaxTime="19:00"
+              eventContent={renderEventContent}
             />
-
           </div>
         </>
       ) : (
