@@ -3,7 +3,8 @@ import FullCalendar from "@fullcalendar/react";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import { CapacitorHttp } from "@capacitor/core";
 import "./calendarComponant.css";
-import { useIonAlert, IonProgressBar } from "@ionic/react";
+import { useIonAlert, IonProgressBar, IonButton } from "@ionic/react";
+import { cA } from "@fullcalendar/core/internal-common";
 
 interface Props {
   name?: string;
@@ -12,8 +13,23 @@ interface Props {
 const CalendarComponents: React.FC<Props> = (props) => {
   const [events, setEvents] = useState([]);
   const [presentAlert] = useIonAlert();
-
-
+  const calendarRef : any = useRef(null)
+  const todaydate = new Date()
+  const mois : any ={
+    "0": "Janvier",
+    "1": "Février",
+    "2": "Mars",
+    "3": "Avril",
+    "4": "Mai",
+    "5": "Juin",
+    "6": "Juillet",
+    "7": "Août",
+    "8": "Septembre",
+    "9": "Octobre",
+    "10": "Novembre",
+    "11": "Decembre"
+  }
+  const [currentDate, setCurrentDate] = useState(todaydate.getDate()+ " " + mois[todaydate.getMonth()])
 
   
   useEffect(() => {
@@ -41,17 +57,10 @@ const CalendarComponents: React.FC<Props> = (props) => {
           description: eventData.location,
           id: eventData.uid,
           color: eventData.prof !== "NA" ? "default" : "#005049",
-
-          extendedProps : {
-            prof : eventData.prof,
-            cours : eventData.summary,
-            location : eventData.location
-
-          }
-
         }));
 
         setEvents(formattedEvents);
+        
       } catch (error: any) {
         console.error("Error fetching events:", error);
         presentAlert({
@@ -63,16 +72,54 @@ const CalendarComponents: React.FC<Props> = (props) => {
     };
 
     fetchEvents();
+    
   }, [props.name]);
 
+ 
 
-  const calendarRef = useRef(null)
+  //console.log(calendarApi.getDate())
+
+  function goNext() {
+    const calendarApi = calendarRef.current.getApi()
+    calendarApi.next()
+    refreshDate()
+
+  }
+  function goBack() {
+    const calendarApi = calendarRef.current.getApi()
+    calendarApi.prev()
+    refreshDate()
+
+  }
+  function today() {
+    const calendarApi = calendarRef.current.getApi()
+    calendarApi.today()
+    refreshDate()
+  }
+  //calendarApi.gotoDate()
+
+  function refreshDate() {
+    const calendarApi = calendarRef.current.getApi()
+    setCurrentDate(calendarApi.getDate().getDate()+ " " + mois[calendarApi.getDate().getMonth()])
+  }
+
+
+
+
   // https://fullcalendar.io/docs/react
   return (
     <>
       {events.length ? (
         <>
         <div id="main">
+          
+          <div className="center">
+          <IonButton >{currentDate}</IonButton> <br></br>
+          <IonButton onClick={today}>Ajourd'hui</IonButton>
+        <IonButton onClick={goBack}>Précédant</IonButton>
+        <IonButton onClick={goNext}>Suivant</IonButton>
+          </div>
+        
         <FullCalendar
             ref={calendarRef}
             plugins={[timeGridPlugin]}
@@ -81,7 +128,7 @@ const CalendarComponents: React.FC<Props> = (props) => {
             headerToolbar={{
               start: '', // will normally be on the left. if RTL, will be on the right
               center: '',
-              end: 'today prev,next' // will normally be on the right. if RTL, will be on the left
+              end: '' // will normally be on the right. if RTL, will be on the left
             }}
             titleFormat={{ month: "long", day: "numeric" }}
             buttonText={{'today': "Aujourd'hui"}}
@@ -90,9 +137,9 @@ const CalendarComponents: React.FC<Props> = (props) => {
             allDaySlot={false}
             nowIndicator={true}
             height="auto"
+            
             slotMinTime="08:00"
             slotMaxTime="19:00"
-            eventContent={renderEventContent}
           />
         </div>
           
@@ -107,19 +154,5 @@ const CalendarComponents: React.FC<Props> = (props) => {
     </>
   );
 };
-
-function renderEventContent(eventInfo: { timeText: any; event: { extendedProps: { cours: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined; location: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined; prof: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined; }; }; }) {
-  return (
-    <>
-      <>{eventInfo.timeText}</><br></br>
-      <b>{eventInfo.event.extendedProps.cours}</b><br></br>
-      <i>{eventInfo.event.extendedProps.location}</i><br></br>
-      
-      {eventInfo.event.extendedProps.prof != 'NA' ? (<i>{eventInfo.event.extendedProps.prof}</i>):('')}
-      
-    </>
-  )
-}
-
 
 export default CalendarComponents;
