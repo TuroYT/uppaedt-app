@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import FullCalendar from "@fullcalendar/react";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import { CapacitorHttp } from "@capacitor/core";
-import { caretBackOutline, caretForwardOutline, star } from 'ionicons/icons';
+import { caretBackOutline, caretForwardOutline, star } from "ionicons/icons";
 import "./calendarComponant.css";
 import {
   useIonAlert,
@@ -10,7 +10,8 @@ import {
   IonButton,
   IonDatetime,
   IonDatetimeButton,
-  IonModal,IonIcon
+  IonModal,
+  IonIcon,
 } from "@ionic/react";
 
 interface Props {
@@ -101,10 +102,10 @@ const CalendarComponents: React.FC<Props> = (props) => {
   }
 
   function setNewDate() {
-    modalRef.current?.dismiss()
+    modalRef.current?.dismiss();
     const calendarApi = calendarRef.current.getApi();
-    calendarApi.gotoDate(datetimeRef.current?.value)
-    refreshDate()
+    calendarApi.gotoDate(datetimeRef.current?.value);
+    refreshDate();
   }
 
   function refreshDate() {
@@ -116,32 +117,50 @@ const CalendarComponents: React.FC<Props> = (props) => {
     );
   }
 
-
+  // verifie si c'est un weekend
   const isWeekday = (dateString: string) => {
     const date = new Date(dateString);
     const utcDay = date.getUTCDay();
-
-    /**
-     * Date will be enabled if it is not
-     * Sunday or Saturday
-     */
     return utcDay !== 0 && utcDay !== 6;
   };
-  // https://fullcalendar.io/docs/react
+
   return (
     <>
       {events.length ? (
         <>
           <div id="main">
             <div className="center">
-              <IonButton id="datetime-picker" shape="round" fill="outline" size="large">{currentDate}</IonButton> <br></br>
+              <IonButton
+                id="datetime-picker"
+                shape="round"
+                fill="outline"
+                size="large"
+              >
+                {currentDate}
+              </IonButton>{" "}
+              <br></br>
               <IonButton onClick={today}>Ajourd'hui</IonButton>
-              <IonButton onClick={goBack} slot="icon-only" ><IonIcon slot="icon-only" icon={caretBackOutline}></IonIcon></IonButton>
-              <IonButton onClick={goNext} slot="icon-only" ><IonIcon slot="icon-only" icon={caretForwardOutline}></IonIcon></IonButton>
+              <IonButton onClick={goBack} slot="icon-only">
+                <IonIcon slot="icon-only" icon={caretBackOutline}></IonIcon>
+              </IonButton>
+              <IonButton onClick={goNext} slot="icon-only">
+                <IonIcon slot="icon-only" icon={caretForwardOutline}></IonIcon>
+              </IonButton>
             </div>
 
-            <IonModal keepContentsMounted={true} trigger="datetime-picker" ref={modalRef}>
-              <IonDatetime id="datetime" presentation="date"  onIonChange={setNewDate} ref={datetimeRef} firstDayOfWeek={1} isDateEnabled={isWeekday}></IonDatetime>
+            <IonModal
+              keepContentsMounted={true}
+              trigger="datetime-picker"
+              ref={modalRef}
+            >
+              <IonDatetime
+                id="datetime"
+                presentation="date"
+                onIonChange={setNewDate}
+                ref={datetimeRef}
+                firstDayOfWeek={1}
+                isDateEnabled={isWeekday}
+              ></IonDatetime>
             </IonModal>
 
             <FullCalendar
