@@ -2,9 +2,16 @@ import React, { useState, useEffect, useRef } from "react";
 import FullCalendar from "@fullcalendar/react";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import { CapacitorHttp } from "@capacitor/core";
+import { caretBackOutline, caretForwardOutline, star } from 'ionicons/icons';
 import "./calendarComponant.css";
-import { useIonAlert, IonProgressBar, IonButton } from "@ionic/react";
-import { cA } from "@fullcalendar/core/internal-common";
+import {
+  useIonAlert,
+  IonProgressBar,
+  IonButton,
+  IonDatetime,
+  IonDatetimeButton,
+  IonModal,IonIcon
+} from "@ionic/react";
 
 interface Props {
   name?: string;
@@ -13,9 +20,11 @@ interface Props {
 const CalendarComponents: React.FC<Props> = (props) => {
   const [events, setEvents] = useState([]);
   const [presentAlert] = useIonAlert();
-  const calendarRef : any = useRef(null)
-  const todaydate = new Date()
-  const mois : any ={
+  const calendarRef: any = useRef(null);
+  const modalRef = useRef<null | HTMLIonModalElement>(null);
+  const datetimeRef = useRef<null | HTMLIonDatetimeElement>(null);
+  const todaydate = new Date();
+  const mois: any = {
     "0": "Janvier",
     "1": "Février",
     "2": "Mars",
@@ -27,11 +36,12 @@ const CalendarComponents: React.FC<Props> = (props) => {
     "8": "Septembre",
     "9": "Octobre",
     "10": "Novembre",
-    "11": "Decembre"
-  }
-  const [currentDate, setCurrentDate] = useState(todaydate.getDate()+ " " + mois[todaydate.getMonth()])
+    "11": "Decembre",
+  };
+  const [currentDate, setCurrentDate] = useState(
+    todaydate.getDate() + " " + mois[todaydate.getMonth()]
+  );
 
-  
   useEffect(() => {
     const fetchEvents = async () => {
       try {
@@ -60,7 +70,6 @@ const CalendarComponents: React.FC<Props> = (props) => {
         }));
 
         setEvents(formattedEvents);
-        
       } catch (error: any) {
         console.error("Error fetching events:", error);
         presentAlert({
@@ -72,83 +81,96 @@ const CalendarComponents: React.FC<Props> = (props) => {
     };
 
     fetchEvents();
-    
   }, [props.name]);
 
- 
-
-  //console.log(calendarApi.getDate())
-
+  // Boutton de la page
   function goNext() {
-    const calendarApi = calendarRef.current.getApi()
-    calendarApi.next()
-    refreshDate()
-
+    const calendarApi = calendarRef.current.getApi();
+    calendarApi.next();
+    refreshDate();
   }
   function goBack() {
-    const calendarApi = calendarRef.current.getApi()
-    calendarApi.prev()
-    refreshDate()
-
+    const calendarApi = calendarRef.current.getApi();
+    calendarApi.prev();
+    refreshDate();
   }
   function today() {
-    const calendarApi = calendarRef.current.getApi()
-    calendarApi.today()
+    const calendarApi = calendarRef.current.getApi();
+    calendarApi.today();
+    refreshDate();
+  }
+
+  function setNewDate() {
+    modalRef.current?.dismiss()
+    const calendarApi = calendarRef.current.getApi();
+    calendarApi.gotoDate(datetimeRef.current?.value)
     refreshDate()
   }
-  //calendarApi.gotoDate()
 
   function refreshDate() {
-    const calendarApi = calendarRef.current.getApi()
-    setCurrentDate(calendarApi.getDate().getDate()+ " " + mois[calendarApi.getDate().getMonth()])
+    const calendarApi = calendarRef.current.getApi();
+    setCurrentDate(
+      calendarApi.getDate().getDate() +
+        " " +
+        mois[calendarApi.getDate().getMonth()]
+    );
   }
 
 
+  const isWeekday = (dateString: string) => {
+    const date = new Date(dateString);
+    const utcDay = date.getUTCDay();
 
-
+    /**
+     * Date will be enabled if it is not
+     * Sunday or Saturday
+     */
+    return utcDay !== 0 && utcDay !== 6;
+  };
   // https://fullcalendar.io/docs/react
   return (
     <>
       {events.length ? (
         <>
-        <div id="main">
-          
-          <div className="center">
-          <IonButton >{currentDate}</IonButton> <br></br>
-          <IonButton onClick={today}>Ajourd'hui</IonButton>
-        <IonButton onClick={goBack}>Précédant</IonButton>
-        <IonButton onClick={goNext}>Suivant</IonButton>
+          <div id="main">
+            <div className="center">
+              <IonButton id="datetime-picker" shape="round" fill="outline" size="large">{currentDate}</IonButton> <br></br>
+              <IonButton onClick={today}>Ajourd'hui</IonButton>
+              <IonButton onClick={goBack} slot="icon-only" ><IonIcon slot="icon-only" icon={caretBackOutline}></IonIcon></IonButton>
+              <IonButton onClick={goNext} slot="icon-only" ><IonIcon slot="icon-only" icon={caretForwardOutline}></IonIcon></IonButton>
+            </div>
+
+            <IonModal keepContentsMounted={true} trigger="datetime-picker" ref={modalRef}>
+              <IonDatetime id="datetime" presentation="date"  onIonChange={setNewDate} ref={datetimeRef} firstDayOfWeek={1} isDateEnabled={isWeekday}></IonDatetime>
+            </IonModal>
+
+            <FullCalendar
+              ref={calendarRef}
+              plugins={[timeGridPlugin]}
+              initialView="timeGridDay"
+              locale="fr"
+              headerToolbar={{
+                start: "", // will normally be on the left. if RTL, will be on the right
+                center: "",
+                end: "", // will normally be on the right. if RTL, will be on the left
+              }}
+              titleFormat={{ month: "long", day: "numeric" }}
+              buttonText={{ today: "Aujourd'hui" }}
+              hiddenDays={[6, 0]}
+              events={events}
+              allDaySlot={false}
+              nowIndicator={true}
+              height="auto"
+              slotMinTime="08:00"
+              slotMaxTime="19:00"
+            />
           </div>
-        
-        <FullCalendar
-            ref={calendarRef}
-            plugins={[timeGridPlugin]}
-            initialView="timeGridDay"
-            locale="fr"
-            headerToolbar={{
-              start: '', // will normally be on the left. if RTL, will be on the right
-              center: '',
-              end: '' // will normally be on the right. if RTL, will be on the left
-            }}
-            titleFormat={{ month: "long", day: "numeric" }}
-            buttonText={{'today': "Aujourd'hui"}}
-            hiddenDays={[6, 0]}
-            events={events}
-            allDaySlot={false}
-            nowIndicator={true}
-            height="auto"
-            
-            slotMinTime="08:00"
-            slotMaxTime="19:00"
-          />
-        </div>
-          
         </>
       ) : (
         // Loading indicator
         <>
-        <IonProgressBar type="indeterminate"></IonProgressBar>
-        <h1 className="center">Chargement</h1>
+          <IonProgressBar type="indeterminate"></IonProgressBar>
+          <h1 className="center">Chargement</h1>
         </>
       )}
     </>
