@@ -46,6 +46,9 @@ const Home = () => {
                 <IonSelectOption value="but1_g2">BUT1 Groupe 2</IonSelectOption>
                 <IonSelectOption value="but1_g3">BUT1 Groupe 3</IonSelectOption>
                 <IonSelectOption value="but1_g4">BUT1 Groupe 4</IonSelectOption>
+                <IonSelectOption value="s4_cyber">BUT2 Cyber</IonSelectOption>
+                <IonSelectOption value="s4_rom">BUT2 Rom</IonSelectOption>
+                <IonSelectOption value="s4_pilpro">BUT2 PilPro</IonSelectOption>
 
 
               </IonSelect>
