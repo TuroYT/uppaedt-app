@@ -12,6 +12,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@capacitor-community/admob": "^5.3.1",
     "@capacitor/android": "next",
     "@capacitor/app": "next",
     "@capacitor/core": "^6.0.0-rc.0",
