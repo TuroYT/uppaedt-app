@@ -8,17 +8,25 @@ import {
   IonItem,
   IonSelect,
   IonSelectOption,
+  IonMenu,
+  IonButtons,
+  IonMenuButton,
+  IonNavLink,
+  IonButton,
+
 } from "@ionic/react";
 import CalendarComponents from "../components/calendarComponents";
 import { useState, useCallback } from "react";
 import { Storage } from "@ionic/storage";
-
+import Settings from "./Settings";
 
 const store = new Storage();
 
 
 const Home = () => {
+  
   const [groupe, setGroupe] = useState(String);
+
   const preload = async () => {
     await store.create();
     if (await store.get("groupe")) {
@@ -26,10 +34,42 @@ const Home = () => {
     }
   };
   preload();
-  return (
-    <IonPage>
+
+   
+
+  return (<>
+    
+    
+    <IonMenu contentId="main-content">
+        <IonHeader>
+          <IonToolbar>
+            <IonTitle>Menu Content</IonTitle>
+          </IonToolbar>
+        </IonHeader>
+        <IonContent className="ion-padding">This is the menu content.</IonContent>
+
+        {/*  A finir  */}
+        <IonNavLink routerDirection="forward" component={() => <Settings></Settings>}>
+          <IonButton>Go to Page Two</IonButton>
+        </IonNavLink>
+
+      </IonMenu>
+  
+ 
+  
+
+
+
+
+    <IonPage id="main-content">
       <IonHeader>
         <IonToolbar>
+        
+        <IonButtons slot="start">
+              <IonMenuButton></IonMenuButton>
+            </IonButtons>
+
+
           <IonList>
             <IonItem>
               <IonSelect
@@ -57,7 +97,7 @@ const Home = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        
+
           {groupe.length ? (
             <CalendarComponents name={groupe}></CalendarComponents>
           ) : (
@@ -66,6 +106,7 @@ const Home = () => {
         
       </IonContent>
     </IonPage>
+    </>
   );
 };
 

@@ -4,9 +4,11 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import { CapacitorHttp } from "@capacitor/core";
 import { caretBackOutline, caretForwardOutline, star } from "ionicons/icons";
 import "./calendarComponant.css";
+import { Storage } from "@ionic/storage";
 
 import { useSwipeable } from "react-swipeable";
-
+const store = new Storage();
+await store.create();
 import {
   useIonAlert,
   IonProgressBar,
@@ -45,15 +47,33 @@ const CalendarComponents: React.FC<Props> = (props) => {
     todaydate.getDate() + " " + mois[todaydate.getMonth()]
   );
 
+
+  // Récuperation de l'API URL
+  const [apiUrl, setApiUrl] = useState('https://edt4rt-api.romain-pinsolle.fr');
+  const getApiUrl = async () => {
+    if (await store.get("apiUrl")) {
+        setApiUrl(await store.get("apiUrl"));
+    } else {
+        setApiUrl('https://edt4rt-api.romain-pinsolle.fr');
+    };
+    return apiUrl;
+  }
+
+  
   useEffect(() => {
     const fetchEvents = async () => {
       try {
+        await getApiUrl();
+        console.log(getApiUrl());
+        console.log(apiUrl+"/api/planning/getPlanningPerName/" +
+        props.name,);
         const response = await CapacitorHttp.get({
           url:
-            "https://edt4rt-api.romain-pinsolle.fr/api/planning/getPlanningPerName/" +
+            apiUrl+"/api/planning/getPlanningPerName/" +
             props.name,
         });
-        console.log(response.data);
+        console.log(apiUrl+"/api/planning/getPlanningPerName/" +
+        props.name,);
         const json = await response.data;
         const formattedEvents = json.map((eventData: any) => ({
           title: `${eventData.summary} - ${eventData.location}${
