@@ -8,6 +8,7 @@ import {
   IonItem,
   IonSelect,
   IonSelectOption,
+  IonButton,
 } from "@ionic/react";
 import CalendarComponents from "../components/calendarComponents";
 import { useState, useCallback } from "react";
@@ -88,7 +89,8 @@ const Home = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        
+        <IonButton onClick={sendTestNotification}></IonButton>
+
           {groupe.length ? (
             <CalendarComponents name={groupe}></CalendarComponents>
           ) : (

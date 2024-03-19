@@ -18,7 +18,7 @@ import {
   IonModal,
   IonIcon,
 } from "@ionic/react";
-import { scheduleNotifications, sendTestNotification, currentPendings } from "../tools/notifications";
+import { scheduleNotifications, sendTestNotification } from "../tools/notifications";
 
 
 
@@ -104,7 +104,7 @@ const CalendarComponents: React.FC<Props> = (props) => {
 
   useEffect(() => {
     scheduleNotifications(events);
-    setPending(currentPendings);
+    //setPending(currentPendings);
   }, [events]);
 
   // Boutton de la page
