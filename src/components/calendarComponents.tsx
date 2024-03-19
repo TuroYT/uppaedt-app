@@ -18,7 +18,7 @@ import {
   IonModal,
   IonIcon,
 } from "@ionic/react";
-import { scheduleNotifications, sendTestNotification } from "../tools/notifications";
+//import { scheduleNotifications, sendTestNotification } from "../tools/notifications";
 
 
 
@@ -103,7 +103,7 @@ const CalendarComponents: React.FC<Props> = (props) => {
   const [pending, setPending] = useState<LocalNotificationSchema[]>([]);
 
   useEffect(() => {
-    scheduleNotifications(events);
+    //scheduleNotifications(events);
     //setPending(currentPendings);
   }, [events]);
 
@@ -207,8 +207,7 @@ const CalendarComponents: React.FC<Props> = (props) => {
               <IonButton onClick={goNext} slot="icon-only">
                 <IonIcon slot="icon-only" icon={caretForwardOutline}></IonIcon>
               </IonButton>
-              <IonButton onClick={sendTestNotification}>Test Notif
-              </IonButton>
+
             </div>
 
             <IonModal

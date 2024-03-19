@@ -20,7 +20,7 @@ interface Event {
 //export const currentPendings: LocalNotificationSchema[] = (
   //  await LocalNotifications.getPending()
   //).notifications;
-
+/* 
 export const scheduleNotifications = async (events: Event[]) => {
     console.log('execution')
   const currentPendings: LocalNotificationSchema[] = (
@@ -54,16 +54,4 @@ LocalNotifications.schedule({
 };
 
 
-export const sendTestNotification = async () => {
-    //console.log(currentPendings)
-    const notificationTime = new Date(Date.now() + 3000); // 3 seconds from now
-    const notification: LocalNotificationSchema = {
-        title: "Test Notification",
-        body: "test",
-        id: notificationTime.getTime(),
-        schedule: { at: notificationTime },
-    };
-    await LocalNotifications.schedule({
-        notifications: [notification],
-    });
-};
+*/

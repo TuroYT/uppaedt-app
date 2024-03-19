@@ -11,7 +11,7 @@ import {
   IonButton,
 } from "@ionic/react";
 import CalendarComponents from "../components/calendarComponents";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { Storage } from "@ionic/storage";
 
 
@@ -26,15 +26,18 @@ import {
 
 const Home = () => {
   const [groupe, setGroupe] = useState(String);
-  LocalNotifications.checkPermissions().then((result) => {
-    if (!result.display) {
-      LocalNotifications.requestPermissions().then((result) => {
-        if (!result.display) {
-          console.log("No permission to show notifications");
-        }
-      });
-    }
-  }); // Add closing parenthesis here
+  useEffect(() => {
+    console.log("Checking permissions");
+    LocalNotifications.checkPermissions().then((result) => {
+      if (!result.display) {
+        LocalNotifications.requestPermissions().then((result) => {
+          if (!result.display) {
+            alert("No permission to show notifications");
+          }
+        });
+      }
+    });
+  }, []) // Add closing parenthesis here
 
   // fonction qui emet une notification de test
   const sendTestNotification = async () => {
@@ -89,7 +92,7 @@ const Home = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonButton onClick={sendTestNotification}></IonButton>
+        <IonButton onClick={sendTestNotification}>Test Notif</IonButton>
 
           {groupe.length ? (
             <CalendarComponents name={groupe}></CalendarComponents>
