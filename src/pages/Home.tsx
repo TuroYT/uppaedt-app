@@ -22,35 +22,57 @@ import {
   LocalNotifications,
 } from "@capacitor/local-notifications";
 
+import { Toast } from '@capacitor/toast';
+import { notifications } from "ionicons/icons";
 
 
 const Home = () => {
   const [groupe, setGroupe] = useState(String);
-  useEffect(() => {
-    console.log("Checking permissions");
-    LocalNotifications.checkPermissions().then((result) => {
-      if (!result.display) {
-        LocalNotifications.requestPermissions().then((result) => {
-          if (!result.display) {
-            alert("No permission to show notifications");
-          }
-        });
-      }
-    });
-  }, []) // Add closing parenthesis here
+  
+  LocalNotifications.checkPermissions().then((result) => {
+    if (result.display !== "granted") {
+      LocalNotifications.requestPermissions();
+    }})
+
+    LocalNotifications.createChannel({
+      id: '1',
+      name: 'channel_name',
+      description: 'channel_description',
+      importance : 5,
+      visibility: 1,
+      vibration: true,
+      sound: 'sound_name.wav'
+  })
 
   // fonction qui emet une notification de test
   const sendTestNotification = async () => {
-    const notificationTime = new Date(Date.now() + 3000); // 3 seconds from now
-    const notification: LocalNotificationSchema = {
-      title: "Test Notification",
-      body: "test",
-      id: notificationTime.getTime(),
-      schedule: { at: notificationTime },
-    };
-    await LocalNotifications.schedule({
-      notifications: [notification],
+    Toast.show({
+      text: "Notification de test envoyée",
+      duration: "short"
     });
+
+    try{
+      LocalNotifications.schedule({
+        notifications: [
+          {
+            channelId: '1',
+            id: 0,
+            title: 'notification_title',
+            body: 'notification_body',
+            schedule : {at: new Date(Date.now() + 15000), allowWhileIdle: true},
+            
+          }
+        ]
+      });
+    } catch (e) {
+      console.log(e);
+      Toast.show({
+        text: "Erreur lors de l'envoi de la notification " + e,
+        duration: "short"
+      });
+    }
+
+    
   }
 
 
@@ -92,7 +114,7 @@ const Home = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonButton onClick={sendTestNotification}>Test Notif</IonButton>
+        <IonButton onClick={sendTestNotification}>Test Notif 3</IonButton>
 
           {groupe.length ? (
             <CalendarComponents name={groupe}></CalendarComponents>
