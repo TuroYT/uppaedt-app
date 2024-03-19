@@ -4,7 +4,10 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import { CapacitorHttp } from "@capacitor/core";
 import { caretBackOutline, caretForwardOutline, star } from "ionicons/icons";
 import "./calendarComponant.css";
-
+import {
+  LocalNotificationSchema,
+  LocalNotifications,
+} from "@capacitor/local-notifications";
 import { useSwipeable } from "react-swipeable";
 
 import {
@@ -15,6 +18,9 @@ import {
   IonModal,
   IonIcon,
 } from "@ionic/react";
+import { scheduleNotifications, sendTestNotification, currentPendings } from "../tools/notifications";
+
+
 
 interface Props {
   name?: string;
@@ -44,6 +50,8 @@ const CalendarComponents: React.FC<Props> = (props) => {
   const [currentDate, setCurrentDate] = useState(
     todaydate.getDate() + " " + mois[todaydate.getMonth()]
   );
+
+
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -91,6 +99,13 @@ const CalendarComponents: React.FC<Props> = (props) => {
 
     fetchEvents();
   }, [props.name]);
+
+  const [pending, setPending] = useState<LocalNotificationSchema[]>([]);
+
+  useEffect(() => {
+    scheduleNotifications(events);
+    setPending(currentPendings);
+  }, [events]);
 
   // Boutton de la page
   function goNext() {
@@ -171,6 +186,7 @@ const CalendarComponents: React.FC<Props> = (props) => {
 
   return (
     <>
+    {pending}
       {events.length ? (
         <>
           <div id="main" {...handlers}>
@@ -190,6 +206,8 @@ const CalendarComponents: React.FC<Props> = (props) => {
               </IonButton>
               <IonButton onClick={goNext} slot="icon-only">
                 <IonIcon slot="icon-only" icon={caretForwardOutline}></IonIcon>
+              </IonButton>
+              <IonButton onClick={sendTestNotification}>Test Notif
               </IonButton>
             </div>
 

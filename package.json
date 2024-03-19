@@ -14,9 +14,9 @@
   "dependencies": {
     "@capacitor/android": "next",
     "@capacitor/app": "next",
-    "@capacitor/core": "^6.0.0-rc.0",
     "@capacitor/haptics": "next",
     "@capacitor/keyboard": "next",
+    "@capacitor/local-notifications": "^5.0.7",
     "@capacitor/preferences": "^5.0.7",
     "@capacitor/status-bar": "next",
     "@fullcalendar/core": "^6.1.10",
@@ -32,7 +32,6 @@
     "ionicons": "^7.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hammerjs": "^1.0.1",
     "react-native": "^0.73.6",
     "react-native-gesture-handler": "^2.15.0",
     "react-router": "^5.3.4",

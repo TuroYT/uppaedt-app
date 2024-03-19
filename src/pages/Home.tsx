@@ -16,9 +16,40 @@ import { Storage } from "@ionic/storage";
 
 const store = new Storage();
 
+import {
+  LocalNotificationSchema,
+  LocalNotifications,
+} from "@capacitor/local-notifications";
+
+
 
 const Home = () => {
   const [groupe, setGroupe] = useState(String);
+  LocalNotifications.checkPermissions().then((result) => {
+    if (!result.display) {
+      LocalNotifications.requestPermissions().then((result) => {
+        if (!result.display) {
+          console.log("No permission to show notifications");
+        }
+      });
+    }
+  }); // Add closing parenthesis here
+
+  // fonction qui emet une notification de test
+  const sendTestNotification = async () => {
+    const notificationTime = new Date(Date.now() + 3000); // 3 seconds from now
+    const notification: LocalNotificationSchema = {
+      title: "Test Notification",
+      body: "test",
+      id: notificationTime.getTime(),
+      schedule: { at: notificationTime },
+    };
+    await LocalNotifications.schedule({
+      notifications: [notification],
+    });
+  }
+
+
   const preload = async () => {
     await store.create();
     if (await store.get("groupe")) {
