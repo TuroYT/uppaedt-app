@@ -4,7 +4,10 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import { CapacitorHttp } from "@capacitor/core";
 import { caretBackOutline, caretForwardOutline, star } from "ionicons/icons";
 import "./calendarComponant.css";
-
+import {
+  LocalNotificationSchema,
+  LocalNotifications,
+} from "@capacitor/local-notifications";
 import { useSwipeable } from "react-swipeable";
 
 import {
@@ -15,6 +18,10 @@ import {
   IonModal,
   IonIcon,
 } from "@ionic/react";
+import { scheduleNotifications } from "../tools/notifications";
+import { Toast } from "@capacitor/toast";
+
+
 
 interface Props {
   name?: string;
@@ -45,6 +52,8 @@ const CalendarComponents: React.FC<Props> = (props) => {
     todaydate.getDate() + " " + mois[todaydate.getMonth()]
   );
 
+
+
   useEffect(() => {
     const fetchEvents = async () => {
       try {
@@ -53,7 +62,6 @@ const CalendarComponents: React.FC<Props> = (props) => {
             "https://edt4rt-api.romain-pinsolle.fr/api/planning/getPlanningPerName/" +
             props.name,
         });
-        console.log(response.data);
         const json = await response.data;
         const formattedEvents = json.map((eventData: any) => ({
           title: `${eventData.summary} - ${eventData.location}${
@@ -79,6 +87,7 @@ const CalendarComponents: React.FC<Props> = (props) => {
         }));
 
         setEvents(formattedEvents);
+        scheduleNotifications(formattedEvents);
       } catch (error: any) {
         console.error("Error fetching events:", error);
         presentAlert({
@@ -91,6 +100,9 @@ const CalendarComponents: React.FC<Props> = (props) => {
 
     fetchEvents();
   }, [props.name]);
+
+
+
 
   // Boutton de la page
   function goNext() {
@@ -107,14 +119,17 @@ const CalendarComponents: React.FC<Props> = (props) => {
     const calendarApi = calendarRef.current.getApi();
     calendarApi.today();
     refreshDate();
+    
   }
 
-  function setNewDate() {
-    modalRef.current?.dismiss();
-    const calendarApi = calendarRef.current.getApi();
-    calendarApi.gotoDate(datetimeRef.current?.value);
-    refreshDate();
-  }
+
+
+function setNewDate() {
+  modalRef.current?.dismiss();
+  const calendarApi = calendarRef.current.getApi();
+  calendarApi.gotoDate(datetimeRef.current?.value);
+  refreshDate();
+}
 
   function refreshDate() {
     const calendarApi = calendarRef.current.getApi();
@@ -171,6 +186,7 @@ const CalendarComponents: React.FC<Props> = (props) => {
 
   return (
     <>
+
       {events.length ? (
         <>
           <div id="main" {...handlers}>
@@ -191,6 +207,7 @@ const CalendarComponents: React.FC<Props> = (props) => {
               <IonButton onClick={goNext} slot="icon-only">
                 <IonIcon slot="icon-only" icon={caretForwardOutline}></IonIcon>
               </IonButton>
+
             </div>
 
             <IonModal

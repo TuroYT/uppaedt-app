@@ -8,24 +8,64 @@ import {
   IonItem,
   IonSelect,
   IonSelectOption,
+  IonButton,
 } from "@ionic/react";
 import CalendarComponents from "../components/calendarComponents";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { Storage } from "@ionic/storage";
 
 
 const store = new Storage();
 
+import {
+  LocalNotificationSchema,
+  LocalNotifications,
+} from "@capacitor/local-notifications";
+
+import { Toast } from '@capacitor/toast';
+
 
 const Home = () => {
+  // Verifie si le canal n'existe pass
+
+  const MakeChannel = async () => {
+    const currentChannels = await LocalNotifications.listChannels();
+    if (!currentChannels.channels.some((channel) => channel.id === '1')) {
+      LocalNotifications.createChannel({
+        id: '1',
+        name: 'events',
+        description: 'notif avant les cours',
+        importance : 3,
+        visibility: 1,
+        vibration: true,
+        sound: 'sound_name.wav'
+      })
+    }
+  }
   const [groupe, setGroupe] = useState(String);
+  
+  LocalNotifications.checkPermissions().then((result) => {
+    if (result.display !== "granted") {
+      LocalNotifications.requestPermissions();
+    }})
+
+
+    
+  
+
+
   const preload = async () => {
     await store.create();
     if (await store.get("groupe")) {
       setGroupe(await store.get("groupe"));
     }
   };
+
+
+
+
   preload();
+  MakeChannel();
   return (
     <IonPage>
       <IonHeader>
@@ -57,7 +97,9 @@ const Home = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
+
         
+               
           {groupe.length ? (
             <CalendarComponents name={groupe}></CalendarComponents>
           ) : (
