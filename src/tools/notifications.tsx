@@ -17,41 +17,44 @@ interface Event {
   };
 }
 
-//export const currentPendings: LocalNotificationSchema[] = (
-  //  await LocalNotifications.getPending()
-  //).notifications;
-/* 
+
 export const scheduleNotifications = async (events: Event[]) => {
     console.log('execution')
+
   const currentPendings: LocalNotificationSchema[] = (
     await LocalNotifications.getPending()
   ).notifications;
-  console.log('execution2')
+
+
   var toAdd: LocalNotificationSchema[] = [];
 
   events.forEach((event) => {
     console.log("Traitement : " + event.title)
+    console.log('execution2')
+
+
+
     const notificationTime = new Date(
       new Date(event.start.toString()).getTime() - 5 * 60 * 1000
     ); // 5 minutes before the event
 
-    const notifications: LocalNotificationSchema = {
+    const notification: LocalNotificationSchema = {
       title: "Prochain cours",
       body: `Cours: ${event.title}\nLieu: ${event.extendedProps.location}`,
-      id: notificationTime.getTime(), // Use a unique ID for each notification
-      schedule: { at: notificationTime }, // You can specify a sound file if desired
+      id: notificationTime.getTime(),
+      channelId: '1',
+      schedule: { at: notificationTime, allowWhileIdle : true }, // You can specify a sound file if desired
     };
 
-    // verifie si la notification n'existe pas
-    if (!(currentPendings.indexOf(notifications) > -1)) {
-      toAdd.push(notifications);
-      console.log("notif ajouté   " + notifications.body);
+    // Vérifie que la notification n'est pas dans la liste des currents pending et l'ajoute a toAdd
+    if (!currentPendings.some((pending) => pending.id === notification.id)) {
+      toAdd.push(notification);
+      console.log("event ajoiuté  : " + notification.body)
     }
   });
+
+
 LocalNotifications.schedule({
     notifications: [...toAdd],
 });
 };
-
-
-*/

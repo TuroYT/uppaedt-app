@@ -23,7 +23,6 @@ import {
 } from "@capacitor/local-notifications";
 
 import { Toast } from '@capacitor/toast';
-import { notifications } from "ionicons/icons";
 
 
 const Home = () => {
@@ -33,11 +32,10 @@ const Home = () => {
     if (result.display !== "granted") {
       LocalNotifications.requestPermissions();
     }})
-
     LocalNotifications.createChannel({
       id: '1',
-      name: 'channel_name',
-      description: 'channel_description',
+      name: 'events',
+      description: 'notif avant les cours',
       importance : 5,
       visibility: 1,
       vibration: true,
@@ -64,6 +62,7 @@ const Home = () => {
           }
         ]
       });
+      console.log((await LocalNotifications.getPending()).notifications)
     } catch (e) {
       console.log(e);
       Toast.show({
@@ -114,7 +113,6 @@ const Home = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonButton onClick={sendTestNotification}>Test Notif 3</IonButton>
 
           {groupe.length ? (
             <CalendarComponents name={groupe}></CalendarComponents>

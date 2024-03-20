@@ -18,6 +18,7 @@ import {
   IonModal,
   IonIcon,
 } from "@ionic/react";
+import { scheduleNotifications } from "../tools/notifications";
 //import { scheduleNotifications, sendTestNotification } from "../tools/notifications";
 
 
@@ -87,6 +88,7 @@ const CalendarComponents: React.FC<Props> = (props) => {
         }));
 
         setEvents(formattedEvents);
+        scheduleNotifications(formattedEvents);
       } catch (error: any) {
         console.error("Error fetching events:", error);
         presentAlert({
