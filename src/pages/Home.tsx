@@ -65,7 +65,7 @@ const Home = () => {
             id: 0,
             title: 'notification_title',
             body: 'notification_body',
-            schedule : {at: new Date(Date.now() + 15000), allowWhileIdle: true},
+            schedule : {at: new Date(Date.now() + 2000), allowWhileIdle: true},
             
           }
         ]
@@ -89,7 +89,7 @@ const Home = () => {
 
 
 
-  
+
   preload();
   MakeChannel();
   return (
@@ -123,7 +123,7 @@ const Home = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-
+                <IonButton onClick={sendTestNotification}></IonButton>
           {groupe.length ? (
             <CalendarComponents name={groupe}></CalendarComponents>
           ) : (
