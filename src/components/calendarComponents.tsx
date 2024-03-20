@@ -20,7 +20,6 @@ import {
 } from "@ionic/react";
 import { scheduleNotifications } from "../tools/notifications";
 import { Toast } from "@capacitor/toast";
-//import { scheduleNotifications, sendTestNotification } from "../tools/notifications";
 
 
 
@@ -102,12 +101,8 @@ const CalendarComponents: React.FC<Props> = (props) => {
     fetchEvents();
   }, [props.name]);
 
-  const [pending, setPending] = useState<LocalNotificationSchema[]>([]);
 
-  useEffect(() => {
-    //scheduleNotifications(events);
-    //setPending(currentPendings);
-  }, [events]);
+
 
   // Boutton de la page
   function goNext() {
@@ -124,19 +119,10 @@ const CalendarComponents: React.FC<Props> = (props) => {
     const calendarApi = calendarRef.current.getApi();
     calendarApi.today();
     refreshDate();
-    showPending()
     
   }
 
-const showPending = async () => {
-  const test = (await LocalNotifications.getPending()).notifications;
-  console.log(test[0]);
-  console.log(JSON.stringify(test[0]))
-  Toast.show({
-    text: JSON.stringify(test[0]), // Convert test to a string
-    duration: "short"
-  });
-}
+
 
 function setNewDate() {
   modalRef.current?.dismiss();
@@ -200,7 +186,7 @@ function setNewDate() {
 
   return (
     <>
-    {pending}
+
       {events.length ? (
         <>
           <div id="main" {...handlers}>

@@ -39,9 +39,9 @@ export const scheduleNotifications = async (events: Event[]) => {
 
     const notification: LocalNotificationSchema = {
       title: "Prochain cours",
-      body: `Cours: ${event.title}\nLieu: ${event.extendedProps.location}`,
+      body: `Cours: ${event.extendedProps.cours} \nLieu : ${event.extendedProps.location}`,
       id: Math.floor(Math.random() * 1000000),
-      channelId: '2',
+      channelId: '1',
       schedule: { at: notificationTime, allowWhileIdle : true }, // You can specify a sound file if desired
     };
     console.log(Math.floor(Math.random() * 1000000))

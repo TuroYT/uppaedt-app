@@ -50,34 +50,8 @@ const Home = () => {
     }})
 
 
-  // fonction qui emet une notification de test
-  const sendTestNotification = async () => {
-    Toast.show({
-      text: "Notification de test envoyée",
-      duration: "short"
-    });
-
-    try{
-      LocalNotifications.schedule({
-        notifications: [
-          {
-            channelId: '1',
-            id: 0,
-            title: 'notification_title',
-            body: 'notification_body',
-            schedule : {at: new Date(Date.now() + 2000), allowWhileIdle: true},
-            
-          }
-        ]
-      });
-      console.log((await LocalNotifications.getPending()).notifications)
-    } catch (e) {
-      console.log(e);
-      
-    }
-
     
-  }
+  
 
 
   const preload = async () => {
@@ -123,7 +97,9 @@ const Home = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-                <IonButton onClick={sendTestNotification}></IonButton>
+
+        
+               
           {groupe.length ? (
             <CalendarComponents name={groupe}></CalendarComponents>
           ) : (

@@ -3,7 +3,7 @@
 <p align="center"><img src="https://media.licdn.com/dms/image/C4D0BAQGRkz8zjRd5VQ/company-logo_200_200/0/1631365657758/iut_reseaux_telecoms_logo?e=2147483647&amp;v=beta&amp;t=Hn_G0xDTVxFOeBOXnNAARFALcn4c4St1Uf4UUh_-AYM" alt="project-image">
   
   <br><br>
-  <img src="https://github.com/TuroYT/edt4rt-app/blob/master/screenshot.jpg?raw=true" width="50%">
+  <a href="https://play.google.com/store/apps/details?id=ionic.edt4rt"><h1 align="center" id="title">Téléchargement</h1></a>
 </p>
 
 
