@@ -26,21 +26,29 @@ import { Toast } from '@capacitor/toast';
 
 
 const Home = () => {
+  // Verifie si le canal n'existe pass
+
+  const MakeChannel = async () => {
+    const currentChannels = await LocalNotifications.listChannels();
+    if (!currentChannels.channels.some((channel) => channel.id === '1')) {
+      LocalNotifications.createChannel({
+        id: '1',
+        name: 'events',
+        description: 'notif avant les cours',
+        importance : 3,
+        visibility: 1,
+        vibration: true,
+        sound: 'sound_name.wav'
+      })
+    }
+  }
   const [groupe, setGroupe] = useState(String);
   
   LocalNotifications.checkPermissions().then((result) => {
     if (result.display !== "granted") {
       LocalNotifications.requestPermissions();
     }})
-    LocalNotifications.createChannel({
-      id: '1',
-      name: 'events',
-      description: 'notif avant les cours',
-      importance : 5,
-      visibility: 1,
-      vibration: true,
-      sound: 'sound_name.wav'
-  })
+
 
   // fonction qui emet une notification de test
   const sendTestNotification = async () => {
@@ -65,10 +73,7 @@ const Home = () => {
       console.log((await LocalNotifications.getPending()).notifications)
     } catch (e) {
       console.log(e);
-      Toast.show({
-        text: "Erreur lors de l'envoi de la notification " + e,
-        duration: "short"
-      });
+      
     }
 
     
@@ -81,7 +86,12 @@ const Home = () => {
       setGroupe(await store.get("groupe"));
     }
   };
+
+
+
+  
   preload();
+  MakeChannel();
   return (
     <IonPage>
       <IonHeader>

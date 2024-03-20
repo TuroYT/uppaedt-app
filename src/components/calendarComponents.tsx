@@ -19,6 +19,7 @@ import {
   IonIcon,
 } from "@ionic/react";
 import { scheduleNotifications } from "../tools/notifications";
+import { Toast } from "@capacitor/toast";
 //import { scheduleNotifications, sendTestNotification } from "../tools/notifications";
 
 
@@ -62,7 +63,6 @@ const CalendarComponents: React.FC<Props> = (props) => {
             "https://edt4rt-api.romain-pinsolle.fr/api/planning/getPlanningPerName/" +
             props.name,
         });
-        console.log(response.data);
         const json = await response.data;
         const formattedEvents = json.map((eventData: any) => ({
           title: `${eventData.summary} - ${eventData.location}${
@@ -124,14 +124,26 @@ const CalendarComponents: React.FC<Props> = (props) => {
     const calendarApi = calendarRef.current.getApi();
     calendarApi.today();
     refreshDate();
+    showPending()
+    
   }
 
-  function setNewDate() {
-    modalRef.current?.dismiss();
-    const calendarApi = calendarRef.current.getApi();
-    calendarApi.gotoDate(datetimeRef.current?.value);
-    refreshDate();
-  }
+const showPending = async () => {
+  const test = (await LocalNotifications.getPending()).notifications;
+  console.log(test[0]);
+  console.log(JSON.stringify(test[0]))
+  Toast.show({
+    text: JSON.stringify(test[0]), // Convert test to a string
+    duration: "short"
+  });
+}
+
+function setNewDate() {
+  modalRef.current?.dismiss();
+  const calendarApi = calendarRef.current.getApi();
+  calendarApi.gotoDate(datetimeRef.current?.value);
+  refreshDate();
+}
 
   function refreshDate() {
     const calendarApi = calendarRef.current.getApi();
