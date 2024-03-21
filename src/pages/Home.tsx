@@ -19,62 +19,53 @@ import {
 
 } from "@ionic/react";
 import CalendarComponents from "../components/calendarComponents";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { Storage } from "@ionic/storage";
 
 import { homeOutline, settingsOutline } from 'ionicons/icons'
 const store = new Storage();
 
+import {
+  LocalNotificationSchema,
+  LocalNotifications,
+} from "@capacitor/local-notifications";
+
+import { Toast } from '@capacitor/toast';
+
 
 const Home = () => {
-  
-  const [groupe, setGroupe] = useState(String);
+  // Verifie si le canal n'existe pass
 
+  const MakeChannel = async () => {
+    const currentChannels = await LocalNotifications.listChannels();
+    if (!currentChannels.channels.some((channel) => channel.id === '1')) {
+      LocalNotifications.createChannel({
+        id: '1',
+        name: 'events',
+        description: 'notif avant les cours',
+        importance : 3,
+        visibility: 1,
+        vibration: true,
+        sound: 'sound_name.wav'
+      })
+    }
+  }
+  const [groupe, setGroupe] = useState(String);
   const preload = async () => {
     await store.create();
     if (await store.get("groupe")) {
       setGroupe(await store.get("groupe"));
     }
   };
+
+
+
+
   preload();
-
-   
-
-  return (<>
-    
-    
-    <IonMenu contentId="main-content">
-        <IonHeader>
-          <IonToolbar>
-            <IonTitle>Menu</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <IonContent className="ion-padding">
-
-
-        <IonList>
-        <IonItem button={true} routerLink="/home" routerDirection="forward">
-        <IonIcon aria-hidden="true" icon={homeOutline} slot="start"></IonIcon>
-        <IonLabel>Emploi du temps</IonLabel>
-      </IonItem>
-      <IonItem button={true} routerLink="/settings" routerDirection="forward">
-        <IonIcon aria-hidden="true" icon={settingsOutline} slot="start"></IonIcon>
-        <IonLabel>Paramètres</IonLabel>
-      </IonItem>
-      
-      </IonList>
-
-        </IonContent>
-
-      </IonMenu>
-  
- 
-  
-
-
-
-
-    <IonPage id="main-content">
+  MakeChannel();
+  return (
+    <>
+    <IonPage>
       <IonHeader>
         <IonToolbar>
         
@@ -110,6 +101,9 @@ const Home = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
+
+        
+               
 
           {groupe.length ? (
             <CalendarComponents name={groupe}></CalendarComponents>

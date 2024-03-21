@@ -6,6 +6,10 @@ import { caretBackOutline, caretForwardOutline, star } from "ionicons/icons";
 import "./calendarComponant.css";
 import { Storage } from "@ionic/storage";
 
+import {
+  LocalNotificationSchema,
+  LocalNotifications,
+} from "@capacitor/local-notifications";
 import { useSwipeable } from "react-swipeable";
 const store = new Storage();
 await store.create();
@@ -17,6 +21,10 @@ import {
   IonModal,
   IonIcon,
 } from "@ionic/react";
+import { scheduleNotifications } from "../tools/notifications";
+import { Toast } from "@capacitor/toast";
+
+
 
 interface Props {
   name?: string;
@@ -99,6 +107,7 @@ const CalendarComponents: React.FC<Props> = (props) => {
         }));
 
         setEvents(formattedEvents);
+        scheduleNotifications(formattedEvents);
       } catch (error: any) {
         console.error("Error fetching events:", error);
         presentAlert({
@@ -111,6 +120,9 @@ const CalendarComponents: React.FC<Props> = (props) => {
 
     fetchEvents();
   }, [props.name]);
+
+
+
 
   // Boutton de la page
   function goNext() {
@@ -127,14 +139,17 @@ const CalendarComponents: React.FC<Props> = (props) => {
     const calendarApi = calendarRef.current.getApi();
     calendarApi.today();
     refreshDate();
+    
   }
 
-  function setNewDate() {
-    modalRef.current?.dismiss();
-    const calendarApi = calendarRef.current.getApi();
-    calendarApi.gotoDate(datetimeRef.current?.value);
-    refreshDate();
-  }
+
+
+function setNewDate() {
+  modalRef.current?.dismiss();
+  const calendarApi = calendarRef.current.getApi();
+  calendarApi.gotoDate(datetimeRef.current?.value);
+  refreshDate();
+}
 
   function refreshDate() {
     const calendarApi = calendarRef.current.getApi();
@@ -191,6 +206,7 @@ const CalendarComponents: React.FC<Props> = (props) => {
 
   return (
     <>
+
       {events.length ? (
         <>
           <div id="main" {...handlers}>
@@ -211,6 +227,7 @@ const CalendarComponents: React.FC<Props> = (props) => {
               <IonButton onClick={goNext} slot="icon-only">
                 <IonIcon slot="icon-only" icon={caretForwardOutline}></IonIcon>
               </IonButton>
+
             </div>
 
             <IonModal
