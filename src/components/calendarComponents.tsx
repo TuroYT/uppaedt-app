@@ -80,8 +80,7 @@ const CalendarComponents: React.FC<Props> = (props) => {
             apiUrl+"/api/planning/getPlanningPerName/" +
             props.name,
         });
-        console.log(apiUrl+"/api/planning/getPlanningPerName/" +
-        props.name,);
+        
         const json = await response.data;
         const formattedEvents = json.map((eventData: any) => ({
           title: `${eventData.summary} - ${eventData.location}${
@@ -109,7 +108,7 @@ const CalendarComponents: React.FC<Props> = (props) => {
         setEvents(formattedEvents);
         scheduleNotifications(formattedEvents);
       } catch (error: any) {
-        console.error("Error fetching events:", error);
+       
         presentAlert({
           header: "Erreur !",
           message: error.toString(),
