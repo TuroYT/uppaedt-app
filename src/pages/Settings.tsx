@@ -9,7 +9,7 @@ import {
     IonButtons,
     IonMenuButton,
     IonNavLink,
-
+    IonCheckbox,
     IonIcon,
   
   
@@ -84,6 +84,11 @@ const Settings: React.FC = () => {
                         <IonButton expand="full" onClick={saveApiUrl} slot='end' size='default' shape="round" type='submit'>Valider</IonButton>
                     </IonItem>
                     
+                    <IonItem>   
+                        <IonLabel position="floating" defaultValue={apiUrl}>Activer les notification ?</IonLabel>
+                        <IonCheckbox labelPlacement="stacked" alignment="center"></IonCheckbox>
+                        <IonButton expand="full" onClick={saveApiUrl} slot='end' size='default' shape="round" type='submit'>Valider</IonButton>
+                    </IonItem>
                 </IonList>
             </IonContent>
         </IonPage>
