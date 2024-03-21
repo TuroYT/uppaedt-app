@@ -46,13 +46,13 @@ export const scheduleNotifications = async (events: Event[]) => {
       // Verifie si la date est dans le futur
       if (notificationTime.getTime() > new Date().getTime()) {
         // Vérifie si la date de notification est aujourd'hui ou demain
-        if (
-          notificationTime.getDate() === new Date().getDate() ||
-          notificationTime.getDate() === new Date().getDate() + 1
-        ) {
+      if (notificationTime.getDate() === new Date().getDate() || notificationTime.getDate() === new Date().getDate() + 1) {
+        if (event.extendedProps.prof !== "NA") {
           toAdd.push(notification);
           console.log(notification);
         }
+       
+      } // Add closing parenthesis here
       }
     }
   });

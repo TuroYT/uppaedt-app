@@ -103,7 +103,7 @@ const Home = () => {
           {groupe.length ? (
             <CalendarComponents name={groupe}></CalendarComponents>
           ) : (
-            <h1>Entrez un Groupe d'étude</h1>
+            <IonContent className="ion-padding"><h1>Entrez un Groupe d'étude</h1></IonContent>
           )}
         
       </IonContent>
