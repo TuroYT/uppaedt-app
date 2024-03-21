@@ -15,26 +15,45 @@ import {
   
   } from "@ionic/react";
   import { homeOutline, settingsOutline } from 'ionicons/icons'
+  import { LocalNotifications } from '@capacitor/local-notifications';
 const store = new Storage();
 
 const Settings: React.FC = () => {
+    
     const [apiUrl, setApiUrl] = useState('');
+    const [notification, setNotification] = useState(true);
     
     const preload = async () => {
         await store.create();
         if (await store.get("apiUrl") && apiUrl === "") {
             setApiUrl(await store.get("apiUrl"));
+            setNotification(await store.get("notification"));
         }
     };
     preload();
-    console.log(apiUrl);
     const handleApiUrlChange = (event: CustomEvent) => {
         setApiUrl(event.detail.value);
     };
 
     const saveApiUrl = () => {
+        
         store.set("apiUrl", apiUrl);
         
+    };
+
+    const handleNotification = async (event: CustomEvent) => {
+        await store.create();
+        setNotification(event.detail.checked);
+        
+
+        if (event.detail.checked) {
+            LocalNotifications.requestPermissions();
+            await store.set("notification", true);
+        } else {
+            LocalNotifications.cancel({notifications: (await LocalNotifications.getPending()).notifications})
+            await store.set("notification", false);
+        }
+        console.log(await store.get("notification"))    ;
     };
 
     return (
@@ -64,7 +83,7 @@ const Settings: React.FC = () => {
 
       </IonMenu>
 
-        <IonPage>
+        <IonPage  id="main-content">
             <IonHeader>
                 <IonToolbar>
                 <IonButtons slot="start">
@@ -81,14 +100,18 @@ const Settings: React.FC = () => {
                     <IonItem>   
                         <IonLabel position="floating" defaultValue={apiUrl}>Custom API URL - default : https://edt4rt-api.romain-pinsolle.fr</IonLabel>
                         <IonInput value={apiUrl} onIonChange={handleApiUrlChange}></IonInput>
-                        <IonButton expand="full" onClick={saveApiUrl} slot='end' size='default' shape="round" type='submit'>Valider</IonButton>
+                        <IonButton expand="full" onClick={saveApiUrl} size='default' shape="round" type='submit'>Valider</IonButton>
                     </IonItem>
-                    
+                    {/* 
+
+                        A finir
+
                     <IonItem>   
-                        <IonLabel position="floating" defaultValue={apiUrl}>Activer les notification ?</IonLabel>
-                        <IonCheckbox labelPlacement="stacked" alignment="center"></IonCheckbox>
-                        <IonButton expand="full" onClick={saveApiUrl} slot='end' size='default' shape="round" type='submit'>Valider</IonButton>
+                        <IonLabel defaultValue={apiUrl}>Activer les notification ?</IonLabel>
+                        <IonCheckbox labelPlacement="stacked" alignment="center" checked={notification} onIonChange={handleNotification}></IonCheckbox>
                     </IonItem>
+
+                    */}
                 </IonList>
             </IonContent>
         </IonPage>

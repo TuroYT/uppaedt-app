@@ -12,7 +12,7 @@ import {
 } from "@capacitor/local-notifications";
 import { useSwipeable } from "react-swipeable";
 const store = new Storage();
-await store.create();
+
 import {
   useIonAlert,
   IonProgressBar,
@@ -59,14 +59,15 @@ const CalendarComponents: React.FC<Props> = (props) => {
   // Récuperation de l'API URL
 
     
-    const getApiUrl = async () => {
-      let apiUrl = await store.get("apiUrl");
-      if (!apiUrl) {
-        apiUrl = "https://edt4rt-api.romain-pinsolle.fr";
-        await store.set("apiUrl", apiUrl);
-      }
-      return apiUrl;
-    };
+  const getApiUrl = async () => {
+    await store.create();
+    let apiUrl = await store.get("apiUrl");
+    if (!apiUrl) {
+      apiUrl = "https://edt4rt-api.romain-pinsolle.fr";
+      await store.set("apiUrl", apiUrl);
+    }
+    return apiUrl;
+  };
 
 
   
@@ -75,6 +76,7 @@ const CalendarComponents: React.FC<Props> = (props) => {
       try {
         const api = await getApiUrl();
         const apiUrl = api.endsWith("/") ? api.slice(0, -1) : api;
+
         const response = await CapacitorHttp.get({
           url:
             apiUrl+"/api/planning/getPlanningPerName/" +

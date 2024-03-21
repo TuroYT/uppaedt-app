@@ -13,28 +13,26 @@ import {
   IonMenuButton,
   IonNavLink,
   IonButton,
-  IonLabel,
   IonIcon,
+  IonLabel,
 
+  
 
 } from "@ionic/react";
+import { LocalNotifications } from "@capacitor/local-notifications";
 import CalendarComponents from "../components/calendarComponents";
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback } from "react";
 import { Storage } from "@ionic/storage";
+import Settings from "./Settings";
+import { homeOutline, settingsOutline } from "ionicons/icons";
 
-import { homeOutline, settingsOutline } from 'ionicons/icons'
 const store = new Storage();
-
-import {
-  LocalNotificationSchema,
-  LocalNotifications,
-} from "@capacitor/local-notifications";
-
-import { Toast } from '@capacitor/toast';
 
 
 const Home = () => {
-  // Verifie si le canal n'existe pass
+  
+  const [groupe, setGroupe] = useState(String);
+
 
   const MakeChannel = async () => {
     const currentChannels = await LocalNotifications.listChannels();
@@ -50,22 +48,52 @@ const Home = () => {
       })
     }
   }
-  const [groupe, setGroupe] = useState(String);
   const preload = async () => {
     await store.create();
     if (await store.get("groupe")) {
       setGroupe(await store.get("groupe"));
     }
   };
-
-
-
-
   preload();
-  MakeChannel();
-  return (
-    <>
-    <IonPage>
+  MakeChannel()
+
+   
+
+  return (<>
+    
+    
+    <IonMenu contentId="main-content">
+        <IonHeader>
+          <IonToolbar>
+            <IonTitle>Menu</IonTitle>
+          </IonToolbar>
+        </IonHeader>
+        <IonContent className="ion-padding">
+
+
+        <IonList>
+        <IonItem button={true} routerLink="/home" routerDirection="forward">
+        <IonIcon aria-hidden="true" icon={homeOutline} slot="start"></IonIcon>
+        <IonLabel>Emploi du temps</IonLabel>
+      </IonItem>
+      <IonItem button={true} routerLink="/settings" routerDirection="forward">
+        <IonIcon aria-hidden="true" icon={settingsOutline} slot="start"></IonIcon>
+        <IonLabel>Paramètres</IonLabel>
+      </IonItem>
+
+      </IonList>
+
+        </IonContent>
+
+      </IonMenu>
+  
+ 
+  
+
+
+
+
+    <IonPage id="main-content">
       <IonHeader>
         <IonToolbar>
         
@@ -102,13 +130,10 @@ const Home = () => {
       </IonHeader>
       <IonContent fullscreen>
 
-        
-               
-
           {groupe.length ? (
             <CalendarComponents name={groupe}></CalendarComponents>
           ) : (
-            <IonContent className="ion-padding"><h1>Entrez un Groupe d'étude</h1></IonContent>
+            <h1>Entrez un Groupe d'étude</h1>
           )}
         
       </IonContent>
