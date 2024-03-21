@@ -49,24 +49,24 @@ const CalendarComponents: React.FC<Props> = (props) => {
 
 
   // Récuperation de l'API URL
-  const [apiUrl, setApiUrl] = useState('https://edt4rt-api.romain-pinsolle.fr');
-  const getApiUrl = async () => {
-    if (await store.get("apiUrl")) {
-        setApiUrl(await store.get("apiUrl"));
-    } else {
-        setApiUrl('https://edt4rt-api.romain-pinsolle.fr');
+
+    
+    const getApiUrl = async () => {
+      let apiUrl = await store.get("apiUrl");
+      if (!apiUrl) {
+        apiUrl = "https://edt4rt-api.romain-pinsolle.fr";
+        await store.set("apiUrl", apiUrl);
+      }
+      return apiUrl;
     };
-    return apiUrl;
-  }
+
 
   
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        await getApiUrl();
-        console.log(getApiUrl());
-        console.log(apiUrl+"/api/planning/getPlanningPerName/" +
-        props.name,);
+        const api = await getApiUrl();
+        const apiUrl = api.endsWith("/") ? api.slice(0, -1) : api;
         const response = await CapacitorHttp.get({
           url:
             apiUrl+"/api/planning/getPlanningPerName/" +
