@@ -8,13 +8,21 @@ import {
   IonItem,
   IonSelect,
   IonSelectOption,
+  IonMenu,
+  IonButtons,
+  IonMenuButton,
+  IonNavLink,
   IonButton,
+  IonLabel,
+  IonIcon,
+
+
 } from "@ionic/react";
 import CalendarComponents from "../components/calendarComponents";
 import { useState, useCallback, useEffect } from "react";
 import { Storage } from "@ionic/storage";
 
-
+import { homeOutline, settingsOutline } from 'ionicons/icons'
 const store = new Storage();
 
 import {
@@ -43,17 +51,6 @@ const Home = () => {
     }
   }
   const [groupe, setGroupe] = useState(String);
-  
-  LocalNotifications.checkPermissions().then((result) => {
-    if (result.display !== "granted") {
-      LocalNotifications.requestPermissions();
-    }})
-
-
-    
-  
-
-
   const preload = async () => {
     await store.create();
     if (await store.get("groupe")) {
@@ -67,9 +64,16 @@ const Home = () => {
   preload();
   MakeChannel();
   return (
+    <>
     <IonPage>
       <IonHeader>
         <IonToolbar>
+        
+        <IonButtons slot="start">
+              <IonMenuButton></IonMenuButton>
+            </IonButtons>
+
+
           <IonList>
             <IonItem>
               <IonSelect
@@ -100,6 +104,7 @@ const Home = () => {
 
         
                
+
           {groupe.length ? (
             <CalendarComponents name={groupe}></CalendarComponents>
           ) : (
@@ -108,6 +113,7 @@ const Home = () => {
         
       </IonContent>
     </IonPage>
+    </>
   );
 };
 
