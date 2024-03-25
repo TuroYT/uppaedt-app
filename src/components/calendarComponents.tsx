@@ -191,7 +191,9 @@ function setNewDate() {
       <>
         <>{eventInfo.timeText}</>
         <br></br>
-        <b>{eventInfo.event.extendedProps.cours}</b>
+      {eventInfo.event.extendedProps.cours.length > 33
+        ? eventInfo.event.extendedProps.cours.slice(0, 30) + " ..."
+        : eventInfo.event.extendedProps.cours}
         <br></br>
         <i>{eventInfo.event.extendedProps.location}</i>
         <br></br>
