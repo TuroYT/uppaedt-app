@@ -23,7 +23,6 @@ import { LocalNotifications } from "@capacitor/local-notifications";
 import CalendarComponents from "../components/calendarComponents";
 import { useState, useCallback } from "react";
 import { Storage } from "@ionic/storage";
-import Settings from "./Settings";
 import { homeOutline, settingsOutline } from "ionicons/icons";
 
 const store = new Storage();

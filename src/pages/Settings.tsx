@@ -98,9 +98,10 @@ const Settings: React.FC = () => {
              
                 <IonList inlist={true}>
                     <IonItem>   
-                        <IonLabel position="floating" defaultValue={apiUrl}>Custom API URL - default : https://edt4rt-api.romain-pinsolle.fr</IonLabel>
+                        <IonLabel position="floating" defaultValue={apiUrl}>Custom API URL</IonLabel>
                         <IonInput value={apiUrl} onIonChange={handleApiUrlChange}></IonInput>
                         <IonButton expand="full" onClick={saveApiUrl} size='default' shape="round" type='submit'>Valider</IonButton>
+                        <IonButton  onClick={saveApiUrl} size='default' shape="round" >Reset</IonButton>
                     </IonItem>
                     {/* 
 
