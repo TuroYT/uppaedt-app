@@ -5,11 +5,18 @@ import { CapacitorHttp } from "@capacitor/core";
 import { caretBackOutline, caretForwardOutline, star } from "ionicons/icons";
 import "./calendarComponant.css";
 import { Storage } from "@ionic/storage";
-
 import {
-  LocalNotificationSchema,
-  LocalNotifications,
-} from "@capacitor/local-notifications";
+  IonButtons,
+  IonHeader,
+  IonContent,
+  IonToolbar,
+  IonTitle,
+  IonPage,
+  IonItem,
+  IonInput,
+  IonList,
+  IonLabel,
+} from '@ionic/react';
 import { useSwipeable } from "react-swipeable";
 const store = new Storage();
 
@@ -22,15 +29,28 @@ import {
   IonIcon,
 } from "@ionic/react";
 import { scheduleNotifications } from "../tools/notifications";
-import { Toast } from "@capacitor/toast";
 
 
-
+interface Event {
+  title: String;
+  start: String;
+  end: String;
+  description: String;
+  id: String;
+  color: String;
+  extendedProps: {
+    prof: String;
+    cours: String;
+    location: String;
+  };
+}
 interface Props {
   name?: string;
 }
 
 const CalendarComponents: React.FC<Props> = (props) => {
+  const modal = useRef<HTMLIonModalElement>(null);
+  const [eventInfo, setEventInfo] = useState({cours : "", location : "", prof : ""});
   const [events, setEvents] = useState([]);
   const [presentAlert] = useIonAlert();
   const calendarRef: any = useRef(null);
@@ -204,9 +224,31 @@ function setNewDate() {
       </>
     );
   }
-
+  const [isOpen, setIsOpen] = useState(false)
   return (
     <>
+<IonContent className="ion-padding">
+    
+
+<IonModal ref={modal}>
+          <IonHeader>
+            <IonToolbar>
+              <IonButtons slot="start">
+                <IonButton onClick={() => modal.current?.dismiss()}>ok</IonButton>
+              </IonButtons>
+              <IonTitle>Welcome</IonTitle>
+            </IonToolbar>
+          </IonHeader>
+          <IonContent className="ion-padding">
+            <IonItem>
+              <h1><b>{eventInfo.cours}</b></h1>
+            </IonItem>
+          </IonContent>
+        </IonModal>
+
+
+
+
 
       {events.length ? (
         <>
@@ -266,6 +308,7 @@ function setNewDate() {
               slotMinTime="08:00"
               slotMaxTime="19:00"
               eventContent={renderEventContent}
+                eventClick={(event) => {console.log(event); setEventInfo(event.event.extendedProps as { cours: string; location: string; prof: string; }); modal.current?.present();}}
             />
           </div>
         </>
@@ -276,6 +319,8 @@ function setNewDate() {
           <h1 className="center">Chargement</h1>
         </>
       )}
+
+      </IonContent>
     </>
   );
 };
