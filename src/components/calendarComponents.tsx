@@ -42,6 +42,9 @@ interface Event {
     prof: String;
     cours: String;
     location: String;
+    isLastCours : boolean;
+    start : String;
+    end : String;
   };
 }
 interface Props {
@@ -50,7 +53,7 @@ interface Props {
 
 const CalendarComponents: React.FC<Props> = (props) => {
   const modal = useRef<HTMLIonModalElement>(null);
-  const [eventInfo, setEventInfo] = useState({cours : "", location : "", prof : ""});
+  const [eventInfo, setEventInfo] = useState({cours : "", location : "", prof : "", start : "", end : "", isLastCours : false});
   const [events, setEvents] = useState([]);
   const [presentAlert] = useIonAlert();
   const calendarRef: any = useRef(null);
@@ -118,12 +121,15 @@ const CalendarComponents: React.FC<Props> = (props) => {
             eventData.end.split(" ")[1].split("+")[0],
           description: eventData.location,
           id: eventData.uid,
-          color: eventData.prof !== "NA" ? "default" : "#005049",
+          color: eventData.prof !== "NA" ? ((json.filter((e: any) => e.summary === eventData.summary && e.start > eventData.start).length === 0) ? "#ff9966" : "default") : "#005049",
 
           extendedProps: {
             prof: eventData.prof,
             cours: eventData.summary,
             location: eventData.location,
+            start : eventData.start.split(" ")[1].split("+")[0].slice(0, -3),
+            end : eventData.end.split(" ")[1].split("+")[0].slice(0, -3),
+            isLastCours : json.filter((e: any) => e.summary === eventData.summary && e.start > eventData.start).length === 0,
           },
         }));
 
@@ -204,6 +210,10 @@ function setNewDate() {
           | string
         prof:
           | string
+        start : string
+        end : string
+        isLastCours : boolean
+
       };
     };
   }) {
@@ -230,21 +240,6 @@ function setNewDate() {
 <IonContent className="ion-padding">
     
 
-<IonModal ref={modal}>
-          <IonHeader>
-            <IonToolbar>
-              <IonButtons slot="start">
-                <IonButton onClick={() => modal.current?.dismiss()}>ok</IonButton>
-              </IonButtons>
-              <IonTitle>Welcome</IonTitle>
-            </IonToolbar>
-          </IonHeader>
-          <IonContent className="ion-padding">
-            <IonItem>
-              <h1><b>{eventInfo.cours}</b></h1>
-            </IonItem>
-          </IonContent>
-        </IonModal>
 
 
 
@@ -288,6 +283,52 @@ function setNewDate() {
               ></IonDatetime>
             </IonModal>
 
+
+            <IonModal ref={modal} id="modalevent">
+          <IonHeader>
+            <IonToolbar>
+              <IonButtons slot="end">
+                <IonButton onClick={() => modal.current?.dismiss()}>ok</IonButton>
+              </IonButtons>
+              <IonTitle>{eventInfo.cours}</IonTitle>
+            </IonToolbar>
+          </IonHeader>
+          
+           <IonList>
+            <IonItem>
+              <IonLabel>
+                <p>Cours</p>
+                {eventInfo.cours}
+              </IonLabel>
+            </IonItem>
+            <IonItem>
+
+              <IonLabel>
+                <p>Professeur</p>
+                {eventInfo.prof.replace("\n", " ")}
+              </IonLabel>
+            </IonItem>
+            <IonItem>
+              <IonLabel>
+                <p>Lieu</p>
+                {eventInfo.location}
+              </IonLabel>
+              </IonItem>
+            <IonItem>
+              <IonLabel>
+                <p>Heure</p>
+                {eventInfo.start} - {eventInfo.end}
+              </IonLabel>
+            </IonItem>
+            {eventInfo.isLastCours ? <IonItem>
+              <IonLabel>
+                <h2>⚠️ Dernier cours du module, risque de contrôle ⚠️</h2>
+              </IonLabel>
+            </IonItem> : ""}
+           </IonList>
+          
+        </IonModal>
+
             <FullCalendar
               ref={calendarRef}
               plugins={[timeGridPlugin]}
@@ -308,7 +349,18 @@ function setNewDate() {
               slotMinTime="08:00"
               slotMaxTime="19:00"
               eventContent={renderEventContent}
-                eventClick={(event) => {console.log(event); setEventInfo(event.event.extendedProps as { cours: string; location: string; prof: string; }); modal.current?.present();}}
+                eventClick={(event) => {
+                  console.log(event);
+                  setEventInfo({
+                    cours: event.event.extendedProps.cours,
+                    location: event.event.extendedProps.location,
+                    prof: event.event.extendedProps.prof,
+                    start: event.event.extendedProps.start,
+                    end: event.event.extendedProps.end,
+                    isLastCours: event.event.extendedProps.isLastCours,
+                  });
+                  modal.current?.present();
+                }}
             />
           </div>
         </>
