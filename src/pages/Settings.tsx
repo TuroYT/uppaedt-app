@@ -113,6 +113,13 @@ const Settings: React.FC = () => {
 
                     */}
                 </IonList>
+
+
+            <p>Fait avec amour par <a href='https://romain-pinsolle.fr/'>@turoyt</a>
+            <br/>
+            Pour plus d'informations, vous pouvez me contacter par mail à <a href='mailto:contact@romain-pinsolle.fr'>contact@romain-pinsolle.fr </a>
+            ou sur discord : <b>turocestmoi</b>
+            </p>
             </IonContent>
         </IonPage>
         </>
