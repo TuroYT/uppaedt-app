@@ -16,10 +16,8 @@ import {
   IonInput,
   IonList,
   IonLabel,
-} from '@ionic/react';
+} from "@ionic/react";
 import { useSwipeable } from "react-swipeable";
-const store = new Storage();
-
 import {
   useIonAlert,
   IonProgressBar,
@@ -29,6 +27,22 @@ import {
   IonIcon,
 } from "@ionic/react";
 import { scheduleNotifications } from "../tools/notifications";
+const mois: any = {
+  "0": "Janvier",
+  "1": "Février",
+  "2": "Mars",
+  "3": "Avril",
+  "4": "Mai",
+  "5": "Juin",
+  "6": "Juillet",
+  "7": "Août",
+  "8": "Septembre",
+  "9": "Octobre",
+  "10": "Novembre",
+  "11": "Decembre",
+};
+
+const store = new Storage();
 
 
 interface Event {
@@ -42,9 +56,9 @@ interface Event {
     prof: String;
     cours: String;
     location: String;
-    isLastCours : boolean;
-    start : String;
-    end : String;
+    isLastCours: boolean;
+    start: String;
+    end: String;
   };
 }
 interface Props {
@@ -53,35 +67,29 @@ interface Props {
 
 const CalendarComponents: React.FC<Props> = (props) => {
   const modal = useRef<HTMLIonModalElement>(null);
-  const [eventInfo, setEventInfo] = useState({cours : "", location : "", prof : "", start : "", end : "", isLastCours : false});
+  const [eventInfo, setEventInfo] = useState({
+    cours: "",
+    location: "",
+    prof: "",
+    start: "",
+    end: "",
+    isLastCours: false,
+  });
   const [events, setEvents] = useState([]);
   const [presentAlert] = useIonAlert();
   const calendarRef: any = useRef(null);
   const modalRef = useRef<null | HTMLIonModalElement>(null);
   const datetimeRef = useRef<null | HTMLIonDatetimeElement>(null);
   const todaydate = new Date();
-  const mois: any = {
-    "0": "Janvier",
-    "1": "Février",
-    "2": "Mars",
-    "3": "Avril",
-    "4": "Mai",
-    "5": "Juin",
-    "6": "Juillet",
-    "7": "Août",
-    "8": "Septembre",
-    "9": "Octobre",
-    "10": "Novembre",
-    "11": "Decembre",
-  };
+
+  // affichache de la date
   const [currentDate, setCurrentDate] = useState(
     todaydate.getDate() + " " + mois[todaydate.getMonth()]
   );
 
-
   // Récuperation de l'API URL
 
-    
+  // Api sauvegardé dans le storafe
   const getApiUrl = async () => {
     await store.create();
     let apiUrl = await store.get("apiUrl");
@@ -92,20 +100,15 @@ const CalendarComponents: React.FC<Props> = (props) => {
     return apiUrl;
   };
 
-
-  
   useEffect(() => {
     const fetchEvents = async () => {
       try {
         const api = await getApiUrl();
-        const apiUrl = api.endsWith("/") ? api.slice(0, -1) : api;
-
+        const apiUrl = api.endsWith("/") ? api.slice(0, -1) : api; // enleve le /
         const response = await CapacitorHttp.get({
-          url:
-            apiUrl+"/api/planning/getPlanningPerName/" +
-            props.name,
+          url: apiUrl + "/api/planning/getPlanningPerName/" + props.name,
         });
-        
+
         const json = await response.data;
         const formattedEvents = json.map((eventData: any) => ({
           title: `${eventData.summary} - ${eventData.location}${
@@ -121,22 +124,33 @@ const CalendarComponents: React.FC<Props> = (props) => {
             eventData.end.split(" ")[1].split("+")[0],
           description: eventData.location,
           id: eventData.uid,
-          color: eventData.prof !== "NA" ? ((json.filter((e: any) => e.summary === eventData.summary && e.start > eventData.start).length === 0) ? "#ff9966" : "default") : "#005049",
+          color:
+            eventData.prof !== "NA"
+              ? json.filter(
+                  (e: any) =>
+                    e.summary === eventData.summary && e.start > eventData.start
+                ).length === 0
+                ? "#ff9966" // dernier cours
+                : "default" // default
+              : "#005049", // Sae sans prof
 
           extendedProps: {
             prof: eventData.prof,
             cours: eventData.summary,
             location: eventData.location,
-            start : eventData.start.split(" ")[1].split("+")[0].slice(0, -3),
-            end : eventData.end.split(" ")[1].split("+")[0].slice(0, -3),
-            isLastCours : json.filter((e: any) => e.summary === eventData.summary && e.start > eventData.start).length === 0,
+            start: eventData.start.split(" ")[1].split("+")[0].slice(0, -3),
+            end: eventData.end.split(" ")[1].split("+")[0].slice(0, -3),
+            isLastCours:
+              json.filter(
+                (e: any) =>
+                  e.summary === eventData.summary && e.start > eventData.start
+              ).length === 0, // dernier cours
           },
         }));
 
         setEvents(formattedEvents);
         scheduleNotifications(formattedEvents);
       } catch (error: any) {
-       
         presentAlert({
           header: "Erreur !",
           message: error.toString(),
@@ -147,9 +161,6 @@ const CalendarComponents: React.FC<Props> = (props) => {
 
     fetchEvents();
   }, [props.name]);
-
-
-
 
   // Boutton de la page
   function goNext() {
@@ -166,17 +177,14 @@ const CalendarComponents: React.FC<Props> = (props) => {
     const calendarApi = calendarRef.current.getApi();
     calendarApi.today();
     refreshDate();
-    
   }
 
-
-
-function setNewDate() {
-  modalRef.current?.dismiss();
-  const calendarApi = calendarRef.current.getApi();
-  calendarApi.gotoDate(datetimeRef.current?.value);
-  refreshDate();
-}
+  function setNewDate() {
+    modalRef.current?.dismiss();
+    const calendarApi = calendarRef.current.getApi();
+    calendarApi.gotoDate(datetimeRef.current?.value);
+    refreshDate();
+  }
 
   function refreshDate() {
     const calendarApi = calendarRef.current.getApi();
@@ -197,36 +205,34 @@ function setNewDate() {
   const handlers = useSwipeable({
     onSwipedLeft: () => goNext(),
     onSwipedRight: () => goBack(),
-    // Vous pouvez également définir des gestionnaires pour onSwipedUp et onSwipedDown si nécessaire
   });
 
   function renderEventContent(eventInfo: {
     timeText: any;
     event: {
       extendedProps: {
-        cours:
-          | string
-        location:
-          | string
-        prof:
-          | string
-        start : string
-        end : string
-        isLastCours : boolean
-
+        cours: string;
+        location: string;
+        prof: string;
+        start: string;
+        end: string;
+        isLastCours: boolean;
       };
     };
-  }) {
+  }) { // Evevent Render
     return (
+
+      
       <>
         <>{eventInfo.timeText}</>
-        <br></br>
-      {eventInfo.event.extendedProps.cours.length > 33
-        ? eventInfo.event.extendedProps.cours.slice(0, 30) + " ..."
-        : eventInfo.event.extendedProps.cours}
-        <br></br>
+        <br />
+        {eventInfo.event.extendedProps.cours.length > 33
+          ? eventInfo.event.extendedProps.cours.slice(0, 30) + " ..."
+          : eventInfo.event.extendedProps.cours} 
+        <br />
         <i>{eventInfo.event.extendedProps.location}</i>
-        <br></br>
+        <br />
+
 
         {eventInfo.event.extendedProps.prof != "NA" ? (
           <i>{eventInfo.event.extendedProps.prof}</i>
@@ -235,18 +241,8 @@ function setNewDate() {
         )}
       </>
     );
-  }
-  const [isOpen, setIsOpen] = useState(false)
-  return (
+  } return (
     <>
-<IonContent className="ion-padding">
-    
-
-
-
-
-
-
       {events.length ? (
         <>
           <div id="main" {...handlers}>
@@ -258,8 +254,8 @@ function setNewDate() {
                 size="large"
               >
                 {currentDate}
-              </IonButton>{" "}
-              <br></br>
+              </IonButton>
+              <br />
               <IonButton onClick={today}>Ajourd'hui</IonButton>
               <IonButton onClick={goBack} slot="icon-only">
                 <IonIcon slot="icon-only" icon={caretBackOutline}></IonIcon>
@@ -267,7 +263,6 @@ function setNewDate() {
               <IonButton onClick={goNext} slot="icon-only">
                 <IonIcon slot="icon-only" icon={caretForwardOutline}></IonIcon>
               </IonButton>
-
             </div>
 
             <IonModal
@@ -285,51 +280,54 @@ function setNewDate() {
               ></IonDatetime>
             </IonModal>
 
-
             <IonModal ref={modal} id="modalevent">
-          <IonHeader>
-            <IonToolbar>
-              <IonButtons slot="end">
-                <IonButton onClick={() => modal.current?.dismiss()}>ok</IonButton>
-              </IonButtons>
-              <IonTitle>{eventInfo.cours}</IonTitle>
-            </IonToolbar>
-          </IonHeader>
-          
-           <IonList>
-            <IonItem>
-              <IonLabel>
-                <p>Cours</p>
-                {eventInfo.cours}
-              </IonLabel>
-            </IonItem>
-            <IonItem>
+              <IonHeader>
+                <IonToolbar>
+                  <IonButtons slot="end">
+                    <IonButton onClick={() => modal.current?.dismiss()}>
+                      ok
+                    </IonButton>
+                  </IonButtons>
+                  <IonTitle>{eventInfo.cours}</IonTitle>
+                </IonToolbar>
+              </IonHeader>
 
-              <IonLabel>
-                <p>Professeur</p>
-                {eventInfo.prof.replace("\n", " ")}
-              </IonLabel>
-            </IonItem>
-            <IonItem>
-              <IonLabel>
-                <p>Lieu</p>
-                {eventInfo.location}
-              </IonLabel>
-              </IonItem>
-            <IonItem>
-              <IonLabel>
-                <p>Heure</p>
-                {eventInfo.start} - {eventInfo.end}
-              </IonLabel>
-            </IonItem>
-            {eventInfo.isLastCours ? <IonItem>
-              <IonLabel>
-                <h2>⚠️ Dernier cours du module, risque de contrôle ⚠️</h2>
-              </IonLabel>
-            </IonItem> : ""}
-           </IonList>
-          
-        </IonModal>
+              <IonList>
+                <IonItem>
+                  <IonLabel>
+                    <p>Cours</p>
+                    {eventInfo.cours}
+                  </IonLabel>
+                </IonItem>
+                <IonItem>
+                  <IonLabel>
+                    <p>Professeur</p>
+                    {eventInfo.prof.replace("\n", " ")}
+                  </IonLabel>
+                </IonItem>
+                <IonItem>
+                  <IonLabel>
+                    <p>Lieu</p>
+                    {eventInfo.location}
+                  </IonLabel>
+                </IonItem>
+                <IonItem>
+                  <IonLabel>
+                    <p>Heure</p>
+                    {eventInfo.start} - {eventInfo.end}
+                  </IonLabel>
+                </IonItem>
+                {eventInfo.isLastCours ? (
+                  <IonItem>
+                    <IonLabel>
+                      <h2>⚠️ Dernier cours du module, risque de contrôle ⚠️</h2>
+                    </IonLabel>
+                  </IonItem>
+                ) : (
+                  ""
+                )}
+              </IonList>
+            </IonModal>
 
             <FullCalendar
               ref={calendarRef}
@@ -351,18 +349,18 @@ function setNewDate() {
               slotMinTime="08:00"
               slotMaxTime="19:00"
               eventContent={renderEventContent}
-                eventClick={(event) => {
-                  console.log(event);
-                  setEventInfo({
-                    cours: event.event.extendedProps.cours,
-                    location: event.event.extendedProps.location,
-                    prof: event.event.extendedProps.prof,
-                    start: event.event.extendedProps.start,
-                    end: event.event.extendedProps.end,
-                    isLastCours: event.event.extendedProps.isLastCours,
-                  });
-                  modal.current?.present();
-                }}
+              eventClick={(event) => {
+                console.log(event);
+                setEventInfo({
+                  cours: event.event.extendedProps.cours,
+                  location: event.event.extendedProps.location,
+                  prof: event.event.extendedProps.prof,
+                  start: event.event.extendedProps.start,
+                  end: event.event.extendedProps.end,
+                  isLastCours: event.event.extendedProps.isLastCours,
+                });
+                modal.current?.present();
+              }}
             />
           </div>
         </>
@@ -373,8 +371,6 @@ function setNewDate() {
           <h1 className="center">Chargement</h1>
         </>
       )}
-
-      </IonContent>
     </>
   );
 };
