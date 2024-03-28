@@ -47,10 +47,10 @@ export const scheduleNotifications = async (events: Event[]) => {
       store.get("notification");
   
   
-      const notificationTime = new Date(new Date(event.start.toString()).getTime() - 5 * 60 * 1000); // 5 minutes before the event
+      const notificationTime = new Date(new Date(event.start.toString()).getTime() - 10 * 60 * 1000); // 10 minutes before the event
   
       const notification: LocalNotificationSchema = {
-        title: "Dans 5 minutes : " + event.extendedProps.cours,
+        title: "Dans 10 minutes : " + event.extendedProps.cours,
         body: `${event.extendedProps.location}`,
         id: Math.floor(Math.random() * 1000000),
         channelId: '1',
@@ -64,7 +64,7 @@ export const scheduleNotifications = async (events: Event[]) => {
         // Verifie si la date est dans le futur
         if (notificationTime.getTime() > new Date().getTime()) {
           // Vérifie si la date de notification est aujourd'hui ou demain
-        if (notificationTime.getDate() === new Date().getDate() || notificationTime.getDate() === new Date().getDate() + 1) {
+        if (notificationTime.getDate() === new Date().getDate() || notificationTime.getDate() === new Date().getDate() + 1 || notificationTime.getDate() === new Date().getDate() + 2 || notificationTime.getDate() === new Date().getDate() + 3) {
           if (event.extendedProps.prof !== "NA") {
             toAdd.push(notification);
             console.log(notification);
