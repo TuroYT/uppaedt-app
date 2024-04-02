@@ -8,12 +8,9 @@ import { Storage } from "@ionic/storage";
 import {
   IonButtons,
   IonHeader,
-  IonContent,
   IonToolbar,
   IonTitle,
-  IonPage,
   IonItem,
-  IonInput,
   IonList,
   IonLabel,
 } from "@ionic/react";
@@ -27,6 +24,7 @@ import {
   IonIcon,
 } from "@ionic/react";
 import { scheduleNotifications } from "../tools/notifications";
+import { Swiper, SwiperSlide } from "swiper/react";
 const mois: any = {
   "0": "Janvier",
   "1": "Février",
@@ -43,7 +41,6 @@ const mois: any = {
 };
 
 const store = new Storage();
-
 
 interface Event {
   title: String;
@@ -66,7 +63,7 @@ interface Props {
 }
 
 const CalendarComponents: React.FC<Props> = (props) => {
-  const modal = useRef<HTMLIonModalElement>(null);
+  const modal = useRef<any>(null);
   const [eventInfo, setEventInfo] = useState({
     cours: "",
     location: "",
@@ -78,8 +75,9 @@ const CalendarComponents: React.FC<Props> = (props) => {
   const [events, setEvents] = useState([]);
   const [presentAlert] = useIonAlert();
   const calendarRef: any = useRef(null);
-  const modalRef = useRef<null | HTMLIonModalElement>(null);
-  const datetimeRef = useRef<null | HTMLIonDatetimeElement>(null);
+  const modalRef = useRef<null | any>(null);
+  const datetimeRef = useRef<null | any>(null);
+  const swiperRef = useRef<null | any>(null);
   const todaydate = new Date();
 
   // affichache de la date
@@ -89,7 +87,7 @@ const CalendarComponents: React.FC<Props> = (props) => {
 
   // Récuperation de l'API URL
 
-  // Api sauvegardé dans le storafe
+  // Api sauvegardé dans le storage
   const getApiUrl = async () => {
     await store.create();
     let apiUrl = await store.get("apiUrl");
@@ -102,6 +100,8 @@ const CalendarComponents: React.FC<Props> = (props) => {
 
   useEffect(() => {
     const fetchEvents = async () => {
+
+      // requete api et mise en forme des données sous le format Event pour le calendrier
       try {
         const api = await getApiUrl();
         const apiUrl = api.endsWith("/") ? api.slice(0, -1) : api; // enleve le /
@@ -162,7 +162,7 @@ const CalendarComponents: React.FC<Props> = (props) => {
     fetchEvents();
   }, [props.name]);
 
-  // Boutton de la page
+  // Controles de la date
   function goNext() {
     const calendarApi = calendarRef.current.getApi();
     calendarApi.next();
@@ -185,7 +185,7 @@ const CalendarComponents: React.FC<Props> = (props) => {
     calendarApi.gotoDate(datetimeRef.current?.value);
     refreshDate();
   }
-
+  // Rafraichir la date
   function refreshDate() {
     const calendarApi = calendarRef.current.getApi();
     setCurrentDate(
@@ -202,11 +202,24 @@ const CalendarComponents: React.FC<Props> = (props) => {
     return utcDay !== 0 && utcDay !== 6;
   };
 
+  // Gestion du swipe
+  const onSwipe = () => {
+    if (swiperRef.current.activeIndex === 0) {
+      goBack();
+    } else {
+      goNext;
+    }
+    if (swiperRef.current && swiperRef.current.swiper) {
+      swiperRef.current.swiper.slideTo(1);
+    }
+  };
   const handlers = useSwipeable({
     onSwipedLeft: () => goNext(),
     onSwipedRight: () => goBack(),
   });
 
+
+  // Affichage du cours
   function renderEventContent(eventInfo: {
     timeText: any;
     event: {
@@ -219,20 +232,18 @@ const CalendarComponents: React.FC<Props> = (props) => {
         isLastCours: boolean;
       };
     };
-  }) { // Evevent Render
+  }) {
+    // Evevent Render
     return (
-
-      
       <>
         <>{eventInfo.timeText}</>
         <br />
         {eventInfo.event.extendedProps.cours.length > 33
           ? eventInfo.event.extendedProps.cours.slice(0, 30) + " ..."
-          : eventInfo.event.extendedProps.cours} 
+          : eventInfo.event.extendedProps.cours}
         <br />
         <i>{eventInfo.event.extendedProps.location}</i>
         <br />
-
 
         {eventInfo.event.extendedProps.prof != "NA" ? (
           <i>{eventInfo.event.extendedProps.prof}</i>
@@ -241,11 +252,14 @@ const CalendarComponents: React.FC<Props> = (props) => {
         )}
       </>
     );
-  } return (
+  }
+  return (
     <>
       {events.length ? (
         <>
           <div id="main" {...handlers}>
+
+          {/* Hearder de la page */}
             <div className="center">
               <IonButton
                 id="datetime-picker"
@@ -280,6 +294,8 @@ const CalendarComponents: React.FC<Props> = (props) => {
               ></IonDatetime>
             </IonModal>
 
+
+            {/* Popup avec informations sur le cours*/}
             <IonModal ref={modal} id="modalevent">
               <IonHeader>
                 <IonToolbar>
@@ -329,39 +345,44 @@ const CalendarComponents: React.FC<Props> = (props) => {
               </IonList>
             </IonModal>
 
-            <FullCalendar
-              ref={calendarRef}
-              plugins={[timeGridPlugin]}
-              initialView="timeGridDay"
-              locale="fr"
-              headerToolbar={{
-                start: "",
-                center: "",
-                end: "",
-              }}
-              titleFormat={{ month: "long", day: "numeric" }}
-              buttonText={{ today: "Aujourd'hui" }}
-              hiddenDays={[6, 0]}
-              events={events}
-              allDaySlot={false}
-              nowIndicator={true}
-              height="auto"
-              slotMinTime="08:00"
-              slotMaxTime="19:00"
-              eventContent={renderEventContent}
-              eventClick={(event) => {
-                console.log(event);
-                setEventInfo({
-                  cours: event.event.extendedProps.cours,
-                  location: event.event.extendedProps.location,
-                  prof: event.event.extendedProps.prof,
-                  start: event.event.extendedProps.start,
-                  end: event.event.extendedProps.end,
-                  isLastCours: event.event.extendedProps.isLastCours,
-                });
-                modal.current?.present();
-              }}
-            />
+            <Swiper ref={swiperRef} onSlideChange={onSwipe} initialSlide={1}>
+              <SwiperSlide> {/* Slide Vide */} </SwiperSlide>
+              <SwiperSlide>
+                <FullCalendar
+                  ref={calendarRef}
+                  plugins={[timeGridPlugin]}
+                  initialView="timeGridDay"
+                  locale="fr"
+                  headerToolbar={{
+                    start: "",
+                    center: "",
+                    end: "",
+                  }}
+                  titleFormat={{ month: "long", day: "numeric" }}
+                  hiddenDays={[6, 0]}
+                  events={events}
+                  allDaySlot={false}
+                  nowIndicator={true}
+                  height="auto"
+                  slotMinTime="08:00"
+                  slotMaxTime="19:00"
+                  eventContent={renderEventContent}
+                  eventClick={(event) => {
+                    console.log(event);
+                    setEventInfo({
+                      cours: event.event.extendedProps.cours,
+                      location: event.event.extendedProps.location,
+                      prof: event.event.extendedProps.prof,
+                      start: event.event.extendedProps.start,
+                      end: event.event.extendedProps.end,
+                      isLastCours: event.event.extendedProps.isLastCours,
+                    });
+                    modal.current?.present();
+                  }}
+                />
+              </SwiperSlide>
+              <SwiperSlide>{/* Slide Vide */}</SwiperSlide>
+            </Swiper>
           </div>
         </>
       ) : (

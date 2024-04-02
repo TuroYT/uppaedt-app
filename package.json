@@ -36,8 +36,10 @@
     "react-dom": "latest",
     "react-native": "latest",
     "react-native-gesture-handler": "latest",
+    "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "latest",
-    "react-swipeable": "latest"
+    "react-swipeable": "latest",
+    "swiper": "^11.1.0"
   },
   "devDependencies": {
     "@capacitor/cli": "latest",
