@@ -340,7 +340,6 @@ const CalendarComponents: React.FC<Props> = (props) => {
                 end: "",
               }}
               titleFormat={{ month: "long", day: "numeric" }}
-              buttonText={{ today: "Aujourd'hui" }}
               hiddenDays={[6, 0]}
               events={events}
               allDaySlot={false}
