@@ -24,6 +24,7 @@ import {
   IonIcon,
 } from "@ionic/react";
 import { scheduleNotifications } from "../tools/notifications";
+import { Swiper, SwiperSlide } from "swiper/react";
 const mois: any = {
   "0": "Janvier",
   "1": "Février",
@@ -62,7 +63,7 @@ interface Props {
 }
 
 const CalendarComponents: React.FC<Props> = (props) => {
-  const modal = useRef<HTMLIonModalElement>(null);
+  const modal = useRef<any>(null);
   const [eventInfo, setEventInfo] = useState({
     cours: "",
     location: "",
@@ -74,8 +75,9 @@ const CalendarComponents: React.FC<Props> = (props) => {
   const [events, setEvents] = useState([]);
   const [presentAlert] = useIonAlert();
   const calendarRef: any = useRef(null);
-  const modalRef = useRef<null | HTMLIonModalElement>(null);
-  const datetimeRef = useRef<null | HTMLIonDatetimeElement>(null);
+  const modalRef = useRef<null | any>(null);
+  const datetimeRef = useRef<null | any>(null);
+  const swiperRef = useRef<null | any>(null);
   const todaydate = new Date();
 
   // affichache de la date

@@ -22,7 +22,7 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import Settings from './pages/Settings';
-
+import NewCalendarComponant from './components/NewCalendarComponant';
 
 setupIonicReact();
 
@@ -40,7 +40,7 @@ const App: React.FC = () => (
           <Redirect to="/home" />
         </Route>
         <Route exact path="/test">
-          
+          <NewCalendarComponant />
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>
