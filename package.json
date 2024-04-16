@@ -36,6 +36,7 @@
     "react-dom": "latest",
     "react-native": "latest",
     "react-native-gesture-handler": "latest",
+    "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "latest",
     "react-swipeable": "latest",
     "swiper": "^11.1.0"
@@ -56,7 +57,7 @@
     "jsdom": "latest",
     "terser": "latest",
     "typescript": "latest",
-    "vite": "5.2.7",
+    "vite": "5.2.6",
     "vitest": "latest"
   },
   "description": "An Ionic project"
