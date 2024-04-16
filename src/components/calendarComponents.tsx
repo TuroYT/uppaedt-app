@@ -63,6 +63,7 @@ interface Props {
 
 const CalendarComponents: React.FC<Props> = (props) => {
   const modal = useRef<HTMLIonModalElement>(null);
+  const modal = useRef<HTMLIonModalElement>(null);
   const [eventInfo, setEventInfo] = useState({
     cours: "",
     location: "",
@@ -74,6 +75,8 @@ const CalendarComponents: React.FC<Props> = (props) => {
   const [events, setEvents] = useState([]);
   const [presentAlert] = useIonAlert();
   const calendarRef: any = useRef(null);
+  const modalRef = useRef<null | HTMLIonModalElement>(null);
+  const datetimeRef = useRef<null | HTMLIonDatetimeElement>(null);
   const modalRef = useRef<null | HTMLIonModalElement>(null);
   const datetimeRef = useRef<null | HTMLIonDatetimeElement>(null);
   const todaydate = new Date();
