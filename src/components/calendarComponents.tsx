@@ -27,7 +27,6 @@ import {
   IonIcon,
 } from "@ionic/react";
 import { scheduleNotifications } from "../tools/notifications";
-import { Swiper, SwiperSlide } from "swiper/react";
 const mois: any = {
   "0": "Janvier",
   "1": "Février",
@@ -67,7 +66,7 @@ interface Props {
 }
 
 const CalendarComponents: React.FC<Props> = (props) => {
-  const modal = useRef<any>(null);
+  const modal = useRef<HTMLIonModalElement>(null);
   const [eventInfo, setEventInfo] = useState({
     cours: "",
     location: "",
@@ -79,9 +78,8 @@ const CalendarComponents: React.FC<Props> = (props) => {
   const [events, setEvents] = useState([]);
   const [presentAlert] = useIonAlert();
   const calendarRef: any = useRef(null);
-  const modalRef = useRef<null | any>(null);
-  const datetimeRef = useRef<null | any>(null);
-  const swiperRef = useRef<null | any>(null);
+  const modalRef = useRef<null | HTMLIonModalElement>(null);
+  const datetimeRef = useRef<null | HTMLIonDatetimeElement>(null);
   const todaydate = new Date();
 
   // affichache de la date
@@ -204,22 +202,10 @@ const CalendarComponents: React.FC<Props> = (props) => {
     return utcDay !== 0 && utcDay !== 6;
   };
 
-  const onSwipe = () => {
-    if (swiperRef.current.activeIndex === 0) {
-      goBack();
-    } else {
-      goNext;
-    }
-    if (swiperRef.current && swiperRef.current.swiper) {
-      swiperRef.current.swiper.slideTo(1);
-    }
-  }
   const handlers = useSwipeable({
     onSwipedLeft: () => goNext(),
     onSwipedRight: () => goBack(),
   });
-
-
 
   function renderEventContent(eventInfo: {
     timeText: any;
@@ -343,13 +329,6 @@ const CalendarComponents: React.FC<Props> = (props) => {
               </IonList>
             </IonModal>
 
-
-            <Swiper ref={swiperRef} onSlideChange={onSwipe} initialSlide={1}>
-            <SwiperSlide>
-
-  </SwiperSlide>
-  <SwiperSlide>
-
             <FullCalendar
               ref={calendarRef}
               plugins={[timeGridPlugin]}
@@ -382,14 +361,6 @@ const CalendarComponents: React.FC<Props> = (props) => {
                 modal.current?.present();
               }}
             />
-  </SwiperSlide>
-  <SwiperSlide>
-
-
-</SwiperSlide>
-</Swiper>
-
-            
           </div>
         </>
       ) : (

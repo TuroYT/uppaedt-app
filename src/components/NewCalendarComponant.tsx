@@ -4,54 +4,90 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { Carousel } from 'react-responsive-carousel';
+
 import './styles.css';
 
+import { Pagination, Navigation } from 'swiper/modules';
 
 import FullCalendar from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/daygrid';
 
 export default function App() {
+    const swiperRef = useRef<any>(null);
     const [currentDate, setCurrentDate] = useState(new Date());
+    const startDate = useRef(new Date()); // Stocker la date de départ
+
+
+        const handleSlideChange = (swiper: any) => {
+            if (swiper.activeIndex === 0) {
+                // User swiped to the left
+                console.log("Swiped to the left");
+            } else if (swiper.activeIndex === 1) {
+                // User swiped to the right
+                console.log("Swiped to the right");
+            }
+        };
+
 
     return (
-        <Swiper loop={true}>
-            <SwiperSlide>
-                <FullCalendar
-                    plugins={[timeGridPlugin]}
-                    initialView="timeGridWeek"
-                    headerToolbar={{
-                        left: 'prev,next today',
-                        center: 'title',
-                        right: 'timeGridWeek,timeGridDay'
-                    }}
-                    events={[
-                        { title: 'event 1', date: '2021-08-01' },
-                        { title: 'event 2', date: '2021-08-02' }
-                    ]}
-                    eventClick={(info) => {
-                        alert('Event: ' + info.event.title);
-                    }}
-                />
-            </SwiperSlide>
-            <SwiperSlide>
-                <FullCalendar
-                    plugins={[timeGridPlugin]}
-                    
-                    initialView="timeGridWeek"
-                    headerToolbar={{
-                        left: 'prev,next today',
-                        center: 'title',
-                        right: 'timeGridWeek,timeGridDay'
-                    }}
-                    events={[
-                        { title: 'event 1', date: '2021-08-01' },
-                        { title: 'event 2', date: '2021-08-02' }
-                    ]}
-                    eventClick={(info) => {
-                        alert('Event: ' + info.event.title);
-                    }}
-                />
-            </SwiperSlide>
-        </Swiper>
+        <>
+            <Swiper
+                slidesPerView={1}
+                spaceBetween={30}
+                loop={true}
+                pagination={{
+                    clickable: true,
+                }}
+                className="mySwiper"
+                onSlideChange={handleSlideChange}
+                ref={swiperRef}
+            >
+                <SwiperSlide >
+                    <FullCalendar
+               
+                        plugins={[timeGridPlugin]}
+                        initialView="timeGridDay"
+                        locale="fr"
+                        headerToolbar={{
+                          start: "",
+                          center: "",
+                          end: "",
+                        }}
+                        titleFormat={{ month: "long", day: "numeric" }}
+                        hiddenDays={[6, 0]}
+                     
+                        allDaySlot={false}
+                        nowIndicator={true}
+                        height="auto"
+                        slotMinTime="08:00"
+                        slotMaxTime="19:00"
+                        initialDate={currentDate }
+                    />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <FullCalendar
+               
+                        plugins={[timeGridPlugin]}
+                        initialView="timeGridDay"
+                        locale="fr"
+                        headerToolbar={{
+                          start: "",
+                          center: "",
+                          end: "",
+                        }}
+                        titleFormat={{ month: "long", day: "numeric" }}
+                        hiddenDays={[6, 0]}
+                     
+                        allDaySlot={false}
+                        nowIndicator={true}
+                        height="auto"
+                        slotMinTime="08:00"
+                        slotMaxTime="19:00"
+                 
+                        initialDate={currentDate}
+                    />
+                </SwiperSlide>
+            </Swiper>
+        </>
     );
 }
