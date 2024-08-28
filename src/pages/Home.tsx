@@ -23,6 +23,8 @@ import { useState, useCallback } from "react";
 import { Storage } from "@ionic/storage";
 import Settings from "./Settings";
 import { homeOutline, settingsOutline } from "ionicons/icons";
+import { Capacitor } from "@capacitor/core";
+
 
 const store = new Storage();
 
@@ -33,19 +35,23 @@ const Home = () => {
 
 
   const MakeChannel = async () => {
-    const currentChannels = await LocalNotifications.listChannels();
-    if (!currentChannels.channels.some((channel) => channel.id === '1')) {
-      LocalNotifications.createChannel({
-        id: '1',
-        name: 'events',
-        description: 'notif avant les cours',
-        importance : 3,
-        visibility: 1,
-        vibration: true,
-        sound: 'sound_name.wav'
-      })
+    if (Capacitor.getPlatform() !== 'web') {
+      const currentChannels = await LocalNotifications.listChannels();
+      if (!currentChannels.channels.some((channel) => channel.id === '1')) {
+        LocalNotifications.createChannel({
+          id: '1',
+          name: 'events',
+          description: 'notif avant les cours',
+          importance: 3,
+          visibility: 1,
+          vibration: true,
+          sound: 'sound_name.wav'
+        });
+      }
+    } else {
+      console.warn("LocalNotifications plugin is not implemented on web.");
     }
-  }
+  };
   const preload = async () => {
     await store.create();
     if (await store.get("groupe")) {

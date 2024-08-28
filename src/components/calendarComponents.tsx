@@ -110,8 +110,23 @@ const CalendarComponents: React.FC<Props> = (props) => {
         const response = await CapacitorHttp.get({
           url: apiUrl + "/api/planning/getPlanningPerName/" + props.name,
         });
-
+  
+        // Vérifiez le statut de la réponse
+        if (response.status !== 200) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+  
+        // Loggez la réponse pour inspection
+        console.log("API Response:", response);
+  
+        // Assurez-vous que la réponse est bien du JSON
         const json = await response.data;
+        if (typeof json !== 'object') {
+          throw new Error("La réponse de l'API n'est pas un JSON valide.");
+        }
+        const formattedEvents: never[] = [];
+        if (json.length !== 0) {
+
         const formattedEvents = json.map((eventData: any) => ({
           title: `${eventData.summary} - ${eventData.location}${
             eventData.prof !== "NA" ? ` - ${eventData.prof}` : ""
@@ -135,7 +150,6 @@ const CalendarComponents: React.FC<Props> = (props) => {
                 ? "#ff9966" // dernier cours
                 : "default" // default
               : "#005049", // Sae sans prof
-
           extendedProps: {
             prof: eventData.prof,
             cours: eventData.summary,
@@ -148,9 +162,9 @@ const CalendarComponents: React.FC<Props> = (props) => {
                   e.summary === eventData.summary && e.start > eventData.start
               ).length === 0, // dernier cours
           },
-        }));
-
+        }))};
         setEvents(formattedEvents);
+        console.log(events)
         scheduleNotifications(formattedEvents);
       } catch (error: any) {
         presentAlert({
@@ -160,7 +174,7 @@ const CalendarComponents: React.FC<Props> = (props) => {
         });
       }
     };
-
+  
     fetchEvents();
   }, [props.name]);
 
@@ -257,7 +271,7 @@ const CalendarComponents: React.FC<Props> = (props) => {
     );
   } return (
     <>
-      {events.length ? (
+      {(
         <>
           <div id="main" {...handlers}>
             <div className="center">
@@ -391,12 +405,6 @@ const CalendarComponents: React.FC<Props> = (props) => {
 
             
           </div>
-        </>
-      ) : (
-        // Loading indicator
-        <>
-          <IonProgressBar type="indeterminate"></IonProgressBar>
-          <h1 className="center">Chargement</h1>
         </>
       )}
     </>
