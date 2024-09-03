@@ -23,8 +23,11 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import Settings from './pages/Settings';
 import NewCalendarComponant from './components/NewCalendarComponant';
+import Formations from './pages/formations';
 
 setupIonicReact();
+
+
 
 const App: React.FC = () => (
   <IonApp>
@@ -41,6 +44,9 @@ const App: React.FC = () => (
         </Route>
         <Route exact path="/test">
           <NewCalendarComponant />
+        </Route>
+        <Route exact path="/formations">
+          <Formations />
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>

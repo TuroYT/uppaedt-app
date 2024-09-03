@@ -77,6 +77,8 @@ const Settings: React.FC = () => {
             </IonHeader>
             <IonContent className="ion-padding">
 
+                
+
 
              
                 <IonList inlist={true}>
