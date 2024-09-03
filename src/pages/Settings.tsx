@@ -11,11 +11,12 @@ import {
     IonNavLink,
     IonCheckbox,
     IonIcon,
-  
+    IonRow
   
   } from "@ionic/react";
   import { homeOutline, settingsOutline } from 'ionicons/icons'
   import { LocalNotifications } from '@capacitor/local-notifications';
+import MenuComponents from '../components/menuComponant';
 const store = new Storage();
 
 const Settings: React.FC = () => {
@@ -41,6 +42,11 @@ const Settings: React.FC = () => {
         
     };
 
+    const resetApiUrl = () => {
+        setApiUrl("https://uppaedt-api.romain-pinsolle.fr")
+        store.set("apiUrl", apiUrl);
+    }
+
     const handleNotification = async (event: CustomEvent) => {
         await store.create();
         setNotification(event.detail.checked);
@@ -58,30 +64,7 @@ const Settings: React.FC = () => {
 
     return (
  <>
-        <IonMenu contentId="main-content">
-        <IonHeader>
-          <IonToolbar>
-            <IonTitle>Menu</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <IonContent className="ion-padding">
-
-
-        <IonList>
-        <IonItem button={true} routerLink="/home" routerDirection="forward">
-        <IonIcon aria-hidden="true" icon={homeOutline} slot="start"></IonIcon>
-        <IonLabel>Emploi du temps</IonLabel>
-      </IonItem>
-      <IonItem button={true} routerLink="/settings" routerDirection="forward">
-        <IonIcon aria-hidden="true" icon={settingsOutline} slot="start"></IonIcon>
-        <IonLabel>Paramètres</IonLabel>
-      </IonItem>
-      
-      </IonList>
-
-        </IonContent>
-
-      </IonMenu>
+        <MenuComponents></MenuComponents>
 
         <IonPage  id="main-content">
             <IonHeader>
@@ -98,10 +81,15 @@ const Settings: React.FC = () => {
              
                 <IonList inlist={true}>
                     <IonItem>   
-                        <IonLabel position="floating" defaultValue={apiUrl}>Custom API URL - default : https://edt4rt-api.romain-pinsolle.fr</IonLabel>
+                        <IonLabel position="floating" defaultValue={apiUrl}>Custom API URL - default : https://uppaedt-api.romain-pinsolle.fr</IonLabel>
                         <IonInput value={apiUrl} onIonChange={handleApiUrlChange}></IonInput>
-                        <IonButton expand="full" onClick={saveApiUrl} size='default' shape="round" type='submit'>Valider</IonButton>
+                        
+                        
                     </IonItem>
+                    <IonRow>
+                        <IonButton expand="full" onClick={saveApiUrl} size='default' shape="round" type='submit'>Valider</IonButton>
+                        <IonButton expand="full" onClick={resetApiUrl} size='default' shape="round" type='submit'>Reset</IonButton>
+                    </IonRow>
                     {/* 
 
                         A finir

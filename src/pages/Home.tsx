@@ -22,9 +22,9 @@ import CalendarComponents from "../components/calendarComponents";
 import { useState, useCallback } from "react";
 import { Storage } from "@ionic/storage";
 import Settings from "./Settings";
-import { homeOutline, settingsOutline } from "ionicons/icons";
+import { homeOutline, settingsOutline, calendarClearOutline } from "ionicons/icons";
 import { Capacitor } from "@capacitor/core";
-
+import MenuComponents from "../components/menuComponant"
 
 const store = new Storage();
 
@@ -66,30 +66,7 @@ const Home = () => {
   return (<>
     
     
-    <IonMenu contentId="main-content">
-        <IonHeader>
-          <IonToolbar>
-            <IonTitle>Menu</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <IonContent className="ion-padding">
-
-
-        <IonList>
-        <IonItem button={true} routerLink="/home" routerDirection="forward">
-        <IonIcon aria-hidden="true" icon={homeOutline} slot="start"></IonIcon>
-        <IonLabel>Emploi du temps</IonLabel>
-      </IonItem>
-      <IonItem button={true} routerLink="/settings" routerDirection="forward">
-        <IonIcon aria-hidden="true" icon={settingsOutline} slot="start"></IonIcon>
-        <IonLabel>Paramètres</IonLabel>
-      </IonItem>
-
-      </IonList>
-
-        </IonContent>
-
-      </IonMenu>
+    <MenuComponents></MenuComponents>
   
  
   
