@@ -18,6 +18,7 @@ import {
 import { Storage } from "@ionic/storage";
 import MenuComponents from "../components/menuComponant";
 import { Method } from "ionicons/dist/types/stencil-public-runtime";
+import { co } from "@fullcalendar/core/internal-common";
 
 const store = new Storage();
 store.create();
@@ -25,7 +26,6 @@ store.create();
 const Formations: React.FC = () => {
   const [Selected, setSelected] = useState<any>();
   const [CurrentFormations, setCurrentFormations] = useState<any>([]);
-  const [CurrentGroups, setCurrentGroups] = useState<any>({});
 
   const getApiUrl = async () => {
     await store.create();
@@ -39,60 +39,61 @@ const Formations: React.FC = () => {
 
 
 
-  const getSelectedFromStorage = () => {
-    store.get("Selected").then((value) => {
-      if (value && value.type === "Array") {
+  const getSelectedFromStorage = async () => {
+    await store.get("Selected").then(async (value) => {
+      if (value) {
         setSelected(value);
       } else {
-        saveSelectedToStorage([]);
+        await store.set("Selected", []);
         setSelected([]);
       }
     });
   };
 
-  const saveSelectedToStorage = (value: any) => {
-    store.set("Selected", value);
-  };
+  const addselected = async (id: number) => {
+    const toselect = [...Selected, id]
+    setSelected(toselect);
+    let test = await store.set("Selected", toselect);
 
-  const getFormations = async () => {
-    const response = await fetch(
-      await getApiUrl() +"/api/formations/getall"
-    );
-    const data = await response.json();
-    return data;
-  };
+  }
 
-  const getGroupFromFormation = async (id: number) => {
-    const response = await fetch(
-      await getApiUrl() +"/api/groupes/getFromFormation",{
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json" // Add this line to specify the request body format
-          },
-          body: JSON.stringify({ formation_id: id }) // Update the property name to match the server's expected format
-        }
-    );
-    const data = await response.json();
-    return data;
-  };
+  const removeselected = async (id: number) => {
+    const toselect = Selected.filter((selected: number) => selected !== id);
+    setSelected(toselect);
+    await store.set("Selected", toselect);
+  }
 
   const isSelected = (id: number) => {
     return Selected.includes(id);
   };
 
+
+  const getFormations = async () => {
+    const apiurl = await getApiUrl();
+    const response = await fetch(
+      apiurl +"/api/groupes/getallwithformations",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    
+    const data = await response.json();
+
+    return data;
+  };
+
+  
+
   useEffect(() => {
     getSelectedFromStorage();
+    
     getFormations().then((formations: any) => {
       setCurrentFormations(formations);
-      formations.forEach((formation: any) => {
-        getGroupFromFormation(formation.id).then((groupes: any) => {
-          setCurrentGroups({
-            ...CurrentGroups,
-            [formation.id]: groupes,
-          });
-        });
-      });
-    });
+      
+    })
   }, []);
 
   return (
@@ -112,18 +113,38 @@ const Formations: React.FC = () => {
           <h1>Selection des formations</h1>
 
           <IonAccordionGroup>
-            {CurrentFormations.map((formation: any) => {
+            {
+            CurrentFormations.map((formationgroup: any) => {
               return (
-                <IonAccordion value={formation.nom} key={formation.id}>
+                <IonAccordion value={formationgroup.formation.nom} key={formationgroup.formation.id}>
                   <IonItem slot="header" color="light">
-                    <IonLabel>{formation.nom}</IonLabel>
+                    <IonLabel>{formationgroup.formation.nom}</IonLabel>
                   </IonItem>
                   <div className="ion-padding" slot="content">
-                    test
-                  </div>
+                    
+                  
                   {
-            
+                    formationgroup.groupes.map((groupe: any) => {
+                      return (
+                        <IonItem key={groupe.id}>
+                          <IonLabel>{groupe.nom} </IonLabel>
+                          <IonToggle
+                            checked={isSelected(groupe.id)}
+                            onIonChange={(e) => {
+                              if (e.detail.checked) {
+                                addselected(groupe.id);
+                              } else {
+                                removeselected(groupe.id);
+                              }
+                              
+                        
+                            }}
+                          />
+                        </IonItem>
+                      );
+                    })
                   }
+                  </div>
                 </IonAccordion>
               );
             })}
