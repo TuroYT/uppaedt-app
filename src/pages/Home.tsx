@@ -129,7 +129,7 @@ const Home = () => {
                       return <IonSelectOption value={group.id} key={group.id}>{group.nom}</IonSelectOption>;
                     })
                   ) : (
-                    <IonSelectOption value="0">Veuillez selectionner des groupes</IonSelectOption>
+                    <IonSelectOption value={0}>Veuillez selectionner des groupes</IonSelectOption>
                   )
               
                 }
@@ -141,7 +141,7 @@ const Home = () => {
       </IonHeader>
       <IonContent fullscreen>
 
-          {groupe === 0 ? (
+          {groupe === 0  ? (
             console.log(groupe),
               <h1>Entrez un Groupe d'étude</h1>
             ) : (

@@ -83,7 +83,7 @@ const Settings: React.FC = () => {
              
                 <IonList inlist={true}>
                     <IonItem>   
-                        <IonLabel position="floating" defaultValue={apiUrl}>Custom API URL - default : https://uppaedt-api.romain-pinsolle.fr</IonLabel>
+                        <IonLabel position="floating" defaultValue={apiUrl}>Custom API URL</IonLabel>
                         <IonInput value={apiUrl} onIonChange={handleApiUrlChange}></IonInput>
                         
                         
