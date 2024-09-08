@@ -15,15 +15,15 @@ const MenuComponents: React.FC = () => {
 
 
         <IonList>
-        <IonItem button={true} routerLink="/home" routerDirection="forward">
+        <IonItem button={true} routerLink="/home" routerDirection="root">
         <IonIcon aria-hidden="true" icon={homeOutline} slot="start"></IonIcon>
         <IonLabel>Emploi du temps</IonLabel>
       </IonItem>
-      <IonItem button={true} routerLink="/settings" routerDirection="forward">
+      <IonItem button={true} routerLink="/settings" routerDirection="root">
         <IonIcon aria-hidden="true" icon={settingsOutline} slot="start"></IonIcon>
         <IonLabel>Paramètres</IonLabel>
       </IonItem>
-      <IonItem button={true} routerLink="/formations" routerDirection="forward">
+      <IonItem button={true} routerLink="/formations" routerDirection="root">
         <IonIcon aria-hidden="true" icon={calendarClearOutline} slot="start"></IonIcon>
         <IonLabel>Formations</IonLabel>
       </IonItem>

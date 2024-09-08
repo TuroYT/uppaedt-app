@@ -17,6 +17,7 @@ import {
 } from "@ionic/react";
 import { Storage } from "@ionic/storage";
 import MenuComponents from "../components/menuComponant";
+import { CapacitorHttp } from "@capacitor/core";
 import { Method } from "ionicons/dist/types/stencil-public-runtime";
 import { co } from "@fullcalendar/core/internal-common";
 
@@ -70,18 +71,20 @@ const Formations: React.FC = () => {
 
   const getFormations = async () => {
     const apiurl = await getApiUrl();
-    const response = await fetch(
-      apiurl +"/api/groupes/getallwithformations",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    
-    const data = await response.json();
+    if (!apiurl) {
+      const apiurl = "https://uppaedt-api.romain-pinsolle.fr";
+    }
 
+    const response = CapacitorHttp.get({
+      url: apiurl + "/api/groupes/getallwithformations",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    
+    const data = (await response).data;
+    console.log(data);
     return data;
   };
 

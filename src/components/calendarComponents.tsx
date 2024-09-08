@@ -45,7 +45,6 @@ const mois: any = {
 
 const store = new Storage();
 
-
 interface Event {
   title: String;
   start: String;
@@ -63,7 +62,7 @@ interface Event {
   };
 }
 interface Props {
-  name?: string;
+  name?: number;
 }
 
 const CalendarComponents: React.FC<Props> = (props) => {
@@ -96,7 +95,7 @@ const CalendarComponents: React.FC<Props> = (props) => {
     await store.create();
     let apiUrl = await store.get("apiUrl");
     if (!apiUrl) {
-      apiUrl = "https://edt4rt-api.romain-pinsolle.fr";
+      apiUrl = "https://uppaedt-api.romain-pinsolle.fr";
       await store.set("apiUrl", apiUrl);
     }
     return apiUrl;
@@ -107,65 +106,67 @@ const CalendarComponents: React.FC<Props> = (props) => {
       try {
         const api = await getApiUrl();
         const apiUrl = api.endsWith("/") ? api.slice(0, -1) : api; // enleve le /
-        const response = await CapacitorHttp.get({
-          url: apiUrl + "/api/planning/getPlanningPerName/" + props.name,
+        const response = await CapacitorHttp.post({
+          url: apiUrl + "/api/planning/getPlanningPerId/?id=" + props.name,
         });
-  
+
         // Vérifiez le statut de la réponse
         if (response.status !== 200) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-  
-        // Loggez la réponse pour inspection
-        console.log("API Response:", response);
-  
+
         // Assurez-vous que la réponse est bien du JSON
         const json = await response.data;
-        if (typeof json !== 'object') {
+        if (typeof json !== "object") {
           throw new Error("La réponse de l'API n'est pas un JSON valide.");
         }
         const formattedEvents: never[] = [];
+      
         if (json.length !== 0) {
-
-        const formattedEvents = json.map((eventData: any) => ({
-          title: `${eventData.summary} - ${eventData.location}${
-            eventData.prof !== "NA" ? ` - ${eventData.prof}` : ""
-          }`,
-          start:
-            eventData.start.split(" ")[0] +
-            "T" +
-            eventData.start.split(" ")[1].split("+")[0], // Simplified date conversion
-          end:
-            eventData.end.split(" ")[0] +
-            "T" +
-            eventData.end.split(" ")[1].split("+")[0],
-          description: eventData.location,
-          id: eventData.uid,
-          color:
-            eventData.prof !== "NA"
-              ? json.filter(
+          const formattedEvents = json.map((eventData: any) => ({
+            title: `${eventData.summary} - ${eventData.location}${
+              eventData.prof !== "NA" ? ` - ${eventData.prof}` : ""
+            }`,
+            start:
+              eventData.start.split(" ")[0] +
+              "T" +
+              eventData.start.split(" ")[1].split("+")[0], // Simplified date conversion
+            end:
+              eventData.end.split(" ")[0] +
+              "T" +
+              eventData.end.split(" ")[1].split("+")[0],
+            description: eventData.location,
+            id: eventData.uid,
+            color:
+              eventData.prof !== "NA"
+                ? json.filter(
+                    (e: any) =>
+                      e.summary === eventData.summary &&
+                      e.start > eventData.start
+                  ).length === 0
+                  ? "#ff9966" // dernier cours
+                  : "default" // default
+                : "#005049", // Sae sans prof
+            extendedProps: {
+              prof: eventData.prof,
+              cours: eventData.summary,
+              promo : eventData.description,
+              location: eventData.location,
+              start: eventData.start.split(" ")[1].split("+")[0].slice(0, -3),
+              end: eventData.end.split(" ")[1].split("+")[0].slice(0, -3),
+              isLastCours:
+                json.filter(
                   (e: any) =>
                     e.summary === eventData.summary && e.start > eventData.start
-                ).length === 0
-                ? "#ff9966" // dernier cours
-                : "default" // default
-              : "#005049", // Sae sans prof
-          extendedProps: {
-            prof: eventData.prof,
-            cours: eventData.summary,
-            location: eventData.location,
-            start: eventData.start.split(" ")[1].split("+")[0].slice(0, -3),
-            end: eventData.end.split(" ")[1].split("+")[0].slice(0, -3),
-            isLastCours:
-              json.filter(
-                (e: any) =>
-                  e.summary === eventData.summary && e.start > eventData.start
-              ).length === 0, // dernier cours
-          },
-        }))};
-        setEvents(formattedEvents);
-        console.log(events)
-        scheduleNotifications(formattedEvents);
+                ).length === 0, // dernier cours
+            },
+          }));
+        
+          setEvents(formattedEvents);
+          console.log(events);
+          scheduleNotifications(formattedEvents);
+        }
+        
       } catch (error: any) {
         presentAlert({
           header: "Erreur !",
@@ -174,7 +175,7 @@ const CalendarComponents: React.FC<Props> = (props) => {
         });
       }
     };
-  
+
     fetchEvents();
   }, [props.name]);
 
@@ -227,13 +228,11 @@ const CalendarComponents: React.FC<Props> = (props) => {
     if (swiperRef.current && swiperRef.current.swiper) {
       swiperRef.current.swiper.slideTo(1);
     }
-  }
+  };
   const handlers = useSwipeable({
     onSwipedLeft: () => goNext(),
     onSwipedRight: () => goBack(),
   });
-
-
 
   function renderEventContent(eventInfo: {
     timeText: any;
@@ -247,20 +246,18 @@ const CalendarComponents: React.FC<Props> = (props) => {
         isLastCours: boolean;
       };
     };
-  }) { // Evevent Render
+  }) {
+    // Evevent Render
     return (
-
-      
       <>
         <>{eventInfo.timeText}</>
         <br />
         {eventInfo.event.extendedProps.cours.length > 33
           ? eventInfo.event.extendedProps.cours.slice(0, 30) + " ..."
-          : eventInfo.event.extendedProps.cours} 
+          : eventInfo.event.extendedProps.cours}
         <br />
         <i>{eventInfo.event.extendedProps.location}</i>
         <br />
-
 
         {eventInfo.event.extendedProps.prof != "NA" ? (
           <i>{eventInfo.event.extendedProps.prof}</i>
@@ -269,9 +266,10 @@ const CalendarComponents: React.FC<Props> = (props) => {
         )}
       </>
     );
-  } return (
+  }
+  return (
     <>
-      {(
+      {
         <>
           <div id="main" {...handlers}>
             <div className="center">
@@ -327,6 +325,7 @@ const CalendarComponents: React.FC<Props> = (props) => {
                     {eventInfo.cours}
                   </IonLabel>
                 </IonItem>
+                
                 <IonItem>
                   <IonLabel>
                     <p>Professeur</p>
@@ -357,56 +356,46 @@ const CalendarComponents: React.FC<Props> = (props) => {
               </IonList>
             </IonModal>
 
-
             <Swiper ref={swiperRef} onSlideChange={onSwipe} initialSlide={1}>
-            <SwiperSlide>
-
-  </SwiperSlide>
-  <SwiperSlide>
-
-            <FullCalendar
-              ref={calendarRef}
-              plugins={[timeGridPlugin]}
-              initialView="timeGridDay"
-              locale="fr"
-              headerToolbar={{
-                start: "",
-                center: "",
-                end: "",
-              }}
-              titleFormat={{ month: "long", day: "numeric" }}
-              hiddenDays={[6, 0]}
-              events={events}
-              allDaySlot={false}
-              nowIndicator={true}
-              height="auto"
-              slotMinTime="08:00"
-              slotMaxTime="19:00"
-              eventContent={renderEventContent}
-              eventClick={(event) => {
-                console.log(event);
-                setEventInfo({
-                  cours: event.event.extendedProps.cours,
-                  location: event.event.extendedProps.location,
-                  prof: event.event.extendedProps.prof,
-                  start: event.event.extendedProps.start,
-                  end: event.event.extendedProps.end,
-                  isLastCours: event.event.extendedProps.isLastCours,
-                });
-                modal.current?.present();
-              }}
-            />
-  </SwiperSlide>
-  <SwiperSlide>
-
-
-</SwiperSlide>
-</Swiper>
-
-            
+              <SwiperSlide></SwiperSlide>
+              <SwiperSlide>
+                <FullCalendar
+                  ref={calendarRef}
+                  plugins={[timeGridPlugin]}
+                  initialView="timeGridDay"
+                  locale="fr"
+                  headerToolbar={{
+                    start: "",
+                    center: "",
+                    end: "",
+                  }}
+                  titleFormat={{ month: "long", day: "numeric" }}
+                  hiddenDays={[6, 0]}
+                  events={events}
+                  allDaySlot={false}
+                  nowIndicator={true}
+                  height="auto"
+                  slotMinTime="08:00"
+                  slotMaxTime="19:00"
+                  eventContent={renderEventContent}
+                  eventClick={(event) => {
+                    setEventInfo({
+                      cours: event.event.extendedProps.cours,
+                      location: event.event.extendedProps.location,
+                      prof: event.event.extendedProps.prof,
+                      start: event.event.extendedProps.start,
+                      end: event.event.extendedProps.end,
+                      isLastCours: event.event.extendedProps.isLastCours,
+                    });
+                    modal.current?.present();
+                  }}
+                />
+              </SwiperSlide>
+              <SwiperSlide></SwiperSlide>
+            </Swiper>
           </div>
         </>
-      )}
+      }
     </>
   );
 };

@@ -19,19 +19,47 @@ import {
 } from "@ionic/react";
 import { LocalNotifications } from "@capacitor/local-notifications";
 import CalendarComponents from "../components/calendarComponents";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { Storage } from "@ionic/storage";
 import Settings from "./Settings";
 import { homeOutline, settingsOutline, calendarClearOutline } from "ionicons/icons";
 import { Capacitor } from "@capacitor/core";
 import MenuComponents from "../components/menuComponant"
+import { co } from "@fullcalendar/core/internal-common";
+import { CapacitorHttp } from "@capacitor/core";
 
 const store = new Storage();
 
 
 const Home = () => {
   
-  const [groupe, setGroupe] = useState(String);
+  const [groupe, setGroupe] = useState(0);
+  const [selectedGroups, setSelectedGroups] = useState<any>([]);
+  const [hasFetched, setHasFetched] = useState(false);
+
+  useEffect(() => {
+    if (hasFetched) return;
+
+    const fetchGroups = async () => {
+      const selected = await store.get("Selected");
+      setSelectedGroups([]);
+      if (selected) {
+        const apiUrl = await store.get("apiUrl");
+        const groupPromises = selected.map(async (id: number) => {
+          const response = CapacitorHttp.get({
+            url: `${apiUrl}/api/groupes/getFromId/${id}`,
+          });
+          return (await response).data;
+        });
+        const groups = await Promise.all(groupPromises);
+
+        setSelectedGroups(groups);
+      }
+    };
+
+    fetchGroups();
+    setHasFetched(true);
+  }, []);
 
 
   const MakeChannel = async () => {
@@ -95,14 +123,16 @@ const Home = () => {
                   store.set("groupe", e.detail.value);
                 }}
               >
-                <IonSelectOption value="but1_g1">BUT1 Groupe 1</IonSelectOption>
-                <IonSelectOption value="but1_g2">BUT1 Groupe 2</IonSelectOption>
-                <IonSelectOption value="but1_g3">BUT1 Groupe 3</IonSelectOption>
-                <IonSelectOption value="but1_g4">BUT1 Groupe 4</IonSelectOption>
-                <IonSelectOption value="s4_cyber">BUT2 Cyber</IonSelectOption>
-                <IonSelectOption value="s4_rom">BUT2 Rom</IonSelectOption>
-                <IonSelectOption value="s4_pilpro">BUT2 PilPro</IonSelectOption>
-
+                {
+                  selectedGroups.length ? (
+                    selectedGroups.map((group: any) => {
+                      return <IonSelectOption value={group.id} key={group.id}>{group.nom}</IonSelectOption>;
+                    })
+                  ) : (
+                    <IonSelectOption value="0">Veuillez selectionner des groupes</IonSelectOption>
+                  )
+              
+                }
 
               </IonSelect>
             </IonItem>
@@ -111,11 +141,14 @@ const Home = () => {
       </IonHeader>
       <IonContent fullscreen>
 
-          {groupe.length ? (
-            <CalendarComponents name={groupe}></CalendarComponents>
-          ) : (
-            <h1>Entrez un Groupe d'étude</h1>
-          )}
+          {groupe === 0 ? (
+            console.log(groupe),
+              <h1>Entrez un Groupe d'étude</h1>
+            ) : (
+              <CalendarComponents name={groupe}></CalendarComponents>
+            )
+
+          }
         
       </IonContent>
     </IonPage>
