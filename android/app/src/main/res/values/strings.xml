@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">edt4rt</string>
-    <string name="title_activity_main">edt4rt</string>
+    <string name="app_name">UPPA EDT</string>
+    <string name="title_activity_main">UPPA EDT</string>
     <string name="package_name">ionic.edt4rt</string>
     <string name="custom_url_scheme">ionic.edt4rt</string>
 </resources>
