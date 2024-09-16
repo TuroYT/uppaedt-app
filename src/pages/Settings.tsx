@@ -28,8 +28,9 @@ const Settings: React.FC = () => {
         await store.create();
         if (await store.get("apiUrl") && apiUrl === "") {
             setApiUrl(await store.get("apiUrl"));
-            setNotification(await store.get("notification"));
         }
+
+        
     };
     preload();
     const handleApiUrlChange = (event: CustomEvent) => {
@@ -97,7 +98,7 @@ const Settings: React.FC = () => {
                         A finir
 
                     <IonItem>   
-                        <IonLabel defaultValue={apiUrl}>Activer les notification ?</IonLabel>
+                        <IonLabel>Activer les notification ?</IonLabel>
                         <IonCheckbox labelPlacement="stacked" alignment="center" checked={notification} onIonChange={handleNotification}></IonCheckbox>
                     </IonItem>
 
