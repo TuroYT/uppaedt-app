@@ -356,6 +356,7 @@ const CalendarComponents: React.FC<Props> = (props) => {
               <SwiperSlide></SwiperSlide>
               <SwiperSlide>
                 <FullCalendar
+                  slotEventOverlap={false}
                   ref={calendarRef}
                   plugins={[timeGridPlugin]}
                   initialView="timeGridDay"
