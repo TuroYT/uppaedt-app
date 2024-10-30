@@ -2,25 +2,21 @@ import React, { useState, useEffect, useRef } from "react";
 import FullCalendar from "@fullcalendar/react";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import { CapacitorHttp } from "@capacitor/core";
-import { caretBackOutline, caretForwardOutline, star } from "ionicons/icons";
+import { caretBackOutline, caretForwardOutline } from "ionicons/icons";
 import "./calendarComponant.css";
 import { Storage } from "@ionic/storage";
 import {
   IonButtons,
   IonHeader,
-  IonContent,
   IonToolbar,
   IonTitle,
-  IonPage,
   IonItem,
-  IonInput,
   IonList,
   IonLabel,
 } from "@ionic/react";
 import { useSwipeable } from "react-swipeable";
 import {
   useIonAlert,
-  IonProgressBar,
   IonButton,
   IonDatetime,
   IonModal,
@@ -347,7 +343,7 @@ const CalendarComponents: React.FC<Props> = (props) => {
                 {eventInfo.isLastCours ? (
                   <IonItem>
                     <IonLabel>
-                      <h2>⚠️ Dernier cours du module, risque de contrôle ⚠️</h2>
+                      <h2>Dernier cours du module programmé</h2>
                     </IonLabel>
                   </IonItem>
                 ) : (
